@@ -2,6 +2,6 @@
 
 # Grupo 03: 
 # Marayah Sabelle
-# José Ricardo
+# José Ricardo Sartorelli - jrsartorelli@gmail.com
 # Leomim Antônio
 # Gabriel Conceição
