@@ -32,4 +32,13 @@ public class Pessoa {
     public void setAltura(float altura) {
         this.altura = altura;
     }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", altura=" + String.format("%.2f", altura) +
+                '}';
+    }
 }
