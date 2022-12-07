@@ -7,6 +7,7 @@ public class MainParImpar {
         System.out.print("Digite o número que deseja classificar como Par ou Ímpar: ");
         numero = sc.nextInt();
 
+
         if (NumeroParImpar.isPar(numero)){
             System.out.printf("O número %d é Par!", numero);
         } else {
