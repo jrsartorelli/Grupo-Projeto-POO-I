@@ -2,7 +2,7 @@ public class Calculadora {
     private Double valor1;
     private Double valor2;
 
-    public Calculadora(Double valor1, Double valor2) {
+    public Calculadora(double valor1, double valor2) {
         this.valor1 = valor1;
         this.valor2 = valor2;
     }
@@ -41,15 +41,7 @@ public class Calculadora {
 
     public Double dividir(){
         if (isValoresDefinidos()){
-            Double resultado;
-            try {
-                resultado = valor1 / valor2;
-            }
-            catch (ArithmeticException e){
-                System.err.println("Não é possível a divisão por zero");
-                return null;
-            }
-            return resultado;
+            return valor1 / valor2;
         } else {
             return null;
         }
