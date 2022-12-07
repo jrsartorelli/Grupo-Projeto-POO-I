@@ -38,7 +38,7 @@ public class Pessoa {
         return "Pessoa{" +
                 "nome='" + nome + '\'' +
                 ", idade=" + idade +
-                ", altura=" + String.format("%.2f", altura) +
+                " anos, altura=" + String.format("%.2fm", altura) +
                 '}';
     }
 }
