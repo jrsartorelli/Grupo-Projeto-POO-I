@@ -1,4 +1,4 @@
-public class Main {
+public class MainPessoaCalculadora {
     public static void main(String[] args) {
         Pessoa pessoa = new Pessoa("Ricardo", 42, 1.81f);
         System.out.println(pessoa);
