@@ -1,3 +1,5 @@
+package ada.exercise.list1.pessoa;
+
 public class Pessoa {
     private String nome;
     private int idade;
@@ -35,7 +37,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" +
+        return "ada.exercise.list1.pessoa.Pessoa{" +
                 "nome='" + nome + '\'' +
                 ", idade=" + idade +
                 " anos, altura=" + String.format("%.2fm", altura) +

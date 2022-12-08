@@ -1,3 +1,5 @@
+package ada.exercise.list1.calculadora;
+
 public class Calculadora {
     private Double valor1;
     private Double valor2;

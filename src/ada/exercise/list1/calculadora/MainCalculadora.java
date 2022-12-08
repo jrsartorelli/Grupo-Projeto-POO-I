@@ -1,8 +1,9 @@
-public class MainPessoaCalculadora {
-    public static void main(String[] args) {
-        Pessoa pessoa = new Pessoa("Ricardo", 42, 1.81f);
-        System.out.println(pessoa);
+package ada.exercise.list1.calculadora;
 
+import ada.exercise.list1.calculadora.Calculadora;
+
+public class MainCalculadora {
+    public static void main(String[] args) {
         Calculadora calculadora = new Calculadora(50, 0);
         System.out.printf("Soma = %f\n", calculadora.somar());
         System.out.printf("Subtração = %f\n", calculadora.subtrair());

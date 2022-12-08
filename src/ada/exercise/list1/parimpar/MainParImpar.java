@@ -1,3 +1,5 @@
+package ada.exercise.list1.parimpar;
+
 import java.util.Scanner;
 
 public class MainParImpar {
