@@ -9,21 +9,7 @@ public class Main {
         String frase = sc.nextLine().toLowerCase();
         sc.close();
 
-        String[] palavras = frase.split(" ");
-        String saidaMorse = "";
-        for(int i = 0; i < palavras.length; i++){
-            System.out.println(palavras[i]);
-            char[] letras = palavras[i].toCharArray();
-            for (int j = 0; j < letras.length; j++){
-                for (int y = 0; y < AlfabetoPortugues.CARACTERES.length; y++){
-                    if (letras[j] == AlfabetoPortugues.CARACTERES[y]){
-                        saidaMorse += CodigoMorse.CODIGOSMORSE[y];
-                    }
-                }
-                saidaMorse += " ";
-            }
-            saidaMorse += "/ ";
-        }
+        String saidaMorse = DicionarioPortuguesParaMorse.conveterPortuguesParaMorse(frase);
         System.out.println(saidaMorse);
     }
 }
