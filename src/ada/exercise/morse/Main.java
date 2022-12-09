@@ -9,7 +9,7 @@ public class Main {
         String frase = sc.nextLine().toLowerCase();
         sc.close();
 
-        String saidaMorse = DicionarioPortuguesParaMorse.conveterPortuguesParaMorse(frase);
+        String saidaMorse = DicionarioPortuguesMorse.conveterPortuguesParaMorse(frase);
         System.out.println(saidaMorse);
     }
 }

@@ -3,7 +3,7 @@ package ada.exercise.morse;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DicionarioPortuguesParaMorse {
+public class DicionarioPortuguesMorse {
     private static final Map<Character, String> DICIONARIO = new HashMap<>() {{
             put('a', ".-");
             put('b', "-...");
