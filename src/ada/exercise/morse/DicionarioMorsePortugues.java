@@ -44,7 +44,7 @@ public class DicionarioMorsePortugues {
     }};
 
     public static String conveterMorseParaPortugues(String frase){
-        String[] arrayPalavras = frase.split(" / ");
+        String[] arrayPalavras = frase.split("/");
         StringBuilder saidaFrasePortugues = new StringBuilder();
 
         for (String palavra : arrayPalavras) {

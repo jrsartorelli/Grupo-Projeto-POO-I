@@ -8,7 +8,7 @@ public class Main {
 
         boolean parar = false;
         while (!parar) {
-            System.out.print("Escolha uma opção: \n1 - Morse para Português\n2 - Português para Morse\nDigite a opção (1 ou 2): ");
+            System.out.print("Escolha uma opção: \n1 - Português para Morse\n2 - Morse para Português\nDigite a opção (1 ou 2): ");
             String escolha = sc.next();
             sc.nextLine();
 
@@ -24,7 +24,7 @@ public class Main {
                     parar = true;
                     break;
                 case "2":
-                    System.out.print("Digite a mensagem em Morse: ");
+                    System.out.print("Digite a mensagem em Morse (palavras separadas por ' / '): ");
                     frase = sc.nextLine();
 
                     String saidaPortugues = DicionarioMorsePortugues.conveterMorseParaPortugues(frase);
