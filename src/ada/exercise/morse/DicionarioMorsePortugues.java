@@ -50,7 +50,7 @@ public class DicionarioMorsePortugues {
         for (String palavra : arrayPalavras) {
             saidaFrasePortugues.append(converterPalavraMorse(palavra)).append(" ");
         }
-        return saidaFrasePortugues.toString();
+        return saidaFrasePortugues.toString().trim();
     }
 
     private static String converterPalavraMorse(String palavra){
