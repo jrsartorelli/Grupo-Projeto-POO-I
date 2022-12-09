@@ -5,11 +5,39 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Digite a mensagem em Português: ");
-        String frase = sc.nextLine().toLowerCase();
-        sc.close();
 
-        String saidaMorse = DicionarioPortuguesMorse.conveterPortuguesParaMorse(frase);
-        System.out.println(saidaMorse);
+        boolean parar = false;
+        while (!parar) {
+            System.out.print("Escolha uma opção: \n1 - Morse para Português\n2 - Português para Morse\nDigite a opção (1 ou 2): ");
+            String escolha = sc.next();
+            sc.nextLine();
+
+            String frase = "";
+            switch (escolha) {
+                case "1":
+                    System.out.print("Digite a mensagem em Português: ");
+                    frase = sc.nextLine().toLowerCase();
+
+                    String saidaMorse = DicionarioPortuguesMorse.conveterPortuguesParaMorse(frase);
+                    System.out.println("Sua frase em Morse é: ");
+                    System.out.println(saidaMorse);
+                    parar = true;
+                    break;
+                case "2":
+                    System.out.print("Digite a mensagem em Morse: ");
+                    frase = sc.nextLine();
+
+                    String saidaPortugues = DicionarioMorsePortugues.conveterMorseParaPortugues(frase);
+                    System.out.println("Sua frase em Português é: ");
+                    System.out.println(saidaPortugues);
+                    parar = true;
+                    break;
+                default:
+                    System.err.println("Erro: Opção escolhida inválida.");
+                    System.out.println();
+                    break;
+            }
+        }
+        sc.close();
     }
 }
