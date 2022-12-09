@@ -50,6 +50,7 @@ public class DicionarioPortuguesMorse {
         for (String palavra : arrayPalavras) {
             saidaFraseMorse.append(converterPalavra(palavra)).append("/ ");
         }
+        saidaFraseMorse.delete(saidaFraseMorse.lastIndexOf("/ "), saidaFraseMorse.length()-1);
         return saidaFraseMorse.toString();
     }
 
