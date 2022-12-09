@@ -47,13 +47,16 @@ public class DicionarioPortuguesMorse {
         String[] arrayPalavras = frase.split(" ");
         StringBuilder saidaFraseMorse = new StringBuilder();
 
-        for (String palavra : arrayPalavras) {
-            saidaFraseMorse.append(converterPalavraPortugues(palavra)).append("/ ");
+        for(int i = 0; i < arrayPalavras.length; i++){
+            saidaFraseMorse.append(converterPalavra(arrayPalavras[i]));
+            if (i != (arrayPalavras.length - 1)){
+                saidaFraseMorse.append(" / ");
+            }
         }
         return saidaFraseMorse.toString();
     }
 
-    private static String converterPalavraPortugues(String palavra){
+    private static String converterPalavra(String palavra){
         char[] arrayLetras = palavra.toCharArray();
         StringBuilder saidaPalavraMorse = new StringBuilder();
 
@@ -63,6 +66,6 @@ public class DicionarioPortuguesMorse {
                 saidaPalavraMorse.append(codigo).append(" ");
             }
         }
-        return saidaPalavraMorse.toString();
+        return saidaPalavraMorse.toString().trim();
     }
 }
