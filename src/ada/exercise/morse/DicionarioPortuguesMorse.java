@@ -48,12 +48,12 @@ public class DicionarioPortuguesMorse {
         StringBuilder saidaFraseMorse = new StringBuilder();
 
         for (String palavra : arrayPalavras) {
-            saidaFraseMorse.append(converterPalavra(palavra)).append("/ ");
+            saidaFraseMorse.append(converterPalavraPortugues(palavra)).append("/ ");
         }
         return saidaFraseMorse.toString();
     }
 
-    private static String converterPalavra(String palavra){
+    private static String converterPalavraPortugues(String palavra){
         char[] arrayLetras = palavra.toCharArray();
         StringBuilder saidaPalavraMorse = new StringBuilder();
 
