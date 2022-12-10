@@ -6,6 +6,7 @@ public class Jogador {
     private Integer level;
     private Pokemon[] arrayPokemon;
     private Integer numRevives;
+    private Integer pedrasEvolução;
 
     public Jogador(String nome) {
         this.nome = nome;
@@ -13,6 +14,7 @@ public class Jogador {
         this.level = 1;
         this.arrayPokemon = criarTimePokemons();
         this.numRevives = 1;
+        this.pedrasEvolução = 0;
     }
 
     private Pokemon[] criarTimePokemons(){
