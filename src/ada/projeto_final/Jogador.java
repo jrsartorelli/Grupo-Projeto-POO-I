@@ -3,14 +3,14 @@ package ada.projeto_final;
 public class Jogador {
     private final String nome;
     private Integer vida;
-    private Integer nivel;
+    private Integer level;
     private Pokemon[] arrayPokemon;
     private Integer numRevives;
 
     public Jogador(String nome) {
         this.nome = nome;
         this.vida = 1000;
-        this.nivel = 1;
+        this.level = 1;
         this.arrayPokemon = criarTimePokemons();
         this.numRevives = 1;
     }
@@ -32,8 +32,8 @@ public class Jogador {
         return vida;
     }
 
-    public Integer getNivel() {
-        return nivel;
+    public Integer getLevel() {
+        return level;
     }
 
     public Integer getNumRevives() {
@@ -42,7 +42,7 @@ public class Jogador {
 
     public void setVida(Integer vida) { this.vida = vida; }
 
-    public void setNivel(Integer nivel) { this.nivel = nivel; }
+    public void setLevel(Integer level) { this.level = level; }
 
     public Pokemon[] getArrayPokemon() {
         return arrayPokemon;
