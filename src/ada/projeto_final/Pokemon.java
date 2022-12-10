@@ -1,5 +1,7 @@
 package ada.projeto_final;
 
+import java.util.Arrays;
+
 public class Pokemon {
     private final String nome;
     private float vida;
@@ -58,6 +60,15 @@ public class Pokemon {
         for (int i = 0; i < ataques.length; i++) {
             System.out.println((i + 1) + " - " + ataques[i]);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon " + nome + ": \n" +
+                " - Vida Atual = " + vida + "\n" +
+                " - Ataques = " + Arrays.toString(ataques) + "\n" +
+                " - Nivel Atual = " + level + "\n" +
+                " - Próxima Evolução = '" + proxEvolucao + "\n";
     }
 }
 
