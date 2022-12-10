@@ -40,13 +40,9 @@ public class Jogador {
         return numRevives;
     }
 
-    public void setVida(Integer vida) {
-        this.vida = vida;
-    }
+    public void setVida(Integer vida) { this.vida = vida; }
 
-    public void setNivel(Integer nivel) {
-        this.nivel = nivel;
-    }
+    public void setNivel(Integer nivel) { this.nivel = nivel; }
 
     public Pokemon[] getArrayPokemon() {
         return arrayPokemon;
@@ -64,7 +60,15 @@ public class Jogador {
         return textoPokemons.toString();
     }
 
-    public void setNumRevives(Integer numRevives) {
-        this.numRevives = numRevives;
+    public void setNumRevives(Integer numRevives) { this.numRevives = numRevives; }
+
+    public boolean usarRevive(Pokemon bono){
+        if(!bono.estaVivo() && this.numRevives>0) {
+            bono.revive();
+            this.numRevives--;
+            return true;
+        }else{
+            return false;
+        }
     }
 }

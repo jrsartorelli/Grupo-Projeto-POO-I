@@ -32,4 +32,15 @@ public class MainPartida {
         valorRecebido = input.nextInt();
         return valorRecebido;
     }
+
+    public static boolean reviverPokemon(Scanner input,Pokemon pokemonAtual, Jogador J){
+        if(J.usarRevive(pokemonAtual)){
+            System.out.println("O pokemon " + pokemonAtual.getNome() + " está de volta ao campo de batalha!");
+            return true;
+        }else{
+            System.out.println("Não foi possível reviver o pokemon");
+            return false;
+        }
+    }
+
 }
