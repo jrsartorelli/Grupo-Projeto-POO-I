@@ -17,7 +17,7 @@ public class MainPartida {
         Pokemon escolhaJogador = jogador.getPokemon(opcaoPokemonJogador-1);
         System.out.println("\nO Pokemon escolhido foi\n" + escolhaJogador);
         opcaoAtaqueJogador = lerIntUsuario(sc, "Os ataques disponíveis do " +
-                escolhaJogador.getNome() + " são:\n" + escolhaJogador.mostrarAtaques() +
+                escolhaJogador.getNome() + " são:\n" + escolhaJogador.buscarAtaques() +
                 "Escolha uma opção de ataque (1, 2 ou 3):");
 
         sc.close();

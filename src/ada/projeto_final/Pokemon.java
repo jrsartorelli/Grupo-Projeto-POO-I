@@ -44,7 +44,7 @@ public class Pokemon extends Evolucoes{
     }
 
     // Retorna os ataques do pokémon
-    public String mostrarAtaques() {
+    public String buscarAtaques() {
         StringBuilder textoAtaques = new StringBuilder();
         for (int i = 0; i < ataques.length; i++){
             textoAtaques.append((i + 1) + " - " + ataques[i] + "\n");
