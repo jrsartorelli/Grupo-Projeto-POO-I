@@ -32,8 +32,8 @@ public class Pokemon {
     }
 
     // Aplica o dano especificado ao pokémon
-    public void aplicarDano(int damage) {
-        vida = Math.max(0, vida - damage);
+    public void aplicarDano(int dano) {
+        vida = Math.max(0, vida - dano);
     }
 
     // Exibe os ataques do pokémon
