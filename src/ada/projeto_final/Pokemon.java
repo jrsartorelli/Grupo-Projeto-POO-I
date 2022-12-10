@@ -43,11 +43,13 @@ public class Pokemon extends Evolucoes{
         vida = Math.max(0, vida - dano);
     }
 
-    // Exibe os ataques do pokémon
-    public void mostrarAtaques() {
-        for (int i = 0; i < ataques.length; i++) {
-            System.out.println((i + 1) + " - " + ataques[i]);
+    // Retorna os ataques do pokémon
+    public String mostrarAtaques() {
+        StringBuilder textoAtaques = new StringBuilder();
+        for (int i = 0; i < ataques.length; i++){
+            textoAtaques.append((i + 1) + " - " + ataques[i] + "\n");
         }
+        return textoAtaques.toString();
     }
 
     @Override
