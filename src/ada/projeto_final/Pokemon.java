@@ -1,4 +1,4 @@
-package ada.projeto_final.lutadores;
+package ada.projeto_final;
 
 public class Pokemon {
     private String nome;

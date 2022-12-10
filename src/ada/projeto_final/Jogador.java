@@ -1,4 +1,4 @@
-package ada.projeto_final.lutadores;
+package ada.projeto_final;
 
 // import java.util.ArrayList;
 // import java.util.List;
