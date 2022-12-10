@@ -12,9 +12,9 @@ public class MainPartida {
         Jogador jogador = new Jogador(nomeJogador);
         Pokemon[] pokemonsJogador = jogador.getArrayPokemon();
         opcao = lerIntUsuario(sc, "Escolha o Pokémon para inciar:" +
-                "\n1 - " + pokemonsJogador[0] +
-                "\n2 - " + pokemonsJogador[1] +
-                "\n3 - " + pokemonsJogador[2]);
+                "\n1 - " + pokemonsJogador[0].getNome() +
+                "\n2 - " + pokemonsJogador[1].getNome() +
+                "\n3 - " + pokemonsJogador[2].getNome());
 
         sc.close();
     }
