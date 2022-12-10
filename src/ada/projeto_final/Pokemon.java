@@ -9,26 +9,11 @@ public class Pokemon {
     private int level;
 
     // Cria um pokémon com o nome e os ataques especificados
-    public Pokemon(String nome, String[] ataques, String proxEvolucao) {
-        this.nome = nome;
-        this.ataques = ataques;
-        this.vida = 1000; // Valor padrão de vida para todos os pokémons
-        this.level = 1;
-    }
-
-    public Pokemon(String nome, String[] ataques) {
-        this.nome = nome;
-        this.ataques = ataques;
-        this.vida = 1000; // Valor padrão de vida para todos os pokémons
-        this.level = 1;
-    }
-
     public Pokemon(String nome) {
         this.nome = nome;
         this.ataques = ataques;
         this.vida = 1000; // Valor padrão de vida para todos os pokémons
         this.level = 1;
-        this.proxEvolucao = null;
     }
 
     public String getNome() {
@@ -37,10 +22,6 @@ public class Pokemon {
 
     public int getLevel() {
         return level;
-    }
-
-    public String getProxEvolucao() {
-        return proxEvolucao;
     }
 
     public float getVida() {
@@ -73,8 +54,7 @@ public class Pokemon {
         return "Pokemon " + nome + ": \n" +
                 " - Vida Atual = " + vida + "\n" +
                 " - Ataques = " + Arrays.toString(ataques) + "\n" +
-                " - Nivel Atual = " + level + "\n" +
-                " - Próxima Evolução = '" + proxEvolucao + "\n";
+                " - Nivel Atual = " + level + "\n";
     }
 }
 
