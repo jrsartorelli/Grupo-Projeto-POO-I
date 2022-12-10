@@ -52,6 +52,10 @@ public class Jogador {
         return arrayPokemon;
     }
 
+    public Pokemon getPokemon(int indexArrayPokemon){
+        return arrayPokemon[indexArrayPokemon];
+    }
+
     public String imprimirPokemons(){
         StringBuilder textoPokemons = new StringBuilder();
         for (int i = 0; i < arrayPokemon.length; i++){

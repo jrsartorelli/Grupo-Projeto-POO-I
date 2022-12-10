@@ -10,12 +10,8 @@ public class MainPartida {
         nomeJogador = lerStringUsuario(sc, "Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
         Jogador jogador = new Jogador(nomeJogador);
-        Pokemon[] pokemonsJogador = jogador.getArrayPokemon();
-        opcao = lerIntUsuario(sc, "Escolha o Pokémon para inciar:" +
-                "\n1 - " + pokemonsJogador[0].getNome() +
-                "\n2 - " + pokemonsJogador[1].getNome() +
-                "\n3 - " + pokemonsJogador[2].getNome() + ": ");
-        Pokemon escolhaJogador = pokemonsJogador[opcao-1];
+        opcao = lerIntUsuario(sc, jogador.imprimirPokemons());
+        Pokemon escolhaJogador = jogador.getPokemon(opcao-1);
         System.out.println("O Pokemon escolhido foi\n" + escolhaJogador);
 
         sc.close();
