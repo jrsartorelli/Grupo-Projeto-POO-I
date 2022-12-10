@@ -49,4 +49,12 @@ public class Main {
         valorRecebido = input.nextLine();
         return valorRecebido;
     }
+
+    private static double leDoubleUsuario(Scanner input, String mensagem) {
+        double valorRecebido;
+        System.out.print(mensagem);
+        valorRecebido = input.nextDouble();
+        input.nextLine();
+        return valorRecebido;
+    }
 }
