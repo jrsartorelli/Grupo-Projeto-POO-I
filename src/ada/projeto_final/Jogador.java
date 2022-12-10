@@ -7,6 +7,7 @@ public class Jogador {
     private String nome;
     private Integer vida = 1000;
     private Integer nivel = 1;
+    // private List<Pokemon> listaPokemons = new ArrayList<>();
     private Pokemon[] arrayPokemon;
     private Integer numRevives = 1;
 
@@ -16,7 +17,7 @@ public class Jogador {
 
     public Jogador(String nome) {
         this.nome = nome;
-        //this.pokemon = pokemon; Aqui podemos chamar um metodo que popula o vetor de Pokemons com 3
+        // this.pokemon = pokemon;
     }
 
     public String getNome() {
@@ -35,6 +36,10 @@ public class Jogador {
 //        return listaPokemons;
 //    }
 
+//    public Pokemon getPokemon() {
+//        return pokemon;
+//    }
+
     public Integer getNumRevives() {
         return numRevives;
     }
@@ -51,14 +56,13 @@ public class Jogador {
         this.nivel = nivel;
     }
 
-//    public void setListaPokemons(List<Pokemon> listaPokemons) {
-//        this.listaPokemons = listaPokemons;
-//    }
-
-
     public Pokemon[] getArrayPokemon() {
         return arrayPokemon;
     }
+
+//    public void setPokemon(Pokemon pokemon) {
+//        this.pokemon = pokemon;
+//    }
 
     public void setNumRevives(Integer numRevives) {
         this.numRevives = numRevives;
