@@ -11,11 +11,11 @@ public class Jogador {
         this.nome = nome;
         this.vida = 1000;
         this.nivel = 1;
-        this.arrayPokemon = criarTimePokemon();
+        this.arrayPokemon = criarTimePokemons();
         this.numRevives = 1;
     }
 
-    private Pokemon[] criarTimePokemon(){
+    private Pokemon[] criarTimePokemons(){
         Pokemon[] array = new Pokemon[]
                 {   new Pokemon("Charmander"),
                     new Pokemon("Squirtle"),
