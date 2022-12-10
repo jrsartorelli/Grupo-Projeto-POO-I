@@ -14,7 +14,7 @@ public class MainPartida {
         opcao = lerIntUsuario(sc, "Escolha o Pokémon para inciar:" +
                 "\n1 - " + pokemonsJogador[0].getNome() +
                 "\n2 - " + pokemonsJogador[1].getNome() +
-                "\n3 - : " + pokemonsJogador[2].getNome());
+                "\n3 - " + pokemonsJogador[2].getNome() + ": ");
         Pokemon escolhaJogador = pokemonsJogador[opcao-1];
         System.out.println("O Pokemon escolhido foi\n" + escolhaJogador);
 
