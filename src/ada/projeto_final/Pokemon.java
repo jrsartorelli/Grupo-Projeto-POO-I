@@ -11,7 +11,7 @@ public class Pokemon extends Evolucoes{
     // Cria um pokémon com o nome e os ataques especificados
     public Pokemon(String nome) {
         this.nome = nome;
-        this.ataques = ataques;
+        this.ataques = new String[]{"FireBall", "FlameThrower", "FireBlast"};
         this.vida = 1000; // Valor padrão de vida para todos os pokémons
         this.level = 1;
     }
