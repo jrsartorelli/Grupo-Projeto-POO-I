@@ -23,6 +23,7 @@ public class Pokemon {
         this.ataques = ataques;
         this.vida = 1000; // Valor padrão de vida para todos os pokémons
         this.level = 1;
+        this.proxEvolucao = null;
     }
 
     public String getNome() {
