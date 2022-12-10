@@ -7,7 +7,6 @@ public class Pokemon {
     private float vida;
     private final String[] ataques;
     private int level;
-    private String proxEvolucao;
 
     // Cria um pokémon com o nome e os ataques especificados
     public Pokemon(String nome, String[] ataques, String proxEvolucao) {
@@ -15,10 +14,16 @@ public class Pokemon {
         this.ataques = ataques;
         this.vida = 1000; // Valor padrão de vida para todos os pokémons
         this.level = 1;
-        this.proxEvolucao = proxEvolucao; // indica o nome do pokemon evoluído (se for null então está no máximo)
     }
 
     public Pokemon(String nome, String[] ataques) {
+        this.nome = nome;
+        this.ataques = ataques;
+        this.vida = 1000; // Valor padrão de vida para todos os pokémons
+        this.level = 1;
+    }
+
+    public Pokemon(String nome) {
         this.nome = nome;
         this.ataques = ataques;
         this.vida = 1000; // Valor padrão de vida para todos os pokémons
