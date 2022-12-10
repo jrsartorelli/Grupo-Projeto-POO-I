@@ -16,6 +16,13 @@ public class Pokemon {
         this.proxEvolucao = proxEvolucao; // indica o nome do pokemon evoluído (se for null então está no máximo)
     }
 
+    public Pokemon(String nome, String[] ataques) {
+        this.nome = nome;
+        this.ataques = ataques;
+        this.vida = 1000; // Valor padrão de vida para todos os pokémons
+        this.level = 1;
+    }
+
     public String getNome() {
         return nome;
     }
