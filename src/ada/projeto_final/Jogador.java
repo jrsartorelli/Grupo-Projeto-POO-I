@@ -59,11 +59,7 @@ public class Jogador {
     public String imprimirPokemons(){
         StringBuilder textoPokemons = new StringBuilder();
         for (int i = 0; i < arrayPokemon.length; i++){
-            if (i != (arrayPokemon.length - 1)){
-                textoPokemons.append((i + 1) + " - " + arrayPokemon[i] + ", ");
-            } else {
-                textoPokemons.append((i + 1) + " - " + arrayPokemon[i]);
-            }
+            textoPokemons.append((i + 1) + " - " + arrayPokemon[i]);
         }
         return textoPokemons.toString();
     }
