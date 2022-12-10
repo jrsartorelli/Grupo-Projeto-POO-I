@@ -1,22 +1,18 @@
 package ada.projeto_final;
 
-// import java.util.ArrayList;
-// import java.util.List;
-
 public class Jogador {
-    private String nome;
-    private Integer vida = 1000;
-    private Integer nivel = 1;
+    private final String nome;
+    private Integer vida;
+    private Integer nivel;
     private Pokemon[] arrayPokemon;
-    private Integer numRevives = 1;
-
-//    public Jogador(String nome) {
-//        this.nome = nome;
-//    }
+    private Integer numRevives;
 
     public Jogador(String nome) {
         this.nome = nome;
+        this.vida = 1000;
+        this.nivel = 1;
         this.arrayPokemon = criarTimePokemon();
+        this.numRevives = 1;
     }
 
     private Pokemon[] criarTimePokemon(){
@@ -40,20 +36,8 @@ public class Jogador {
         return nivel;
     }
 
-//    public List<Pokemon> getListaPokemons() {
-//        return listaPokemons;
-//    }
-
-//    public Pokemon getPokemon() {
-//        return pokemon;
-//    }
-
     public Integer getNumRevives() {
         return numRevives;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public void setVida(Integer vida) {
@@ -64,18 +48,9 @@ public class Jogador {
         this.nivel = nivel;
     }
 
-//    public void setListaPokemons(List<Pokemon> listaPokemons) {
-//        this.listaPokemons = listaPokemons;
-//    }
-
-
     public Pokemon[] getArrayPokemon() {
         return arrayPokemon;
     }
-
-//    public void setPokemon(Pokemon pokemon) {
-//        this.pokemon = pokemon;
-//    }
 
     public void setNumRevives(Integer numRevives) {
         this.numRevives = numRevives;
