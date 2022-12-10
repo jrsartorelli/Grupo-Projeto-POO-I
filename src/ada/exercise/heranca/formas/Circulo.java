@@ -16,6 +16,10 @@ public class Circulo extends Figura {
         this.raio = raio;
     }
 
+    public double area() {
+        return (Math.PI * Math.pow(raio, 2));
+    }
+
     public double getDiametro() {
         return (raio * 2);
     }

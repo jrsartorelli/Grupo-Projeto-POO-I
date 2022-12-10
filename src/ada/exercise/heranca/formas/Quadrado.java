@@ -1,6 +1,6 @@
 package ada.exercise.heranca.formas;
 
-public class Quadrado extends Retangulo{
+public class Quadrado extends Retangulo {
 
     public Quadrado(double lado, String cor) {
         super(lado, lado, cor);
