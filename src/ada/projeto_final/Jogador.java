@@ -7,7 +7,6 @@ public class Jogador {
     private String nome;
     private Integer vida = 1000;
     private Integer nivel = 1;
-    // private List<Pokemon> listaPokemons = new ArrayList<>();
     private Pokemon[] arrayPokemon;
     private Integer numRevives = 1;
 
@@ -17,11 +16,16 @@ public class Jogador {
 
     public Jogador(String nome) {
         this.nome = nome;
-        String[] arrayAataques = {"FireBall", "FlameThrower", "FireBlast"};
-        Pokemon primeiroPokemon = new Pokemon("Charmander", arrayAataques);
-        Pokemon segundoPokemon = new Pokemon("Squirtle", arrayAataques);
-        Pokemon terceiroPokemon = new Pokemon("Bulbasaur", arrayAataques);
-        this.arrayPokemon = new Pokemon[]{primeiroPokemon, segundoPokemon, terceiroPokemon};
+        this.arrayPokemon = criarTimePokemon();
+    }
+
+    private Pokemon[] criarTimePokemon(){
+        Pokemon[] array = new Pokemon[]
+                {   new Pokemon("Charmander"),
+                    new Pokemon("Squirtle"),
+                    new Pokemon("Bulbasaur")
+                };
+        return array;
     }
 
     public String getNome() {
