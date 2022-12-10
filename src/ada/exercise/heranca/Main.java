@@ -32,11 +32,8 @@ public class Main {
     }
 
     public static void criarCirculo(Scanner sc) {
-        System.out.print("Digite o raio do círculo: ");
-        double raio = sc.nextDouble();
-        sc.nextLine();
-        System.out.println("Digite a cor do círculo: ");
-        String cor = sc.next();
+        double raio = leDoubleUsuario(sc, "Digite o raio do círculo: ");
+        String cor = leStringUsuario(sc, "Digite a cor do círculo: ");
         Circulo circulo = new Circulo(raio, cor);
         System.out.println(circulo);
         System.out.println("Área: " + circulo.area());
