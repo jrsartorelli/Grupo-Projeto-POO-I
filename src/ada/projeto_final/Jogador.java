@@ -17,10 +17,10 @@ public class Jogador {
 
     public Jogador(String nome) {
         this.nome = nome;
-        String[] arrayAataques = {"ataque-1", "ataque-2", "ataque-3"};
-        Pokemon primeiroPokemon = new Pokemon("Teste-1", arrayAataques);
-        Pokemon segundoPokemon = new Pokemon("Teste-2", arrayAataques);
-        Pokemon terceiroPokemon = new Pokemon("Teste-3", arrayAataques);
+        String[] arrayAataques = {"FireBall", "FlameThrower", "FireBlast"};
+        Pokemon primeiroPokemon = new Pokemon("Charmander", arrayAataques);
+        Pokemon segundoPokemon = new Pokemon("Squirtle", arrayAataques);
+        Pokemon terceiroPokemon = new Pokemon("Bulbasaur", arrayAataques);
         this.arrayPokemon = new Pokemon[]{primeiroPokemon, segundoPokemon, terceiroPokemon};
     }
 
