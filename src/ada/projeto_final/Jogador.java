@@ -16,7 +16,11 @@ public class Jogador {
 
     public Jogador(String nome) {
         this.nome = nome;
-        //this.pokemon = pokemon; Aqui podemos chamar um metodo que popula o vetor de Pokemons com 3
+        String[] arrayAataques = {"ataque-1", "ataque-2", "ataque-3"};
+        Pokemon primeiroPokemon = new Pokemon("Teste-1", arrayAataques);
+        Pokemon segundoPokemon = new Pokemon("Teste-2", arrayAataques);
+        Pokemon terceiroPokemon = new Pokemon("Teste-3", arrayAataques);
+        this.arrayPokemon = new Pokemon[]{primeiroPokemon, segundoPokemon, terceiroPokemon};
     }
 
     public String getNome() {
