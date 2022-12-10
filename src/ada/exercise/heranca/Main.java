@@ -13,7 +13,7 @@ public class Main {
         int tipoForma = 0;
 
         while (tipoForma != 5) {
-            tipoForma = lerIntUsuario(sc, "Digite a opção com a forma geométrica que você quer calcular:\n" +
+            tipoForma = lerIntUsuario(sc, "\nDigite a opção com a forma geométrica que você quer calcular:\n" +
                     "1 - Círculo\n2 - Triângulo\n3 - Retângulo\n4 - Quadrado\n5 - Sair\n" +
                     "Escolha uma opção (1, 2, 3, 4 ou 5): ");
 
