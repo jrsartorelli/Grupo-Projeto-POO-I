@@ -12,7 +12,7 @@ public class Pokemon extends Evolucoes{
     // Cria um pokémon com o nome e os ataques especificados
     public Pokemon(String nome) {
         this.nome = nome;
-        this.ataques = new String[]{"FireBall", "FlameThrower", "FireBlast"};
+        this.ataques = MapaAtaques.buscarAtaques(nome);
         this.vida = 1000; // Valor padrão de vida para todos os pokémons
         this.level = 1;
     }
@@ -58,9 +58,8 @@ public class Pokemon extends Evolucoes{
                 " - Nivel Atual = " + level + "\n";
     }
 
-    public void revive(){
+    public void revive() {
         vida = ((3/4)*VIDA_PADRAO);
     }
-
 }
 
