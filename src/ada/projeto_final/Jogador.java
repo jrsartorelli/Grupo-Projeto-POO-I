@@ -7,6 +7,7 @@ public class Jogador {
     private String nome;
     private Integer vida = 1000;
     private Integer nivel = 1;
+    // private List<Pokemon> listaPokemons = new ArrayList<>();
     private Pokemon[] arrayPokemon;
     private Integer numRevives = 1;
 
@@ -39,6 +40,10 @@ public class Jogador {
 //        return listaPokemons;
 //    }
 
+//    public Pokemon getPokemon() {
+//        return pokemon;
+//    }
+
     public Integer getNumRevives() {
         return numRevives;
     }
@@ -63,6 +68,10 @@ public class Jogador {
     public Pokemon[] getArrayPokemon() {
         return arrayPokemon;
     }
+
+//    public void setPokemon(Pokemon pokemon) {
+//        this.pokemon = pokemon;
+//    }
 
     public void setNumRevives(Integer numRevives) {
         this.numRevives = numRevives;
