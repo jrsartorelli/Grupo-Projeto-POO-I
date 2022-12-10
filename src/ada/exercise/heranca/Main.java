@@ -6,14 +6,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         int tipoForma;
-        tipoForma = lerIntUsuario("Digite a opção com a forma geométrica que você quer calcular:\n" +
-                         "1 - Círculo\n2 - Triângulo\n3 - Retângulo\n4 - Quadrado\n" +
-                         "Escolha uma opção (1, 2, 3 ou 4): ");
+        tipoForma = lerIntUsuario(sc, "Digite a opção com a forma geométrica que você quer calcular:\n" +
+                         "1 - Círculo\n2 - Triângulo\n3 - Retângulo\n4 - Quadrado\n5 - Sair\n" +
+                         "Escolha uma opção (1, 2, 3, 4 ou 5): ");
 
         switch (tipoForma) {
             case 1:
-                criarCirculo();
+                criarCirculo(sc);
                 break;
             case 2:
 
@@ -26,41 +27,37 @@ public class Main {
                 System.err.println("Erro: opção escolhida inválida.");
                 break;
         }
+        sc.close();
     }
 
-    public static void criarCirculo() {
-        double raio = lerDoubleUsuario("Digite o raio do círculo: ");
-        String cor = lerStringUsuario("Digite a cor do círculo: ");
+    public static void criarCirculo(Scanner input) {
+        double raio = lerDoubleUsuario(input, "Digite o raio do círculo: ");
+        String cor = lerStringUsuario(input, "Digite a cor do círculo: ");
         Circulo circulo = new Circulo(raio, cor);
         System.out.println(circulo);
         System.out.println("Área: " + circulo.area());
         System.out.println("Diâmetro: " + circulo.getDiametro());
     }
 
-    private static String lerStringUsuario(String mensagem) {
-        Scanner input = new Scanner(System.in);
+    private static String lerStringUsuario(Scanner input, String mensagem) {
         String valorRecebido;
         System.out.print(mensagem);
         valorRecebido = input.nextLine();
-        input.close();
         return valorRecebido;
     }
 
-    private static int lerIntUsuario(String mensagem) {
-        Scanner input = new Scanner(System.in);
+    private static int lerIntUsuario(Scanner input, String mensagem) {
         int valorRecebido;
         System.out.print(mensagem);
         valorRecebido = input.nextInt();
-        input.close();
         return valorRecebido;
     }
 
-    private static double lerDoubleUsuario(String mensagem) {
-        Scanner input = new Scanner(System.in);
+    private static double lerDoubleUsuario(Scanner input, String mensagem) {
         double valorRecebido;
         System.out.print(mensagem);
         valorRecebido = input.nextDouble();
-        input.close();
+        input.nextLine();
         return valorRecebido;
     }
 }
