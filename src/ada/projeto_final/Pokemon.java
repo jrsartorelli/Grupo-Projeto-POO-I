@@ -4,16 +4,26 @@ public class Pokemon {
     private final String nome;
     private float vida;
     private final String[] ataques;
+    private int level;
 
     // Cria um pokémon com o nome e os ataques especificados
     public Pokemon(String nome, String[] ataques) {
         this.nome = nome;
         this.ataques = ataques;
         this.vida = 1000; // Valor padrão de vida para todos os pokémons
+        this.level = 1;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void aumentarLevel(){
+        this.level += 1;
     }
 
     // Retorna se o pokémon ainda está vivo (se a vida ainda é maior que 0)
