@@ -12,10 +12,9 @@ public class JogadorNPC {
     private Pokemon pokemon;
     private String especialidade;
 
-    public JogadorNPC(String nome, String descricao, Map<String, String> frasesDeEfeito, Pokemon pokemon, String especialidade) {
+    public JogadorNPC(String nome, String descricao, Pokemon pokemon, String especialidade) {
         this.nome = nome;
         this.descricao = descricao;
-        this.frasesDeEfeito = frasesDeEfeito;
         this.pokemon = pokemon;
         this.especialidade = especialidade;
     }
