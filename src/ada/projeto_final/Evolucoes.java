@@ -25,10 +25,10 @@ public class Evolucoes {
             put("Pidgeotto", "Pidgeot");
 
             put("Nidoran", "Nidorina");
-            put("Nidorina", "Moon Stone");
+            put("Nidorina", "Nidoking");
 
-            put("Vulpix", "Fire Stone");
-            put("Fire Stone", "Ninetales");
+            put("Zubat", "Golbat");
+            put("Golbat", "Bellossom");
 
             put("Oddish", "Gloom");
             put("Gloom", "Leaf Stone");
@@ -56,18 +56,6 @@ public class Evolucoes {
 
             put("Dratini", "Dragonair");
             put("Dragonair", "Dragonite");
-
-            put("Ricardo", "Super Ricardo");
-            put("Super Ricardo", "Ricardão");
-
-            put("Marayah", "Super Marayah");
-            put("Super Marayah", "Fera dos Kahoot´s");
-
-            put("Gabriel", "Super Gabriel");
-            put("Super Gabriel", "Mega Power Gabriel");
-
-            put("Leomim", "Super Leomim");
-            put("Super Leomim", "Consultor Pokémon");
         }
     };
 

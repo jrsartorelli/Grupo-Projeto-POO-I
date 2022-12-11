@@ -17,18 +17,60 @@ public class MapaAtaques {
         put("Charmander", new String[]{"Fire Ball", "Flame Thrower", "Fire Blast"});
         put("Bulbasaur", new String[]{"Take Down", "Petal Dance", "Solar Beam"});
         put("Squirtle", new String[]{"Bubble Beam", "Water Gun", "Aqua Tail"});
+        put("Caterpie", new String[]{"String Shot", "Tackle", "Silk Cannon"});
+        put("Weedle", new String[]{"Poison Sting", "Poison Cannon", "Web Toss"});
+        put("Pidgey", new String[]{"Peck", "Gust", "Quick Attack"});
+        put("Nidoran", new String[]{"Double Kick", "Nidoran Tackle", "Nid Bite"});
+        put("Zubat", new String[]{"Vulp Fire Spin", "Vulp Flame Thrower", "Ember"});
+        put("Oddish", new String[]{"Sludge Bomb", "Stun Spore", "Sweet Scent"});
+        put("Poliwag", new String[]{"Defense Curl", "Water Pulse", "Leer"});
+        put("Abra", new String[]{"Teleport", "Safeguad", "Psychic"});
+        put("Machop", new String[]{"Karate Chop", "Cross Chop", "Dynamic Punch"});
+        put("Bellsprout", new String[]{"Razor Leaf", "Absorb", "Growth"});
+        put("Geodude", new String[]{"Rollout", "Mega Punch", "Hidden Power"});
+        put("Gastly", new String[]{"Astonish", "Night Shades", "Confuse Ray"});
+        put("Eevee", new String[]{"Double Team", "Trump Card", "Swift"});
+        put("Dratini", new String[]{"Tail Swipe", "Wrap", "Dart Aqua Tail"});
     }};
 
     private static final Map<String, String[]> mapaAtaquesNivel2 = new HashMap<>() {{
         put("Charmeleon", new String[]{"Fire Spin", "Dragon Claw", "Headbutt"});
-        put("Ivysaur", new String[]{"Vine Whip", "Razor Leaf", "Tackle"});
+        put("Ivysaur", new String[]{"Vine Whip", "Ivysaur Razor Leaf", "Ivysaur Tackle"});
         put("Wartortle", new String[]{"Hydro Pump", "Rapid Spin", "Bite"});
+        put("Metapod", new String[]{"Metapod Tackle", "Harden", "Metapod String Shot"});
+        put("Kakuna", new String[]{"Kakuna String Shot", "Kakuna Tackle", "Kakuna Harden"});
+        put("Pidgeotto", new String[]{"Aerial Ace", "Wing Attack", "Double-Edge"});
+        put("Nidorina", new String[]{"Nid Scratch", "Nid Poison Sting", "Nidorina Tackle"});
+        put("Golbat", new String[]{"Sand Attack", "Steel Wing", "X-Scissor"});
+        put("Gloom", new String[]{"Acid", "Gloom Stun Spore", "Sleep Powder"});
+        put("Poliwhirl", new String[]{"Mud Bomb", "Scald", "Pol Bubble Beam"});
+        put("Kadabra", new String[]{"Kad Hypnosis", "Kad Confusion", "Kad Psychic"});
+        put("Machoke", new String[]{"Focus Energy", "Scary Face", "Brick Break"});
+        put("Weepinbell", new String[]{"Weep Razor Leaf", "Weep Poison Powder", "Weep Vine Whip"});
+        put("Graveler", new String[]{"Grav Stone Edge", "Grav Rock Blast", "Grav Rock Slide"});
+        put("Haunter", new String[]{"Hau Shadow Ball", "Hau Hypnoses", "Hau Confuse Ray"});
+        put("Water Stone", new String[]{"WS Water Pulse", "WS Stone Edge", "WS Muddy Water"});
+        put("Dragonair", new String[]{"Drag Rain Dance", "Drag Hyper Beam", "Drag Dragon Rage"});
     }};
 
     private static final Map<String, String[]> mapaAtaquesNivel3 = new HashMap<>() {{
-        put("Charizard", new String[]{"Slash", "Steel Wing", "Seismic Toss"});
-        put("Venusaur", new String[]{"Sweet Scent", "Sleep Powder", "Frenzy Plant"});
+        put("Charizard", new String[]{"Slash", "Charizard Steel Wing", "Seismic Toss"});
+        put("Venusaur", new String[]{"Venusaur Sweet Scent", "Venusaur Sleep Powder", "Frenzy Plant"});
         put("Blastoise", new String[]{"Withdraw", "Rain Dance", "Skull Bash"});
+        put("Butterfree", new String[]{"Whirlwind", "Butterfree Gust", "Butterfree Stun Spore"});
+        put("Beedrill", new String[]{"Pin Missile", "Slugde Bomb", "Twineedle"});
+        put("Pidgeot", new String[]{"Pid Feather Dance", "Pid Wing Attack", "Pid Whirlwind"});
+        put("Nidoking", new String[]{"Rock Slide", "Horn Attack", "Earth Power"});
+        put("Crobat", new String[]{"Supersonic", "Air Slash", "Sonic Boom"});
+        put("Bellossom", new String[]{"Magical Leaf", "Bellossom Petal Dance", "Bellossom Stun Spore"});
+        put("Poliwrath", new String[]{"Poliwrath Hydro Pump", "Double Slap", "Mega Kick"});
+        put("Alakazam", new String[]{"Psybeam", "Zap Cannon", "Miracle Eye"});
+        put("Machamp", new String[]{"Vital Throw", "Hammer Arm", "Bullet Punch"});
+        put("Victreebel", new String[]{"Swallow", "Sword Dance", "Vict Vine Whip"});
+        put("Golem", new String[]{"Rock Blast", "Sandstorm", "Magnitude"});
+        put("Gengar", new String[]{"Dream Eater", "Dark Pulse", "Atonish"});
+        put("Vaporeon", new String[]{"Acid Armor", "Vaporeon Hydro Pump", "Aurora Beam"});
+        put("Dragonite", new String[]{"Dragon Rush", "Dragon Rage", "Dragonite Dragon Claw"});
     }};
 
     //Mapa associando o Nível do Pokémon aos seus respetivos ataques
@@ -47,19 +89,31 @@ public class MapaAtaques {
         for (String[] ataques : mapaAtaquesNivel1.values()) {
             for (String ataque : ataques) {
                 valorAtaqueGerado = (VALOR_ATAQUE_BASE_NIVEL1 + random.nextInt(0, 300));
-                mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                if(!mapaValorAtaque.containsKey(ataque)){
+                    mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                } else {
+                    System.err.println("Já contem o valor chave para o Ataque: " + ataque);
+                }
             }
         }
         for (String[] ataques : mapaAtaquesNivel2.values()) {
             for (String ataque : ataques) {
                 valorAtaqueGerado = (VALOR_ATAQUE_BASE_NIVEL2 + random.nextInt(0, 300));
-                mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                if(!mapaValorAtaque.containsKey(ataque)){
+                    mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                } else {
+                    System.err.println("Já contem o valor chave para o Ataque: " + ataque);
+                }
             }
         }
         for (String[] ataques : mapaAtaquesNivel3.values()) {
             for (String ataque : ataques) {
                 valorAtaqueGerado = (VALOR_ATAQUE_BASE_NIVEL3 + random.nextInt(0, 300));
-                mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                if(!mapaValorAtaque.containsKey(ataque)){
+                    mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                } else {
+                    System.err.println("Já contem o valor chave para o Ataque: " + ataque);
+                }
             }
         }
     }
