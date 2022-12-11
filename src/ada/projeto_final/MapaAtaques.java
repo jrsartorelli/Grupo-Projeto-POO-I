@@ -13,13 +13,6 @@ public class MapaAtaques {
     private static final Integer VALOR_ATAQUE_BASE_NIVEL3 = 500;
     private static Random random = new Random();
 
-    //Mapa associando o Pokémon específico aos seu possíveis ataques
-    private static Map<Integer, Map> mapaPokemons = new HashMap<>() {{
-        put(NIVEL_1, mapaAtaquesNivel1);
-        put(NIVEL_2, mapaAtaquesNivel2);
-        put(NIVEL_3, mapaAtaquesNivel3);
-    }};
-
     private static Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
         put("Charmander", new String[]{"Fire Ball", "Flame Thrower", "Fire Blast"});
         put("Bulbasaur", new String[]{"Take Down", "Petal Dance", "Solar Beam"});
@@ -38,9 +31,15 @@ public class MapaAtaques {
         put("Blastoise", new String[]{"Withdraw", "Rain Dance", "Skull Bash"});
     }};
 
+    //Mapa associando o Pokémon específico aos seu possíveis ataques
+    private static Map<Integer, Map> mapaPokemons = new HashMap<>() {{
+        put(NIVEL_1, mapaAtaquesNivel1);
+        put(NIVEL_2, mapaAtaquesNivel2);
+        put(NIVEL_3, mapaAtaquesNivel3);
+    }};
+
     //Mapa para o valor para cada tipo de ataque
     private static Map<String, Integer> mapaValorAtaque = new HashMap<>();
-
 
     //Insere de forma randômica os valores para todos os ataques listados
     public static void inicializarValoresAtaque(){
