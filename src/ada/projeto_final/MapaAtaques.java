@@ -5,9 +5,6 @@ import java.util.Map;
 import java.util.Random;
 
 public class MapaAtaques {
-    private static final Integer NIVEL_1 = 1;
-    private static final Integer NIVEL_2 = 2;
-    private static final Integer NIVEL_3 = 3;
     private static final Integer VALOR_ATAQUE_BASE_NIVEL1 = 300;
     private static final Integer VALOR_ATAQUE_BASE_NIVEL2 = 400;
     private static final Integer VALOR_ATAQUE_BASE_NIVEL3 = 500;
@@ -71,13 +68,6 @@ public class MapaAtaques {
         put("Gengar", new String[]{"Dream Eater", "Dark Pulse", "Atonish"});
         put("Vaporeon", new String[]{"Acid Armor", "Vaporeon Hydro Pump", "Aurora Beam"});
         put("Dragonite", new String[]{"Dragon Rush", "Dragon Rage", "Dragonite Dragon Claw"});
-    }};
-
-    //Mapa associando o Nível do Pokémon aos seus respetivos ataques
-    private static final Map<Integer, Map> mapaPokemons = new HashMap<>() {{
-        put(NIVEL_1, mapaAtaquesNivel1);
-        put(NIVEL_2, mapaAtaquesNivel2);
-        put(NIVEL_3, mapaAtaquesNivel3);
     }};
 
     //Mapa com o valor para cada tipo de ataque
