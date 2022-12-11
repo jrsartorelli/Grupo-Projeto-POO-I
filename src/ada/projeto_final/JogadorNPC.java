@@ -9,13 +9,12 @@ public class JogadorNPC {
     private String descricao;
     private Map<String, String> frasesDeEfeito = new HashMap<>();
     // private List<Pokemon> listaPokemons = new ArrayList<>();
-    private Pokemon pokemon;
+    private Pokemon[] listaPokemon;
     private String especialidade;
 
-    public JogadorNPC(String nome, String descricao, Pokemon pokemon, String especialidade) {
+    public JogadorNPC(String nome, String descricao, String especialidade) {
         this.nome = nome;
         this.descricao = descricao;
-        this.pokemon = pokemon;
         this.especialidade = especialidade;
     }
 
@@ -35,8 +34,8 @@ public class JogadorNPC {
         return frasesDeEfeito;
     }
 
-    public Pokemon getPokemon() {
-        return pokemon;
+    public Pokemon[] getListaPokemon() {
+        return listaPokemon;
     }
 
     public String getEspecialidade() {
@@ -55,13 +54,11 @@ public class JogadorNPC {
         this.frasesDeEfeito = frasesDeEfeito;
     }
 
-    public void setPokemon(Pokemon pokemon) {
-        this.pokemon = pokemon;
-    }
-
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
 
-
+    public void setListaPokemon(Pokemon[] listaPokemon) {
+        this.listaPokemon = listaPokemon;
+    }
 }
