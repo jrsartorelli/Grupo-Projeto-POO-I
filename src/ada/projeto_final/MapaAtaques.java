@@ -16,11 +16,7 @@ public class MapaAtaques {
     //Mapa associando o Pokémon específico aos seu possíveis ataques
     private static Map<Integer, Map> mapaPokemons = new HashMap<>() {{
         put(NIVEL_1, mapaAtaquesNivel1);
-    }};
-    private static Map<Integer, Map> mapaPokemons = new HashMap<>() {{
         put(NIVEL_2, mapaAtaquesNivel2);
-    }};
-    private static Map<Integer, Map> mapaPokemons = new HashMap<>() {{
         put(NIVEL_3, mapaAtaquesNivel3);
     }};
 
