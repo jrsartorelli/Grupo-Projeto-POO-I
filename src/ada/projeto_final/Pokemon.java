@@ -3,7 +3,7 @@ package ada.projeto_final;
 import java.util.Arrays;
 
 public class Pokemon extends Evolucoes{
-    private final String nome;
+    private String nome;
     private float vida;
     private final String[] ataques;
     private int level;
@@ -43,6 +43,7 @@ public class Pokemon extends Evolucoes{
         vida = Math.max(0, vida - dano);
     }
 
+
     // Retorna os ataques do pokémon
     public String buscarAtaques() {
         StringBuilder textoAtaques = new StringBuilder();
@@ -51,6 +52,16 @@ public class Pokemon extends Evolucoes{
                     MapaAtaques.buscarValorAtaque(ataques[i]) + "\n");
         }
         return textoAtaques.toString();
+    }
+
+    public boolean evoluirPokemon(){
+        try{
+            this.nome = getEvolucao(this.nome);
+            return true;
+        }catch (Exception e){
+            System.out.println("Este pokemon atingiu a evolução máxima!");
+            return false;
+        }
     }
 
     @Override
