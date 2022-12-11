@@ -32,7 +32,7 @@ public class MapaAtaques {
 
     private static Map<String, String[]> mapaAtaquesNivel3 = new HashMap<>() {{
         put("Charizard", new String[]{"Slash", "Steel Wing", "Seismic Toss"});
-        put("Venusaur", new String[]{"", "", ""});
+        put("Venusaur", new String[]{"Sweet Scent", "Sleep Powder", "Frenzy Plant"});
         put("Blastoise", new String[]{"Withdraw", "Rain Dance", "Skull Bash"});
     }};
 
