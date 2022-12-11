@@ -1,5 +1,7 @@
 package ada.projeto_final;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MainPartida {
@@ -48,4 +50,30 @@ public class MainPartida {
         }
     }
 
+    public static void setFrasesDeEfeito(JogadorNPC numeroNPC) {
+        Map<String, String> frasesDeEfeito = new HashMap<>();
+
+        if (numeroNPC.getNome().equalsIgnoreCase("Team Rocket")) {
+            frasesDeEfeito.put("inicio", "Prepare-se para encrenca"); // Início da luta
+            frasesDeEfeito.put("derrota", ""); // quando o NPC perde
+            frasesDeEfeito.put("vitoria", "Para estender nosso poder às estrelas!"); // quando o NPC ganha
+            frasesDeEfeito.put("perdePokemon", "Não se mete com a gente!"); // quando perde um pokemon
+            frasesDeEfeito.put("mataPokemon", "Equipe Rocket decolando na velocidade da luz!"); // quando mata o pokemon do jogador
+            numeroNPC.setFrasesDeEfeito(frasesDeEfeito);
+        } else if (numeroNPC.getNome().equalsIgnoreCase("Team Aqua")) {
+            frasesDeEfeito.put("inicio", "Renda-se agora ou prepare-se para lutar!"); // Início da luta
+            frasesDeEfeito.put("derrota", ""); // quando o NPC perde
+            frasesDeEfeito.put("vitoria", "A destruição mundial é nosso trabalho imundo!"); // quando o NPC ganha
+            frasesDeEfeito.put("perdePokemon", "GRRRR!"); // quando perde um pokemon
+            frasesDeEfeito.put("mataPokemon", "Encrenca em dobro!"); // quando mata o pokemon do jogador
+            numeroNPC.setFrasesDeEfeito(frasesDeEfeito);
+        } else if (numeroNPC.getNome().equalsIgnoreCase("Team Galactic")) {
+            frasesDeEfeito.put("inicio", "Outra vez é a questão? É o pirralho que temos então!"); // Início da luta
+            frasesDeEfeito.put("derrota", ""); // quando o NPC perde
+            frasesDeEfeito.put("vitoria", "Levando o caos para toda parte"); // quando o NPC ganha
+            frasesDeEfeito.put("perdePokemon", "Estas águas são traiçoeiras!"); // quando perde um pokemon
+            frasesDeEfeito.put("mataPokemon", "Tirando de todas as pessoas a fé"); // quando mata o pokemon do jogador
+            numeroNPC.setFrasesDeEfeito(frasesDeEfeito);
+        }
+    }
 }
