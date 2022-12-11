@@ -21,19 +21,19 @@ public class MapaAtaques {
     private static Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
         put("Charmander", new String[]{"Fire Ball", "Flame Thrower", "Fire Blast"});
         put("Bulbasaur", new String[]{"Take Down", "Petal Dance", "Solar Beam"});
-        put("Squirtle", new String[]{"Rapid Spin", "Water Gun", "Aqua Tail"});
+        put("Squirtle", new String[]{"Bubble Beam", "Water Gun", "Aqua Tail"});
     }};
 
     private static Map<String, String[]> mapaAtaquesNivel2 = new HashMap<>() {{
-        put("Charmeleon", new String[]{"", "", ""});
-        put("Wartortle", new String[]{"", "", ""});
-        put("Ivysaur", new String[]{"", "", ""});
+        put("Charmeleon", new String[]{"Fire Spin", "Dragon Claw", "Headbutt"});
+        put("Ivysaur", new String[]{"Vine Whip", "Razor Leaf", "Tackle"});
+        put("Wartortle", new String[]{"Hydro Pump", "Rapid Spin", "Bite"});
     }};
 
     private static Map<String, String[]> mapaAtaquesNivel3 = new HashMap<>() {{
-        put("Charizard", new String[]{"", "", ""});
-        put("Blastoise", new String[]{"", "", ""});
-        put("Venosaur", new String[]{"", "", ""});
+        put("Charizard", new String[]{"Slash", "Steel Wing", "Seismic Toss"});
+        put("Venusaur", new String[]{"", "", ""});
+        put("Blastoise", new String[]{"Withdraw", "Rain Dance", "Skull Bash"});
     }};
 
     //Mapa para o valor para cada tipo de ataque

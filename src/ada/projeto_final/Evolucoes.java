@@ -11,7 +11,7 @@ public class Evolucoes {
             put("Squirtle","Wartortle");
             put("Wartortle","Blastoise");
             put("Bulbasaur","Ivysaur");
-            put("Ivysaur","Venosaur");
+            put("Ivysaur","Venusaur");
         }
     };
 
