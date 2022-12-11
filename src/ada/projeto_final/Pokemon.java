@@ -67,9 +67,9 @@ public class Pokemon extends Evolucoes{
     @Override
     public String toString() {
         return "Pokemon " + nome + ": \n" +
-                " - Vida Atual = " + vida + "\n" +
-                " - Ataques = " + Arrays.toString(ataques) + "\n" +
-                " - Nivel Atual = " + level + "\n";
+                "  - Vida Atual = " + vida + "\n" +
+                "  - Ataques = " + Arrays.toString(ataques) + "\n" +
+                "  - Nivel Atual = " + level + "\n";
     }
 
     public void revive() {
