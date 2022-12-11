@@ -8,10 +8,10 @@ public class Evolucoes {
         {
             put("Charmander","Charmeleon");
             put("Charmeleon","Charizard");
-            put("Squirtle","Wartortle");
-            put("Wartortle","Blastoise");
             put("Bulbasaur","Ivysaur");
             put("Ivysaur","Venusaur");
+            put("Squirtle","Wartortle");
+            put("Wartortle","Blastoise");
         }
     };
 
