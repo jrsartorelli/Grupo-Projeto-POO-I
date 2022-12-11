@@ -17,6 +17,12 @@ public class MapaAtaques {
     private static Map<Integer, Map> mapaPokemons = new HashMap<>() {{
         put(NIVEL_1, mapaAtaquesNivel1);
     }};
+    private static Map<Integer, Map> mapaPokemons = new HashMap<>() {{
+        put(NIVEL_2, mapaAtaquesNivel2);
+    }};
+    private static Map<Integer, Map> mapaPokemons = new HashMap<>() {{
+        put(NIVEL_3, mapaAtaquesNivel3);
+    }};
 
     private static Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
         put("Charmander", new String[]{"Fire Ball", "Flame Thrower", "Fire Blast"});
