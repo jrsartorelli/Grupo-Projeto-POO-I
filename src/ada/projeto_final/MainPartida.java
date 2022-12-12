@@ -9,12 +9,12 @@ public class MainPartida {
     public static void main(String[] args) {
         String nomeJogador;
         String descricao;
+        MapaPokemons.inicializarValoresAtaque();//Atribui os valores de todos os ataques dos Pokémons
         int vezDeAtaque = -1; // sinaliza de quem é a vez de atacar ou seja, de quem é o turno. (1 = vez do jogador e 0 = vez do npc)
         Scanner sc = new Scanner(System.in);
         nomeJogador = lerStringUsuario(sc, "Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
         Jogador jogador = new Jogador(nomeJogador);
-        MapaPokemons.inicializarValoresAtaque();
 
         descricao = "Usam roupas brancas com um chamativo R na frente das blusas, em tons de roxo, mas nas quartas feira é rosa";
         JogadorNPC primeiroNPC = new JogadorNPC("Team Rocket", descricao, "Fogo");
