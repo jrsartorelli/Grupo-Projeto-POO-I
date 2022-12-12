@@ -60,6 +60,15 @@ public class Jogador {
         return null;
     }
 
+    public String getNomePokemonEscolhido(){
+        if (indicePokemonEscolhido != null){
+            return arrayPokemon[indicePokemonEscolhido].getNome();
+        } else{
+            System.err.println("Erro! O Pokémon não foi selecionado");
+        }
+        return null;
+    }
+
     public String imprimirPokemons(){
         StringBuilder textoPokemons = new StringBuilder();
         for (int i = 0; i < arrayPokemon.length; i++){

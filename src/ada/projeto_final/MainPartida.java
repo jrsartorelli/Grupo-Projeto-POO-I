@@ -24,8 +24,8 @@ public class MainPartida {
             if (rodada == 1) {
                 System.out.println("Vai começar a batalha, escolha seu pokemon para o campo de batalha !!!");
                 jogador.escolherPokemon(sc);
-                Pokemon pokemonJogador = jogador.getPokemonEscolhido();
-                System.out.println("Você escolheu: " + pokemonJogador.getNome() + " para iniciar no campo de batalha !");
+                //Pokemon pokemonJogador = jogador.getPokemonEscolhido();
+                System.out.println("Você escolheu: " + jogador.getNomePokemonEscolhido() + " para iniciar no campo de batalha !");
                 System.out.println();
                 JogadorNPC jogadorNPC = solicitaNPC(sc, jogadoresNPCs);
                 Pokemon pokemonAdversario = SolicitaPokemonNPC(jogadorNPC);
@@ -48,8 +48,8 @@ public class MainPartida {
                         }
                         if (acaoEscolhida == 1) {
                             jogador.escolherPokemon(sc);
-                            pokemonJogador = jogador.getPokemonEscolhido();
-                            int escolhaAtaque = solicitaAtaque(sc, pokemonJogador);
+                            //pokemonJogador = jogador.getPokemonEscolhido();
+                            int escolhaAtaque = solicitaAtaque(sc, jogador);
                             System.out.println("\nAtaque escolhido de número " + escolhaAtaque);
                             System.out.println("ataque executado"); // a titulo de testar funcionamento
                             System.out.println();
@@ -186,11 +186,11 @@ public class MainPartida {
     }
 
     //lembrar de não deixar solicitar ataque com pokemons mortos e com revive disponivel
-    public static int solicitaAtaque(Scanner sc, Pokemon escolhaJogador) {
+    public static int solicitaAtaque(Scanner sc, Jogador jogador) {
         int opcaoAtaqueJogador;
         while (true) {
             opcaoAtaqueJogador = Utilidades.lerIntUsuario(sc, "\nOs ataques disponíveis do " +
-                    escolhaJogador.getNome() + " são:\n" + escolhaJogador.buscarAtaques() +
+                    jogador.getNomePokemonEscolhido() + " são:\n" + jogador.getPokemonEscolhido().buscarAtaques() +
                     "Escolha uma opção de ataque (1, 2 ou 3): ");
             if (opcaoAtaqueJogador == 1 || opcaoAtaqueJogador == 2 || opcaoAtaqueJogador == 3) {
                 return opcaoAtaqueJogador;
