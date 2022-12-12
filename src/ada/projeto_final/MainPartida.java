@@ -8,17 +8,13 @@ import java.util.Scanner;
 public class MainPartida {
     public static void main(String[] args) {
         String nomeJogador;
-        MapaPokemons.inicializarValoresAtaque();//Atribui os valores de todos os ataques dos Pokémons
         int vezDeAtaque = -1; // sinaliza de quem é a vez de atacar ou seja, de quem é o turno. (1 = vez do jogador e 0 = vez do npc)
         Scanner sc = new Scanner(System.in);
         nomeJogador = lerStringUsuario(sc, "Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
+        inicializarValoresMapas();
         Jogador jogador = new Jogador(nomeJogador);
-
-        JogadorNPC[] jogadoresNPCs = new JogadorNPC[]
-                {new JogadorNPC("Team Rocket"),
-                 new JogadorNPC("Team Aqua"),
-                 new JogadorNPC("Team Galactic")};
+        JogadorNPC[] jogadoresNPCs = MapaNPCs.buscarNPCsRandomicos();
 
         int rodada = 1; // vai contar em qual rodada está
         while (jogador.aptoJogar()) {
@@ -105,6 +101,11 @@ public class MainPartida {
         System.out.print(mensagem);
         valorRecebido = input.nextInt();
         return valorRecebido;
+    }
+
+    private static void inicializarValoresMapas(){
+        MapaPokemons.inicializarValoresAtaque();
+        MapaNPCs.inicializarValoresNPCsJaUtilizados();
     }
 
     public static boolean reviverPokemon(Scanner input, Pokemon pokemonAtual, Jogador J) {
