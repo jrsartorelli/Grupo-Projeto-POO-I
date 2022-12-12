@@ -2,11 +2,14 @@ package ada.projeto_final;
 
 import ada.projeto_final.mapas.MapaPokemons;
 
+import java.util.Scanner;
+
 public class Jogador {
     private final String nome;
     private Integer vida;
     private Integer level;
     private Pokemon[] arrayPokemon;
+    private Integer indicePokemonEscolhido;
     private Integer numRevives;
     private Integer pedrasEvolução;
 
@@ -15,6 +18,7 @@ public class Jogador {
         this.vida = 1000;
         this.level = 1;
         this.arrayPokemon = MapaPokemons.buscarPokemonsRandomicos();
+        this.indicePokemonEscolhido = null;
         this.numRevives = 1;
         this.pedrasEvolução = 0;
     }
@@ -45,6 +49,15 @@ public class Jogador {
 
     public Pokemon getPokemon(int indexArrayPokemon){
         return arrayPokemon[indexArrayPokemon];
+    }
+
+    public Pokemon getPokemonEscolhido(){
+        if (indicePokemonEscolhido != null){
+            return arrayPokemon[indicePokemonEscolhido];
+        } else{
+            System.err.println("Erro! O Pokémon não foi selecionado");
+        }
+        return null;
     }
 
     public String imprimirPokemons(){
@@ -78,6 +91,21 @@ public class Jogador {
             return true;
         }
         return false;
+    }
+
+    public void escolherPokemon(Scanner sc) {
+        int opcaoPokemonJogador;
+        while (true) {
+            opcaoPokemonJogador = Utilidades.lerIntUsuario(sc, "\nEstes são seus Pokémons:\n" +
+                    imprimirPokemons() + "\n" + nome +
+                    ", escolha seu Pokémon para ataque (1, 2 ou 3): ");
+            if (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3) {
+                indicePokemonEscolhido = (opcaoPokemonJogador - 1);
+                return;
+            } else {
+                System.err.println("Erro: número escolhido inválido.\n");
+            }
+        }
     }
 
 }

@@ -13,7 +13,7 @@ public class MainPartida {
         String nomeJogador;
         int vezDeAtaque = -1; // sinaliza de quem é a vez de atacar ou seja, de quem é o turno. (1 = vez do jogador e 0 = vez do npc)
         Scanner sc = new Scanner(System.in);
-        nomeJogador = lerStringUsuario(sc, "Bem vindo ao jogo PokeRPG!\n" +
+        nomeJogador = Utilidades.lerStringUsuario(sc, "Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
         inicializarValoresMapas();
         Jogador jogador = new Jogador(nomeJogador);
@@ -23,7 +23,8 @@ public class MainPartida {
         while (jogador.aptoJogar()) {
             if (rodada == 1) {
                 System.out.println("Vai começar a batalha, escolha seu pokemon para o campo de batalha !!!");
-                Pokemon pokemonJogador = solicitaPokemon(sc, jogador);
+                jogador.escolherPokemon(sc);
+                Pokemon pokemonJogador = jogador.getPokemonEscolhido();
                 System.out.println("Você escolheu: " + pokemonJogador.getNome() + " para iniciar no campo de batalha !");
                 System.out.println();
                 JogadorNPC jogadorNPC = solicitaNPC(sc, jogadoresNPCs);
@@ -46,8 +47,8 @@ public class MainPartida {
                             escolherAcao(jogador);
                         }
                         if (acaoEscolhida == 1) {
-
-                            pokemonJogador = solicitaPokemon(sc, jogador);
+                            jogador.escolherPokemon(sc);
+                            pokemonJogador = jogador.getPokemonEscolhido();
                             int escolhaAtaque = solicitaAtaque(sc, pokemonJogador);
                             System.out.println("\nAtaque escolhido de número " + escolhaAtaque);
                             System.out.println("ataque executado"); // a titulo de testar funcionamento
@@ -90,20 +91,6 @@ public class MainPartida {
             }
         }
         // sc.close();
-    }
-
-    private static String lerStringUsuario(Scanner input, String mensagem) {
-        String valorRecebido;
-        System.out.print(mensagem);
-        valorRecebido = input.nextLine();
-        return valorRecebido;
-    }
-
-    private static int lerIntUsuario(Scanner input, String mensagem) {
-        int valorRecebido;
-        System.out.print(mensagem);
-        valorRecebido = input.nextInt();
-        return valorRecebido;
     }
 
     private static void inicializarValoresMapas(){
@@ -188,28 +175,10 @@ public class MainPartida {
         mensagem += "Escolha qual NPC você quer enfrentar dentro do total de " + jogadores.length + " NPCs restantes que você pode enfrentar:  ";
 
         while (true) {
-            opcaoNPCJogador = lerIntUsuario(sc, mensagem);
+            opcaoNPCJogador = Utilidades.lerIntUsuario(sc, mensagem);
             if (opcaoNPCJogador <= jogadores.length && opcaoNPCJogador > 0) {
                 System.out.println("Você enfrentará: " + jogadores[opcaoNPCJogador - 1].getNome());
                 return jogadores[opcaoNPCJogador - 1];
-            } else {
-                System.err.println("Erro: número escolhido inválido.\n");
-            }
-
-        }
-
-
-    }
-
-    public static Pokemon solicitaPokemon(Scanner sc, Jogador jogador) {
-        int opcaoPokemonJogador;
-        while (true) {
-            opcaoPokemonJogador = lerIntUsuario(sc, "\nEstes são seus Pokémons:\n" +
-                    jogador.imprimirPokemons() + "\n" + jogador.getNome() +
-                    ", escolha seu Pokémon para ataque (1, 2 ou 3): ");
-            if (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3) {
-                Pokemon escolhaJogador = jogador.getPokemon(opcaoPokemonJogador - 1);
-                return escolhaJogador;
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
@@ -220,7 +189,7 @@ public class MainPartida {
     public static int solicitaAtaque(Scanner sc, Pokemon escolhaJogador) {
         int opcaoAtaqueJogador;
         while (true) {
-            opcaoAtaqueJogador = lerIntUsuario(sc, "\nOs ataques disponíveis do " +
+            opcaoAtaqueJogador = Utilidades.lerIntUsuario(sc, "\nOs ataques disponíveis do " +
                     escolhaJogador.getNome() + " são:\n" + escolhaJogador.buscarAtaques() +
                     "Escolha uma opção de ataque (1, 2 ou 3): ");
             if (opcaoAtaqueJogador == 1 || opcaoAtaqueJogador == 2 || opcaoAtaqueJogador == 3) {
@@ -264,5 +233,4 @@ public class MainPartida {
         }
         return -1;
     }
-
 }
