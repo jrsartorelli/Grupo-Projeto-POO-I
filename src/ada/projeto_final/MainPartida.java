@@ -15,9 +15,10 @@ public class MainPartida {
                 "Para iniciarmos digite o seu nome: ");
         Jogador jogador = new Jogador(nomeJogador);
 
-        JogadorNPC primeiroNPC = new JogadorNPC("Team Rocket");
-        JogadorNPC segundoNPC = new JogadorNPC("Team Aqua");
-        JogadorNPC terceiroNPC = new JogadorNPC("Team Galactic");
+        JogadorNPC[] jogadoresNPCs = new JogadorNPC[]
+                {new JogadorNPC("Team Rocket"),
+                 new JogadorNPC("Team Aqua"),
+                 new JogadorNPC("Team Galactic")};
 
         int rodada = 1; // vai contar em qual rodada está
         while (jogador.aptoJogar()) {
@@ -26,7 +27,7 @@ public class MainPartida {
                 Pokemon pokemonJogador = solicitaPokemon(sc, jogador);
                 System.out.println("Você escolheu: " + pokemonJogador.getNome() + " para iniciar no campo de batalha !");
                 System.out.println();
-                JogadorNPC jogadorNPC = solicitaNPC(sc, primeiroNPC, segundoNPC, terceiroNPC);
+                JogadorNPC jogadorNPC = solicitaNPC(sc, jogadoresNPCs);
                 Pokemon pokemonAdversario = SolicitaPokemonNPC(jogadorNPC);
                 System.out.println("Seu adversário escolheu: " +pokemonAdversario.getNome() + " para iniciar no campo de batalha!" );
                 System.out.println();
@@ -69,22 +70,22 @@ public class MainPartida {
                 //   break;
             } else if (rodada == 2) {
                 JogadorNPC jogadorNPC;
-                if (primeiroNPC.getVida() < 1) {     //se morreu o primeiro npc, passa o segundo e o terceiro como escolha
-                    jogadorNPC = solicitaNPC(sc, segundoNPC, terceiroNPC);
-                } else if (segundoNPC.getVida() < 1) {    //se morreu o segundo npc, passa o primeiro e o terceiro como escolha
-                    jogadorNPC = solicitaNPC(sc, primeiroNPC, terceiroNPC);
+                if (jogadoresNPCs[0].getVida() < 1) {     //se morreu o primeiro npc, passa o segundo e o terceiro como escolha
+                    jogadorNPC = solicitaNPC(sc, jogadoresNPCs[1], jogadoresNPCs[2]);
+                } else if (jogadoresNPCs[1].getVida() < 1) {    //se morreu o segundo npc, passa o primeiro e o terceiro como escolha
+                    jogadorNPC = solicitaNPC(sc, jogadoresNPCs[0], jogadoresNPCs[2]);
                 } else {         //se morreu o terceiro npc, passa o segundo e o primeiro como escolha
-                    jogadorNPC = solicitaNPC(sc, primeiroNPC, segundoNPC);
+                    jogadorNPC = solicitaNPC(sc, jogadoresNPCs[0], jogadoresNPCs[1]);
                 }
                 break;
             } else if (rodada == 3) {
                 JogadorNPC jogadorNPC;
-                if (primeiroNPC.getVida() < 1 && segundoNPC.getVida() < 1) {   // segue a lógica da segunda rodada, com a diferença que morreram dois
-                    jogadorNPC = solicitaNPC(sc, terceiroNPC);
-                } else if (segundoNPC.getVida() < 1 && terceiroNPC.getVida() < 1) {
-                    jogadorNPC = solicitaNPC(sc, primeiroNPC);
+                if (jogadoresNPCs[0].getVida() < 1 && jogadoresNPCs[1].getVida() < 1) {   // segue a lógica da segunda rodada, com a diferença que morreram dois
+                    jogadorNPC = solicitaNPC(sc, jogadoresNPCs[2]);
+                } else if (jogadoresNPCs[1].getVida() < 1 && jogadoresNPCs[2].getVida() < 1) {
+                    jogadorNPC = solicitaNPC(sc, jogadoresNPCs[0]);
                 } else {
-                    jogadorNPC = solicitaNPC(sc, segundoNPC);
+                    jogadorNPC = solicitaNPC(sc, jogadoresNPCs[1]);
                 }
                 break;
             }
