@@ -218,7 +218,6 @@ public class MainPartida {
         }
     }
 
-
     //lembrar de não deixar solicitar ataque com pokemons mortos e com revive disponivel
     public static int solicitaAtaque(Scanner sc, Pokemon escolhaJogador) {
         int opcaoAtaqueJogador;

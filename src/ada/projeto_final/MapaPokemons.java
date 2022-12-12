@@ -1,8 +1,6 @@
 package ada.projeto_final;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class MapaPokemons {
     private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 400, 500};
@@ -72,6 +70,8 @@ public class MapaPokemons {
     //Mapa com o valor para cada tipo de ataque
     private static final Map<String, Integer> mapaValorAtaque = new HashMap<>();
 
+    private static final Map<String, Boolean> mapaPokemonsJaUtilizados = new HashMap<>();
+
     //Insere de forma randômica os valores para todos os ataques listados
     public static void inicializarValoresAtaque(){
         int valorAtaqueGerado;
@@ -105,6 +105,14 @@ public class MapaPokemons {
                 }
             }
         }
+
+        // Obtém os nomes de todos os Pokémons de nível 1
+        Set<String> listaPokemons = mapaAtaquesNivel1.keySet();
+
+        // Insere todos os Pokémons de nível 1 no Mapa mapaPokemonsUtilizados
+        for (String nomePokemon : listaPokemons) {
+            mapaPokemonsJaUtilizados.put(nomePokemon, false);
+        }
     }
 
     public static Integer buscarValorAtaque(String ataque) {
@@ -113,5 +121,23 @@ public class MapaPokemons {
 
     public static String[] buscarAtaques(String nomePokemon){
         return mapaAtaquesNivel1.get(nomePokemon);
+    }
+
+    public static Pokemon[] buscarPokemonsRandomicos(){
+        int contadorPokemonsEncontrados = 0;
+        int posicaoMapa;
+        Pokemon[] pokemons = new Pokemon[3];
+        List<String> chaves = new ArrayList<>(mapaPokemonsJaUtilizados.keySet());
+
+        while (contadorPokemonsEncontrados < 3){
+            posicaoMapa = random.nextInt(chaves.size());
+            String chaveRandomica = chaves.get(posicaoMapa);
+            if (!mapaPokemonsJaUtilizados.get(chaveRandomica)){
+                pokemons[contadorPokemonsEncontrados] = new Pokemon(chaveRandomica);
+                mapaPokemonsJaUtilizados.put(chaveRandomica, true);
+                contadorPokemonsEncontrados++;
+            }
+        }
+        return pokemons;
     }
 }

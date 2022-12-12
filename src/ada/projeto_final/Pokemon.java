@@ -68,8 +68,23 @@ public class Pokemon extends Evolucoes{
     public String toString() {
         return "Pokemon " + nome + ": \n" +
                 "  - Vida Atual = " + vida + "\n" +
-                "  - Ataques = " + Arrays.toString(ataques) + "\n" +
+                "  - Ataques = " + buscarAtaquesResumo() + "\n" +
                 "  - Nivel Atual = " + level + "\n";
+    }
+
+    public String buscarAtaquesResumo(){
+        StringBuilder textoAtaques = new StringBuilder();
+        textoAtaques.append("[");
+        for (int i = 0; i < ataques.length; i++){
+            if (i != (ataques.length-1)){
+                textoAtaques.append(ataques[i] + " - " +
+                        MapaPokemons.buscarValorAtaque(ataques[i]) + ", ");
+            } else {
+                textoAtaques.append(ataques[i] + " - " +
+                        MapaPokemons.buscarValorAtaque(ataques[i]) + "]");
+            }
+        }
+        return textoAtaques.toString();
     }
 
     public void revive() {

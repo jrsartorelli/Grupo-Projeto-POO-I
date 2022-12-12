@@ -12,19 +12,19 @@ public class Jogador {
         this.nome = nome;
         this.vida = 1000;
         this.level = 1;
-        this.arrayPokemon = criarTimePokemons();
+        this.arrayPokemon = MapaPokemons.buscarPokemonsRandomicos();
         this.numRevives = 1;
         this.pedrasEvolução = 0;
     }
 
-    private Pokemon[] criarTimePokemons(){
-        Pokemon[] array = new Pokemon[]
-                {   new Pokemon("Charmander"),
-                    new Pokemon("Squirtle"),
-                    new Pokemon("Bulbasaur")
-                };
-        return array;
-    }
+//    private Pokemon[] criarTimePokemons(){
+//        Pokemon[] array = new Pokemon[]
+//                {   new Pokemon("Charmander"),
+//                    new Pokemon("Squirtle"),
+//                    new Pokemon("Bulbasaur")
+//                };
+//        return array;
+//    }
 
     public String getNome() {
         return nome;
