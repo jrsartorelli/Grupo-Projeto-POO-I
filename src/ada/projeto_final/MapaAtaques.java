@@ -5,9 +5,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class MapaAtaques {
-    private static final Integer VALOR_ATAQUE_BASE_NIVEL1 = 300;
-    private static final Integer VALOR_ATAQUE_BASE_NIVEL2 = 400;
-    private static final Integer VALOR_ATAQUE_BASE_NIVEL3 = 500;
+    private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 400, 500};
     private static final Random random = new Random();
 
     private static final Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
@@ -78,7 +76,7 @@ public class MapaAtaques {
         int valorAtaqueGerado;
         for (String[] ataques : mapaAtaquesNivel1.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE_NIVEL1 + random.nextInt(0, 300));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[0] + random.nextInt(0, 300));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
@@ -88,7 +86,7 @@ public class MapaAtaques {
         }
         for (String[] ataques : mapaAtaquesNivel2.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE_NIVEL2 + random.nextInt(0, 300));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[1] + random.nextInt(0, 300));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
@@ -98,7 +96,7 @@ public class MapaAtaques {
         }
         for (String[] ataques : mapaAtaquesNivel3.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE_NIVEL3 + random.nextInt(0, 300));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[2] + random.nextInt(0, 300));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
