@@ -1,6 +1,6 @@
 package ada.projeto_final;
 
-import java.util.Arrays;
+import ada.projeto_final.mapas.MapaPokemons;
 
 public class Pokemon extends Evolucoes{
     private String nome;

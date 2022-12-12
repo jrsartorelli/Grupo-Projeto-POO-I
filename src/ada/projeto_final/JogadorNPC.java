@@ -1,5 +1,8 @@
 package ada.projeto_final;
 
+import ada.projeto_final.mapas.MapaNPCs;
+import ada.projeto_final.mapas.MapaPokemons;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;

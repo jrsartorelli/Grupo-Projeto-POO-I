@@ -1,5 +1,7 @@
 package ada.projeto_final;
 
+import ada.projeto_final.mapas.MapaPokemons;
+
 public class Jogador {
     private final String nome;
     private Integer vida;

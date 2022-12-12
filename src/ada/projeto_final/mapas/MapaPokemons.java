@@ -1,4 +1,6 @@
-package ada.projeto_final;
+package ada.projeto_final.mapas;
+
+import ada.projeto_final.Pokemon;
 
 import java.util.*;
 
