@@ -19,15 +19,6 @@ public class Jogador {
         this.pedrasEvolução = 0;
     }
 
-//    private Pokemon[] criarTimePokemons(){
-//        Pokemon[] array = new Pokemon[]
-//                {   new Pokemon("Charmander"),
-//                    new Pokemon("Squirtle"),
-//                    new Pokemon("Bulbasaur")
-//                };
-//        return array;
-//    }
-
     public String getNome() {
         return nome;
     }
@@ -83,7 +74,7 @@ public class Jogador {
                 return true;
             }
         }
-        if(this.numRevives>0 || this.vida>0){
+        if(this.numRevives>0 && this.vida>0){
             return true;
         }
         return false;
