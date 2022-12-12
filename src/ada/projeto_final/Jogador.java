@@ -64,6 +64,7 @@ public class Jogador {
 
     public void setNumRevives(Integer numRevives) { this.numRevives = numRevives; }
 
+   //a função retorna true caso seja possível reviver o pokemon
     public boolean usarRevive(Pokemon bono){
         if(!bono.estaVivo() && this.numRevives>0) {
             bono.revive();
@@ -73,4 +74,17 @@ public class Jogador {
             return false;
         }
     }
+
+    public boolean aptoJogar(){
+        for(Pokemon poke:this.arrayPokemon){
+            if(poke.estaVivo()){
+                return true;
+            }
+        }
+        if(this.numRevives>0 || this.vida>0){
+            return true;
+        }
+        return false;
+    }
+
 }
