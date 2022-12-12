@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class MapaPokemons {
     private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 400, 500};
+    private static final Integer[] RANGE_RANDOMICO = new Integer[]{200, 150, 100};
     private static final Random random = new Random();
 
     private static final Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
@@ -76,7 +77,7 @@ public class MapaPokemons {
         int valorAtaqueGerado;
         for (String[] ataques : mapaAtaquesNivel1.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE[0] + random.nextInt(0, 300));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[0] + random.nextInt(0, RANGE_RANDOMICO[0]));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
@@ -86,7 +87,7 @@ public class MapaPokemons {
         }
         for (String[] ataques : mapaAtaquesNivel2.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE[1] + random.nextInt(0, 300));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[1] + random.nextInt(0, RANGE_RANDOMICO[1]));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
@@ -96,7 +97,7 @@ public class MapaPokemons {
         }
         for (String[] ataques : mapaAtaquesNivel3.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE[2] + random.nextInt(0, 300));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[2] + random.nextInt(0, RANGE_RANDOMICO[2]));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
