@@ -12,10 +12,10 @@ public class JogadorNPC {
     private Pokemon[] arrayPokemon;
     private String especialidade;
 
-    public JogadorNPC(String nome, String descricao, String especialidade) {
+    public JogadorNPC(String nome) {
         this.nome = nome;
-        this.descricao = descricao;
-        this.especialidade = especialidade;
+        this.descricao = MapaNPCs.buscarDescricao(nome);
+        this.especialidade = MapaNPCs.buscarEspecialidade(nome);
         this.arrayPokemon = MapaPokemons.buscarPokemonsRandomicos();
     }
 

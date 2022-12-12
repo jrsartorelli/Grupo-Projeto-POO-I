@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class MainPartida {
     public static void main(String[] args) {
         String nomeJogador;
-        String descricao;
         MapaPokemons.inicializarValoresAtaque();//Atribui os valores de todos os ataques dos Pokémons
         int vezDeAtaque = -1; // sinaliza de quem é a vez de atacar ou seja, de quem é o turno. (1 = vez do jogador e 0 = vez do npc)
         Scanner sc = new Scanner(System.in);
@@ -16,17 +15,10 @@ public class MainPartida {
                 "Para iniciarmos digite o seu nome: ");
         Jogador jogador = new Jogador(nomeJogador);
 
-        descricao = "Usam roupas brancas com um chamativo R na frente das blusas, em tons de roxo, mas nas quartas feira é rosa";
-        JogadorNPC primeiroNPC = new JogadorNPC("Team Rocket", descricao, "Fogo");
+        JogadorNPC primeiroNPC = new JogadorNPC("Team Rocket");
+        JogadorNPC segundoNPC = new JogadorNPC("Team Aqua");
+        JogadorNPC terceiroNPC = new JogadorNPC("Team Galactic");
 
-        descricao = "Se vestem como piratas, com uma camiseta listrada e um pano azul na cabeça, onde se encontra o emblema da Equipe Aqua.";
-        JogadorNPC segundoNPC = new JogadorNPC("Team Aqua", descricao, "Água");
-
-        descricao = "Os membros vestem roupas similares às de um astronauta e, em função disso, algumas pessoas que não conhecem a organização ou seus integrantes os chamam de \"homens espaciais\".";
-        JogadorNPC terceiroNPC = new JogadorNPC("Team Galactic", descricao, "Eletrico");
-//        setPokemonsNPC(primeiroNPC); os Pokémons estão sendo atribuídos no construtor de JogadorNPC
-//        setPokemonsNPC(segundoNPC);
-//        setPokemonsNPC(terceiroNPC);
         int rodada = 1; // vai contar em qual rodada está
         while (jogador.aptoJogar()) {
             if (rodada == 1) {
