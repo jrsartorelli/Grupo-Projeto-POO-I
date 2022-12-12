@@ -105,6 +105,7 @@ public class MainPartida {
 
     private static void inicializarValoresMapas(){
         MapaPokemons.inicializarValoresAtaque();
+        MapaPokemons.inicializarValoresPokemonsJaUtilizados();
         MapaNPCs.inicializarValoresNPCsJaUtilizados();
     }
 

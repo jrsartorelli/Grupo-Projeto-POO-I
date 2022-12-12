@@ -105,7 +105,9 @@ public class MapaPokemons {
                 }
             }
         }
+    }
 
+    public static void inicializarValoresPokemonsJaUtilizados(){
         // Obtém os nomes de todos os Pokémons de nível 1
         Set<String> listaPokemons = mapaAtaquesNivel1.keySet();
 
