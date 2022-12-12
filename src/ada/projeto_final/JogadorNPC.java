@@ -1,5 +1,6 @@
 package ada.projeto_final;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,4 +62,18 @@ public class JogadorNPC {
     public void setListaPokemon(Pokemon[] listaPokemon) {
         this.listaPokemon = listaPokemon;
     }
+
+    public boolean aptoJogar(){
+        for(Pokemon poke: Arrays.asList(this.listaPokemon)){
+            if(poke.estaVivo()){
+                return true;
+            }
+        }
+        if(this.vida>0){
+            return true;
+        }
+        return false;
+    }
+
+
 }
