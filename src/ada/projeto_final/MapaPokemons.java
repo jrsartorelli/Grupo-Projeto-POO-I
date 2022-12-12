@@ -124,18 +124,18 @@ public class MapaPokemons {
     }
 
     public static Pokemon[] buscarPokemonsRandomicos(){
-        int contadorPokemonsEncontrados = 0;
+        int numeroPokemonsEncontrados = 0;
         int posicaoMapa;
         Pokemon[] pokemons = new Pokemon[3];
         List<String> chaves = new ArrayList<>(mapaPokemonsJaUtilizados.keySet());
 
-        while (contadorPokemonsEncontrados < 3){
+        while (numeroPokemonsEncontrados < 3){
             posicaoMapa = random.nextInt(chaves.size());
             String chaveRandomica = chaves.get(posicaoMapa);
             if (!mapaPokemonsJaUtilizados.get(chaveRandomica)){
-                pokemons[contadorPokemonsEncontrados] = new Pokemon(chaveRandomica);
+                pokemons[numeroPokemonsEncontrados] = new Pokemon(chaveRandomica);
                 mapaPokemonsJaUtilizados.put(chaveRandomica, true);
-                contadorPokemonsEncontrados++;
+                numeroPokemonsEncontrados++;
             }
         }
         return pokemons;

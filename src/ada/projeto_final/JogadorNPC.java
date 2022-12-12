@@ -9,14 +9,14 @@ public class JogadorNPC {
     private Integer vida = 1000;
     private String descricao;
     private Map<String, String> frasesDeEfeito = new HashMap<>();
-    // private List<Pokemon> listaPokemons = new ArrayList<>();
-    private Pokemon[] listaPokemon;
+    private Pokemon[] arrayPokemon;
     private String especialidade;
 
     public JogadorNPC(String nome, String descricao, String especialidade) {
         this.nome = nome;
         this.descricao = descricao;
         this.especialidade = especialidade;
+        this.arrayPokemon = MapaPokemons.buscarPokemonsRandomicos();
     }
 
     public String getNome() {
@@ -35,8 +35,8 @@ public class JogadorNPC {
         return frasesDeEfeito;
     }
 
-    public Pokemon[] getListaPokemon() {
-        return listaPokemon;
+    public Pokemon[] getArrayPokemon() {
+        return arrayPokemon;
     }
 
     public String getEspecialidade() {
@@ -59,12 +59,12 @@ public class JogadorNPC {
         this.especialidade = especialidade;
     }
 
-    public void setListaPokemon(Pokemon[] listaPokemon) {
-        this.listaPokemon = listaPokemon;
+    public void setArrayPokemon(Pokemon[] arrayPokemon) {
+        this.arrayPokemon = arrayPokemon;
     }
 
     public boolean aptoJogar(){
-        for(Pokemon poke: Arrays.asList(this.listaPokemon)){
+        for(Pokemon poke: Arrays.asList(this.arrayPokemon)){
             if(poke.estaVivo()){
                 return true;
             }

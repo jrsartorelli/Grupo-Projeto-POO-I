@@ -24,9 +24,9 @@ public class MainPartida {
 
         descricao = "Os membros vestem roupas similares às de um astronauta e, em função disso, algumas pessoas que não conhecem a organização ou seus integrantes os chamam de \"homens espaciais\".";
         JogadorNPC terceiroNPC = new JogadorNPC("Team Galactic", descricao, "Eletrico");
-        setPokemonsNPC(primeiroNPC);
-        setPokemonsNPC(segundoNPC);
-        setPokemonsNPC(terceiroNPC);
+//        setPokemonsNPC(primeiroNPC); os Pokémons estão sendo atribuídos no construtor de JogadorNPC
+//        setPokemonsNPC(segundoNPC);
+//        setPokemonsNPC(terceiroNPC);
         int rodada = 1; // vai contar em qual rodada está
         while (jogador.aptoJogar()) {
             if (rodada == 1) {
@@ -158,21 +158,21 @@ public class MainPartida {
                             new Pokemon("Squirtle"),
                             new Pokemon("Bulbasaur")
                     };
-            numeroNPC.setListaPokemon(array);
+            numeroNPC.setArrayPokemon(array);
         } else if (numeroNPC.getNome().equalsIgnoreCase("Team Aqua")) {
             Pokemon[] array = new Pokemon[] // pokemons de nível 2
                     {new Pokemon("Charmeleon"),
                             new Pokemon("Ivysaur"),
                             new Pokemon("Wartortle")
                     };
-            numeroNPC.setListaPokemon(array);
+            numeroNPC.setArrayPokemon(array);
         } else if (numeroNPC.getNome().equalsIgnoreCase("Team Galactic")) {
             Pokemon[] array = new Pokemon[] // pokemons de nivel 3
                     {new Pokemon("Charizard"),
                             new Pokemon("Venusaur"),
                             new Pokemon("Blastoise")
                     };
-            numeroNPC.setListaPokemon(array);
+            numeroNPC.setArrayPokemon(array);
         }
     }
 
@@ -239,11 +239,11 @@ public class MainPartida {
     public static Pokemon SolicitaPokemonNPC (JogadorNPC NPCDaVez){
         Random random = new Random(System.currentTimeMillis());
         int indice = random.nextInt(2);
-        while(NPCDaVez.getListaPokemon()[indice].getVida()<1){
+        while(NPCDaVez.getArrayPokemon()[indice].getVida()<1){
              indice++;
              indice%=3;
          }
-        return NPCDaVez.getListaPokemon()[indice];
+        return NPCDaVez.getArrayPokemon()[indice];
     }
     public static int escolherAcao(Jogador jog){
         Scanner sc = new Scanner(System.in);
