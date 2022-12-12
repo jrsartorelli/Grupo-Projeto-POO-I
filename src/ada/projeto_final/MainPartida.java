@@ -14,7 +14,7 @@ public class MainPartida {
         nomeJogador = lerStringUsuario(sc, "Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
         Jogador jogador = new Jogador(nomeJogador);
-        MapaAtaques.inicializarValoresAtaque();
+        MapaPokemons.inicializarValoresAtaque();
 
         descricao = "Usam roupas brancas com um chamativo R na frente das blusas, em tons de roxo, mas nas quartas feira é rosa";
         JogadorNPC primeiroNPC = new JogadorNPC("Team Rocket", descricao, "Fogo");

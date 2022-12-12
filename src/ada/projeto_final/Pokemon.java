@@ -12,7 +12,7 @@ public class Pokemon extends Evolucoes{
     // Cria um pokémon com o nome e os ataques especificados
     public Pokemon(String nome) {
         this.nome = nome;
-        this.ataques = MapaAtaques.buscarAtaques(nome);
+        this.ataques = MapaPokemons.buscarAtaques(nome);
         this.vida = 1000; // Valor padrão de vida para todos os pokémons
         this.level = 1;
     }
@@ -49,7 +49,7 @@ public class Pokemon extends Evolucoes{
         StringBuilder textoAtaques = new StringBuilder();
         for (int i = 0; i < ataques.length; i++){
             textoAtaques.append((i + 1) + " - " + ataques[i] + " - Poder de ataque: " +
-                    MapaAtaques.buscarValorAtaque(ataques[i]) + "\n");
+                    MapaPokemons.buscarValorAtaque(ataques[i]) + "\n");
         }
         return textoAtaques.toString();
     }
