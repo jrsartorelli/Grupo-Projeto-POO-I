@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class MainPartida {
     public static void main(String[] args) {
         String nomeJogador;
-        int vezDeAtaque = -1; // sinaliza de quem é a vez de atacar ou seja, de quem é o turno. (1 = vez do jogador e 0 = vez do npc)
+        String proximoAtacante = "Jogador"; //Armazena de quem é a vez de atacar
         boolean usouRevive = false;
         Scanner sc = new Scanner(System.in);
         nomeJogador = Utilidades.lerStringUsuario(sc, "Bem vindo ao jogo PokeRPG!\n" +
@@ -32,13 +32,11 @@ public class MainPartida {
                 Pokemon pokemonAdversario = SolicitaPokemonNPC(jogadorNPC);
                 System.out.println("Seu adversário escolheu " + pokemonAdversario.getNome() + " para iniciar no campo de batalha!" );
                 System.out.println();
-                System.out.println("Sorteando quem começa atacando...");
+                System.out.println("Nessa rodada, " + proximoAtacante + " começa atacando...");
                 System.out.println();
-                if (vezDeAtaque == -1) {
-                    vezDeAtaque = estabeleceVez();
-                }
+
                 while(jogador.aptoJogar() && jogadorNPC.aptoJogar()) {
-                    if (vezDeAtaque == 1) {
+                    if (proximoAtacante.equals("Jogador")) {
                         //para fazer=> escolher a ação: atacar ou reviver.
                         System.out.println("É a sua vez, " + jogador.getNome() + " ! ");
                         System.out.println("O pokemon do adversário é: " + pokemonAdversario.getNome());
@@ -79,7 +77,12 @@ public class MainPartida {
                         System.out.println();
                         //para fazer=> chamar o ataque do npc, aplicar dano e mostrar a vida restante
                     }
-                    vezDeAtaque=1-vezDeAtaque;
+                    //Realiza a troca de quem vai atacar na próxima rodada
+                    if (proximoAtacante.equals("Jogador")){
+                        proximoAtacante = "NPC";
+                    } else {
+                        proximoAtacante = "Jogador";
+                    }
                 }
                 rodada++;
                 usouRevive = false;
