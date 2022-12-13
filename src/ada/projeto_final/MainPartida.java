@@ -3,8 +3,6 @@ package ada.projeto_final;
 import ada.projeto_final.mapas.MapaNPCs;
 import ada.projeto_final.mapas.MapaPokemons;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class MainPartida {
@@ -107,7 +105,7 @@ public class MainPartida {
                 break;
             }
         }
-        Utilidades.fechaScanner();
+        Utilidades.fecharScanner();
     }
 
     private static void inicializarValoresMapas(){

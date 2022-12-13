@@ -20,7 +20,7 @@ public class Utilidades {
         return valorRecebido;
     }
 
-    public static void fechaScanner(){
+    public static void fecharScanner(){
         input.close();
     }
 }
