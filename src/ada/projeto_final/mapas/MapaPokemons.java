@@ -6,7 +6,7 @@ import java.util.*;
 
 public class MapaPokemons {
     private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 400, 500};
-    private static final Integer[] RANGE_RANDOMICO = new Integer[]{200, 150, 100};
+    private static final Integer[] RANGE_RANDOMICO = new Integer[]{200, 300, 400};
     private static final Random random = new Random();
 
     private static final Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
