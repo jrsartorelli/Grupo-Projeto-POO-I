@@ -37,6 +37,30 @@ public class MapaNPCs {
                 {"Os membros vestem roupas em tons de verde e azul e usam o emblema da equipe Elemental em suas blusas.", "Voador"});
     }};
 
+    private static final Map<String, String> frasesDeEfeitoIndice0 = new HashMap<>(){{
+        put("inicio", "Prepare-se para encrenca e possivelmente em dobro!"); // Início da luta
+        put("derrota", "Droga! Eu ainda te pego!"); // quando o NPC perde
+        put("vitoria", "Para estender nosso poder às estrelas!"); // quando o NPC ganha
+        put("perdePokemon", "Não se mete com a gente!"); // quando o NPC perde um pokemon
+        put("mataPokemon", "Equipe decolando na velocidade da luz!"); // quando mata o pokemon do jogador
+    }};
+
+    private static final Map<String, String> frasesDeEfeitoIndice1 = new HashMap<>(){{
+        put("inicio", "Renda-se agora ou prepare-se para lutar!"); // Início da luta
+        put("derrota", "Bem que disseram que você não é iniciante."); // quando o NPC perde
+        put("vitoria", "A destruição mundial é nosso trabalho imundo!"); // quando o NPC ganha
+        put("perdePokemon", "GRRRR!"); // quando o NPC perde um pokemon
+        put("mataPokemon", "Encrenca em dobro!"); // quando mata o pokemon do jogador
+    }};
+
+    private static final Map<String, String> frasesDeEfeitoIndice2 = new HashMap<>(){{
+        put("inicio", "Outra vez é a questão? É o pirralho que temos então!"); // Início da luta
+        put("derrota", "Não tem jeito! Vou ter que ficar mais forte para a próxima!"); // quando o NPC perde
+        put("vitoria", "Levando o caos para toda parte"); // quando o NPC ganha
+        put("perdePokemon", "Estas águas são traiçoeiras!"); // quando o NPC perde um pokemon
+        put("mataPokemon", "Tirando de todas as pessoas a fé"); // quando mata o pokemon do jogador
+    }};
+
     private static final Map<String, Boolean> mapaNPCsJaUtilizados = new HashMap<>();
 
     public static void inicializarValoresNPCsJaUtilizados(){
@@ -70,6 +94,13 @@ public class MapaNPCs {
             String chaveRandomica = chaves.get(posicaoMapa);
             if (!mapaNPCsJaUtilizados.get(chaveRandomica)){
                 jogadoresNPCs[numeroNPCsEncontrados] = new JogadorNPC(chaveRandomica);
+                if (numeroNPCsEncontrados == 0){
+                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(frasesDeEfeitoIndice0);
+                } else if (numeroNPCsEncontrados == 1) {
+                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(frasesDeEfeitoIndice1);
+                } else {
+                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(frasesDeEfeitoIndice2);
+                }
                 mapaNPCsJaUtilizados.put(chaveRandomica, true);
                 numeroNPCsEncontrados++;
             }
