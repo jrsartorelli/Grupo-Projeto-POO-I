@@ -43,9 +43,9 @@ public class MainPartida {
                         System.out.println("É a sua vez, " + jogador.getNome() + " ! ");
                         System.out.println("O pokemon do adversário é: " + pokemonAdversario.getNome());
                         System.out.println("E possui o seguinte HP: " + pokemonAdversario.getVida());
-                        int acaoEscolhida = escolherAcao(jogador, usouRevive);
+                        int acaoEscolhida = escolherAcao(sc, jogador, usouRevive);
                         while (acaoEscolhida == -1) {
-                            escolherAcao(jogador, usouRevive);
+                            escolherAcao(sc, jogador, usouRevive);
                         }
                         if (acaoEscolhida == 2) { // revive
                             System.out.println("Revive solicitado!");
@@ -106,7 +106,7 @@ public class MainPartida {
                 break;
             }
         }
-        // sc.close();
+        sc.close();
     }
 
     private static void inicializarValoresMapas(){
@@ -228,8 +228,7 @@ public class MainPartida {
          }
         return NPCDaVez.getArrayPokemon()[indice];
     }
-    public static int escolherAcao(Jogador jog, boolean usouRevive){
-        Scanner sc = new Scanner(System.in);
+    public static int escolherAcao(Scanner sc, Jogador jog, boolean usouRevive){
         while (true) {
             System.out.println("\nQual ação deseja realizar? (1 ou 2)");
             System.out.println("1 - Atacar");
@@ -237,12 +236,10 @@ public class MainPartida {
             int entrada = sc.nextInt();
 
             if (entrada == 1) {
-                sc.close();
                 return entrada;
             }
 
             if (entrada == 2 && jog.getNumRevives()>0) {
-                sc.close();
                 return entrada;
             }
 
