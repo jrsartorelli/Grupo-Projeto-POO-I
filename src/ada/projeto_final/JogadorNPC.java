@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class JogadorNPC {
     private String nome;
-    private Integer vida = 1000;
     private String descricao;
     private Map<String, String> frasesDeEfeito = new HashMap<>();
     private Pokemon[] arrayPokemon;
@@ -24,10 +23,6 @@ public class JogadorNPC {
 
     public String getNome() {
         return nome;
-    }
-
-    public Integer getVida() {
-        return vida;
     }
 
     public String getDescricao() {
@@ -67,16 +62,11 @@ public class JogadorNPC {
     }
 
     public boolean aptoJogar(){
-        for(Pokemon poke: Arrays.asList(this.arrayPokemon)){
-            if(poke.estaVivo()){
+        for(Pokemon poke: Arrays.asList(this.arrayPokemon)) {
+            if (poke.estaVivo()) {
                 return true;
             }
         }
-        if(this.vida>0){
-            return true;
-        }
         return false;
     }
-
-
 }
