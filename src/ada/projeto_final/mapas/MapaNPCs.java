@@ -62,18 +62,18 @@ public class MapaNPCs {
     public static JogadorNPC[] buscarNPCsRandomicos(){
         int numeroNPCsEncontrados = 0;
         int posicaoMapa;
-        JogadorNPC[] jogadoresNPC = new JogadorNPC[3];
+        JogadorNPC[] jogadoresNPCs = new JogadorNPC[3];
         List<String> chaves = new ArrayList<>(mapaNPCs.keySet());
 
         while (numeroNPCsEncontrados < 3){
             posicaoMapa = random.nextInt(chaves.size());
             String chaveRandomica = chaves.get(posicaoMapa);
             if (!mapaNPCsJaUtilizados.get(chaveRandomica)){
-                jogadoresNPC[numeroNPCsEncontrados] = new JogadorNPC(chaveRandomica);
+                jogadoresNPCs[numeroNPCsEncontrados] = new JogadorNPC(chaveRandomica);
                 mapaNPCsJaUtilizados.put(chaveRandomica, true);
                 numeroNPCsEncontrados++;
             }
         }
-        return jogadoresNPC;
+        return jogadoresNPCs;
     }
 }
