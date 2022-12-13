@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Jogador {
     private final String nome;
-    private Integer vida;
     private Integer level;
     private Pokemon[] arrayPokemon;
     private Integer indicePokemonEscolhido;
@@ -15,7 +14,6 @@ public class Jogador {
 
     public Jogador(String nome) {
         this.nome = nome;
-        this.vida = 1000;
         this.level = 1;
         this.arrayPokemon = MapaPokemons.buscarPokemonsRandomicos();
         this.indicePokemonEscolhido = null;
@@ -27,10 +25,6 @@ public class Jogador {
         return nome;
     }
 
-    public Integer getVida() {
-        return vida;
-    }
-
     public Integer getLevel() {
         return level;
     }
@@ -38,8 +32,6 @@ public class Jogador {
     public Integer getNumRevives() {
         return numRevives;
     }
-
-    public void setVida(Integer vida) { this.vida = vida; }
 
     public void setLevel(Integer level) { this.level = level; }
 
@@ -96,7 +88,7 @@ public class Jogador {
                 return true;
             }
         }
-        if(this.numRevives>0 && this.vida>0){
+        if(this.numRevives>0){
             return true;
         }
         return false;
