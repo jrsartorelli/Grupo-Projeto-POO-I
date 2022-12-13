@@ -94,10 +94,10 @@ public class Jogador {
         return false;
     }
 
-    public void escolherPokemon(Scanner sc) {
+    public void escolherPokemon() {
         int opcaoPokemonJogador;
         while (true) {
-            opcaoPokemonJogador = Utilidades.lerIntUsuario(sc, "\nEstes são seus Pokémons:\n" +
+            opcaoPokemonJogador = Utilidades.lerIntUsuario("\nEstes são seus Pokémons:\n" +
                     imprimirPokemons() + "\n" + nome +
                     ", escolha seu Pokémon para ataque (1, 2 ou 3): ");
             if (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3) {

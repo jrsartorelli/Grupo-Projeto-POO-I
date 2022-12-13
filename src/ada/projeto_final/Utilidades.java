@@ -4,17 +4,23 @@ import java.util.Scanner;
 
 public class Utilidades {
 
-    public static String lerStringUsuario(Scanner input, String mensagem) {
+    private static Scanner input = new Scanner(System.in);
+
+    public static String lerStringUsuario(String mensagem) {
         String valorRecebido;
         System.out.print(mensagem);
         valorRecebido = input.nextLine();
         return valorRecebido;
     }
 
-    public static int lerIntUsuario(Scanner input, String mensagem) {
+    public static int lerIntUsuario(String mensagem) {
         int valorRecebido;
         System.out.print(mensagem);
         valorRecebido = input.nextInt();
         return valorRecebido;
+    }
+
+    public static void fechaScanner(){
+        input.close();
     }
 }
