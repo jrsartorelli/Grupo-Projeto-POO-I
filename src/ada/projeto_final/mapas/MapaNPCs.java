@@ -67,7 +67,7 @@ public class MapaNPCs {
         // Obtém os nomes de todos os NPC´s
         Set<String> listaNPCs = mapaNPCs.keySet();
 
-        // Insere todos os NPCs no Mapa mapaNPCsJaUtilizados
+        // Insere todos os NPCs no Mapa mapaNPCsJaUtilizados, inicialmente todos não utilizados
         for (String nomeNPC : listaNPCs) {
             mapaNPCsJaUtilizados.put(nomeNPC, false);
         }

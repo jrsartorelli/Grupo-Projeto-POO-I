@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Utilidades {
 
-    private static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
     public static String lerStringUsuario(String mensagem) {
         String valorRecebido;

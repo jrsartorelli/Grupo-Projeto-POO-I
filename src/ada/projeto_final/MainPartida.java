@@ -8,7 +8,7 @@ import java.util.Random;
 public class MainPartida {
     public static void main(String[] args) {
         String nomeJogador;
-        String proximoAtacante = "Jogador"; //Armazena de quem é a vez de atacar
+        String proximoAtacante = "Jogador"; //Armazena de quem é a vez de atacar, Jogador sempre inicia atacando
         boolean usouRevive = false;
         nomeJogador = Utilidades.lerStringUsuario("Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
@@ -62,10 +62,12 @@ public class MainPartida {
                             // jogador.escolherPokemon(sc);
                             //pokemonJogador = jogador.getPokemonEscolhido();
                             int escolhaAtaque = solicitaAtaque(jogador);
+                            String ataqueRodada = jogador.getPokemonEscolhido().getAtaqueEscolhido();
+                            int valorAtaque = MapaPokemons.buscarValorAtaque(ataqueRodada);
                             System.out.println("\nAtaque escolhido de número " + escolhaAtaque);
-                            System.out.println("ataque executado"); // a titulo de testar funcionamento
-                            System.out.println();
-                            //para fazer=> metodo aplicar dano e mostrar vida restante do adversário
+                            pokemonAdversario.aplicarDano(valorAtaque);
+                            System.out.println("Ataque " + ataqueRodada + " com Poder " + valorAtaque + "\n"); // a titulo de testar funcionamento
+                            System.out.println("Vida de " + pokemonAdversario.getNome() + " = " + pokemonAdversario.getVida());
                         }
                     }else {
                         System.out.println("É a vez do seu adversário: " + jogadorNPC.getNome() + " ! ");
@@ -182,6 +184,7 @@ public class MainPartida {
                     jogador.getNomePokemonEscolhido() + " são:\n" + jogador.getPokemonEscolhido().buscarAtaques() +
                     "Escolha uma opção de ataque (1, 2 ou 3): ");
             if (opcaoAtaqueJogador == 1 || opcaoAtaqueJogador == 2 || opcaoAtaqueJogador == 3) {
+                jogador.getPokemonEscolhido().setIndiceAtaqueEscolhido(opcaoAtaqueJogador-1);
                 return opcaoAtaqueJogador;
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");

@@ -6,6 +6,7 @@ public class Pokemon extends Evolucoes{
     private String nome;
     private float vida;
     private final String[] ataques;
+    private Integer indiceAtaqueEscolhido;
     private int level;
     private final int VIDA_PADRAO = 1000;
 
@@ -43,7 +44,6 @@ public class Pokemon extends Evolucoes{
         vida = Math.max(0, vida - dano);
     }
 
-
     // Retorna os ataques do pokémon
     public String buscarAtaques() {
         StringBuilder textoAtaques = new StringBuilder();
@@ -62,6 +62,19 @@ public class Pokemon extends Evolucoes{
             System.out.println("Este pokemon atingiu a evolução máxima!");
             return false;
         }
+    }
+
+    public void setIndiceAtaqueEscolhido(Integer indiceAtaqueEscolhido) {
+        this.indiceAtaqueEscolhido = indiceAtaqueEscolhido;
+    }
+
+    public String getAtaqueEscolhido(){
+        if (indiceAtaqueEscolhido != null){
+            return ataques[indiceAtaqueEscolhido];
+        } else{
+            System.err.println("Erro! O Ataque não foi selecionado");
+        }
+        return null;
     }
 
     @Override
