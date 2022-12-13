@@ -12,6 +12,7 @@ public class MainPartida {
     public static void main(String[] args) {
         String nomeJogador;
         int vezDeAtaque = -1; // sinaliza de quem é a vez de atacar ou seja, de quem é o turno. (1 = vez do jogador e 0 = vez do npc)
+        boolean usouRevive = false;
         Scanner sc = new Scanner(System.in);
         nomeJogador = Utilidades.lerStringUsuario(sc, "Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
@@ -22,14 +23,14 @@ public class MainPartida {
         int rodada = 1; // vai contar em qual rodada está
         while (jogador.aptoJogar()) {
             if (rodada == 1) {
-                System.out.println("Vai começar a batalha, escolha seu pokemon para o campo de batalha !!!");
+                System.out.println("Vai começar a batalha " + rodada + ", escolha seu pokemon para o campo de batalha!!!");
                 jogador.escolherPokemon(sc);
                 //Pokemon pokemonJogador = jogador.getPokemonEscolhido();
-                System.out.println("Você escolheu: " + jogador.getNomePokemonEscolhido() + " para iniciar no campo de batalha !");
+                System.out.println("Você escolheu: " + jogador.getNomePokemonEscolhido() + " para iniciar no campo de batalha!");
                 System.out.println();
                 JogadorNPC jogadorNPC = solicitaNPC(sc, jogadoresNPCs);
                 Pokemon pokemonAdversario = SolicitaPokemonNPC(jogadorNPC);
-                System.out.println("Seu adversário escolheu: " +pokemonAdversario.getNome() + " para iniciar no campo de batalha!" );
+                System.out.println("Seu adversário escolheu " + pokemonAdversario.getNome() + " para iniciar no campo de batalha!" );
                 System.out.println();
                 System.out.println("Sorteando quem começa atacando...");
                 System.out.println();
@@ -42,22 +43,35 @@ public class MainPartida {
                         System.out.println("É a sua vez, " + jogador.getNome() + " ! ");
                         System.out.println("O pokemon do adversário é: " + pokemonAdversario.getNome());
                         System.out.println("E possui o seguinte HP: " + pokemonAdversario.getVida());
-                        int acaoEscolhida = escolherAcao(jogador);
+                        int acaoEscolhida = escolherAcao(jogador, usouRevive);
                         while (acaoEscolhida == -1) {
-                            escolherAcao(jogador);
+                            escolherAcao(jogador, usouRevive);
                         }
-                        if (acaoEscolhida == 1) {
-                            jogador.escolherPokemon(sc);
+                        if (acaoEscolhida == 2) { // revive
+                            System.out.println("Revive solicitado!");
+                            if (!usouRevive) {
+                                System.out.println();
+                                boolean aux = reviverPokemon(jogador.getPokemonEscolhido(), jogador);
+                                if(aux) {
+                                    usouRevive = true;
+                                } else {
+                                    System.out.println("Você deve atacar agora.");
+                                    acaoEscolhida = 1;
+                                }
+                            } else {
+                                System.out.println("Você já usou o revive nessa roodada. Não é possível mais reviver nenhum pokemon.");
+                                System.out.println("Você deve atacar agora.");
+                                acaoEscolhida = 1;
+                            }
+                        }
+                        if (acaoEscolhida == 1) { // ataque
+                            // jogador.escolherPokemon(sc);
                             //pokemonJogador = jogador.getPokemonEscolhido();
                             int escolhaAtaque = solicitaAtaque(sc, jogador);
                             System.out.println("\nAtaque escolhido de número " + escolhaAtaque);
                             System.out.println("ataque executado"); // a titulo de testar funcionamento
                             System.out.println();
                             //para fazer=> metodo aplicar dano e mostrar vida restante do adversário
-                        }else{
-                            //testar uso do revive já implementado
-                            System.out.println("Revive solicitado");
-                            System.out.println();
                         }
                     }else {
                         System.out.println("É a vez do seu adversário: " + jogadorNPC.getNome() + " ! ");
@@ -67,7 +81,9 @@ public class MainPartida {
                     }
                     vezDeAtaque=1-vezDeAtaque;
                 }
-                //   break;
+                rodada++;
+                usouRevive = false;
+                // vezDeAtaque = -1;
             } else if (rodada == 2) {
                 JogadorNPC jogadorNPC;
                 if (jogadoresNPCs[0].getVida() < 1) {     //se morreu o primeiro npc, passa o segundo e o terceiro como escolha
@@ -99,12 +115,13 @@ public class MainPartida {
         MapaNPCs.inicializarValoresNPCsJaUtilizados();
     }
 
-    public static boolean reviverPokemon(Scanner input, Pokemon pokemonAtual, Jogador J) {
-        if (J.usarRevive(pokemonAtual)) {
+    public static boolean reviverPokemon(Pokemon pokemonAtual, Jogador J) {
+        boolean aux = J.usarRevive(pokemonAtual);
+        if (aux) {
             System.out.println("O pokemon " + pokemonAtual.getNome() + " está de volta ao campo de batalha!");
             return true;
         } else {
-            System.out.println("Não foi possível reviver o pokemon");
+            System.out.println("Não é possível reviver o pokemon.");
             return false;
         }
     }
@@ -211,25 +228,25 @@ public class MainPartida {
          }
         return NPCDaVez.getArrayPokemon()[indice];
     }
-    public static int escolherAcao(Jogador jog){
+    public static int escolherAcao(Jogador jog, boolean usouRevive){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Qual ação deseja realizar ?");
-        System.out.println("1 Para atacar");
-        System.out.println(jog.getNumRevives()>0?"2 para reviver":"");
-        int entrada = sc.nextInt();
-        if(jog.getNumRevives()>0){
-            if(entrada == 1 || entrada ==2){
+        while (true) {
+            System.out.println("\nQual ação deseja realizar? (1 ou 2)");
+            System.out.println("1 - Atacar");
+            System.out.println((jog.getNumRevives()>0 && !usouRevive)?"2 - Reviver":"");
+            int entrada = sc.nextInt();
+
+            if (entrada == 1) {
+                sc.close();
                 return entrada;
-            }else{
-                System.err.println("Erro: número escolhido inválido.\n");
             }
-        }else{
-            if(entrada == 1){
-            return entrada;
-        }else{
+
+            if (entrada == 2 && jog.getNumRevives()>0) {
+                sc.close();
+                return entrada;
+            }
+
             System.err.println("Erro: número escolhido inválido.\n");
         }
-        }
-        return -1;
     }
 }
