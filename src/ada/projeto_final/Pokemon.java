@@ -13,7 +13,7 @@ public class Pokemon extends Evolucoes{
     public Pokemon(String nome) {
         this.nome = nome;
         this.ataques = MapaPokemons.buscarAtaques(nome);
-        this.vida = 1000; // Valor padrão de vida para todos os pokémons
+        this.vida = VIDA_PADRAO; // Valor padrão de vida para todos os pokémons
         this.level = 1;
     }
 
