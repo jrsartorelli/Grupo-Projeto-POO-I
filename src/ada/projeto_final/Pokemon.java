@@ -49,8 +49,7 @@ public class Pokemon{
     public String buscarAtaques() {
         StringBuilder textoAtaques = new StringBuilder();
         for (int i = 0; i < ataques.length; i++){
-            textoAtaques.append((i + 1) + " - " + ataques[i] + " - Poder de ataque: " +
-                    MapaPokemons.buscarValorAtaque(ataques[i]) + "\n");
+            textoAtaques.append((i + 1) + " - " + ataques[i] + "\n");
         }
         return textoAtaques.toString();
     }
