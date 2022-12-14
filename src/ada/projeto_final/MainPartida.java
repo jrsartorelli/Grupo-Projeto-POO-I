@@ -28,7 +28,7 @@ public class MainPartida {
                 jogador.escolherPokemon();
                 System.out.println("\nVocê escolheu: " + jogador.getPokemonEscolhido().getNome() +
                         " para iniciar no campo de batalha!\n");
-                System.out.println("Vai começar a batalha de número \"" + rodada + "\"!!!\n");
+                System.out.println("Vai começar a batalha de número \"" + rodada + "\" !!!\n");
                 String atacante;
                 if(proximoAtacante.equals("Jogador")){
                     atacante = "Você";
