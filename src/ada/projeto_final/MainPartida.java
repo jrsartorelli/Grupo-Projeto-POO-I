@@ -13,15 +13,15 @@ public class MainPartida {
         Jogador jogador = new Jogador(nomeJogador);
         JogadorNPC[] jogadoresNPCs = MapaNPCs.buscarNPCsRandomicos();
         JogadorNPC jogadorEscolhidoNPC = null;
-        Pokemon pokemonEscolhidoNPC = null;
         int rodada = 1;
 
-        while (existeNPCVivo(jogadoresNPCs)) {
+        while (jogador.aptoJogar()) {
+
             if(jogadorEscolhidoNPC == null || !jogadorEscolhidoNPC.aptoJogar()){
                 jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
-                pokemonEscolhidoNPC = jogadorEscolhidoNPC.buscarPokemonNPCRandomico();
+                jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
                 System.out.println("\n" + jogadorEscolhidoNPC.getNome() + " escolheu o Pokémon " +
-                        pokemonEscolhidoNPC.getNome() + " para iniciar no campo de batalha!");
+                        jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " para iniciar no campo de batalha!");
                 System.out.println(jogadorEscolhidoNPC.getNome() + ": \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("inicio") + "\"");
             }
             if (rodada == 1) {
@@ -42,8 +42,8 @@ public class MainPartida {
                     if (proximoAtacante.equals("Jogador")) {
                         //para fazer=> escolher a ação: atacar ou reviver.
                         System.out.println("É a sua vez, " + jogador.getNome() + " ! ");
-                        System.out.println("O Pokémon do adversário é: " + pokemonEscolhidoNPC.getNome());
-                        System.out.println("E possui o seguinte HP: " + pokemonEscolhidoNPC.getVida());
+                        System.out.println("O Pokémon do adversário é: " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome());
+                        System.out.println("E possui o seguinte HP: " + jogadorEscolhidoNPC.getPokemonEscolhido().getVida());
                         int acaoEscolhida = escolherAcao(jogador);
                         while (acaoEscolhida == -1) {
                             escolherAcao(jogador);
@@ -65,11 +65,13 @@ public class MainPartida {
                         if (acaoEscolhida == 1) { // ataque
                             String ataqueRodada = solicitaAtaque(jogador);
                             int valorAtaque = MapaPokemons.buscarValorAtaque(ataqueRodada);
-                            pokemonEscolhidoNPC.aplicarDano(valorAtaque);
+                            jogadorEscolhidoNPC.getPokemonEscolhido().aplicarDano(valorAtaque);
                             System.out.println("\n" + jogador.getPokemonEscolhido().getNome() + " atacando " +
-                                    pokemonEscolhidoNPC.getNome() + "\nCom seu Ataque " + ataqueRodada + " de Poder " + valorAtaque + "\n");
-                            System.out.println("Vida do Pokémon " + pokemonEscolhidoNPC.getNome() + " de " + jogadorEscolhidoNPC.getNome() +
-                                    " = " + pokemonEscolhidoNPC.getVida());
+                                    jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + "\nCom seu Ataque " + ataqueRodada +
+                                    " de Poder " + valorAtaque + "\n");
+                            System.out.println("Vida do Pokémon " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " de " +
+                                    jogadorEscolhidoNPC.getNome() +
+                                    " = " + jogadorEscolhidoNPC.getPokemonEscolhido().getVida());
                         }
                     }else {
                         String ataqueNPC = jogadorEscolhidoNPC.getPokemonEscolhido().buscarAtaqueRandomico();
@@ -179,7 +181,7 @@ public class MainPartida {
         while (true) {
             opcaoAtaqueJogador = Utilidades.lerIntUsuario("\nOs ataques disponíveis do " +
                     jogador.getPokemonEscolhido().getNome() + " são:\n" + jogador.getPokemonEscolhido().buscarAtaques() +
-                    "Escolha uma opção de ataque (1, 2 ou 3): ");
+                    "\nEscolha uma opção de ataque (1, 2 ou 3): ");
             if (opcaoAtaqueJogador == 1 || opcaoAtaqueJogador == 2 || opcaoAtaqueJogador == 3) {
                 jogador.getPokemonEscolhido().setIndiceAtaqueEscolhido(opcaoAtaqueJogador-1);
                 return jogador.getPokemonEscolhido().getAtaqueEscolhido();

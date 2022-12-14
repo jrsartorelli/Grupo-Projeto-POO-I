@@ -52,14 +52,13 @@ public class JogadorNPC {
         this.indicePokemonEscolhido = indicePokemonEscolhido;
     }
 
-    public Pokemon buscarPokemonNPCRandomico(){
+    public void escolherPokemonNPCRandomico(){
         int indice = Utilidades.random.nextInt(2);
         while(getArrayPokemon()[indice].getVida()<1){
             indice++;
             indice%=3;
         }
         setIndicePokemonEscolhido(indice);
-        return getArrayPokemon()[indice];
     }
 
     public String buscarAtaqueNPCRandomico(){
