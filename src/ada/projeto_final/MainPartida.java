@@ -9,7 +9,6 @@ public class MainPartida {
     public static void main(String[] args) {
         String nomeJogador;
         String proximoAtacante = "Jogador"; //Armazena de quem é a vez de atacar, Jogador sempre inicia atacando
-        boolean usouRevive = false;
         nomeJogador = Utilidades.lerStringUsuario("Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
         inicializarValoresMapas();
@@ -37,18 +36,15 @@ public class MainPartida {
                         System.out.println("É a sua vez, " + jogador.getNome() + " ! ");
                         System.out.println("O pokemon do adversário é: " + pokemonAdversario.getNome());
                         System.out.println("E possui o seguinte HP: " + pokemonAdversario.getVida());
-                        int acaoEscolhida = escolherAcao(jogador, usouRevive);
+                        int acaoEscolhida = escolherAcao(jogador);
                         while (acaoEscolhida == -1) {
-                            escolherAcao(jogador, usouRevive);
+                            escolherAcao(jogador);
                         }
                         if (acaoEscolhida == 2) { // revive
                             System.out.println("Revive solicitado!");
-                            if (!usouRevive) {
+                            if (jogador.getNumRevives() > 0) {
                                 System.out.println();
-                                boolean aux = reviverPokemon(jogador.getPokemonEscolhido(), jogador);
-                                if(aux) {
-                                    usouRevive = true;
-                                } else {
+                                if(!jogador.usarRevive(jogador.getPokemonEscolhido())) {
                                     System.out.println("Você deve atacar agora.");
                                     acaoEscolhida = 1;
                                 }
@@ -82,7 +78,6 @@ public class MainPartida {
                     }
                 }
                 rodada++;
-                usouRevive = false;
                 // vezDeAtaque = -1;
             } else if (rodada == 2) {
                 JogadorNPC jogadorNPC;
@@ -203,10 +198,10 @@ public class MainPartida {
          }
         return NPCDaVez.getArrayPokemon()[indice];
     }
-    public static int escolherAcao(Jogador jog, boolean usouRevive){
+    public static int escolherAcao(Jogador jog){
         while (true) {
             int entrada = Utilidades.lerIntUsuario("\nQual ação deseja realizar? (1 ou 2)\n" +
-                    "1 - Atacar\n" + ((jog.getNumRevives()>0 && !usouRevive)?"2 - Reviver":""));
+                    "1 - Atacar\n" + ((jog.getNumRevives()>0 && jog.getNumRevives() > 0)?"2 - Reviver":""));
             if (entrada == 1) {
                 return entrada;
             }
