@@ -139,7 +139,7 @@ public class MainPartida {
         for (int i = 0; i < jogadores.length; i++){
             if (jogadores[i].aptoJogar()){
                 arrayMapaNPCs[contadorOpcoes] = i;
-                mensagem += ++contadorOpcoes + " - " + jogadores[i].getNome() + "\n";
+                mensagem += ++contadorOpcoes + " - " + jogadores[i].getNome() + ": " + jogadores[i].getDescricao() + "\n";
             }
         }
 

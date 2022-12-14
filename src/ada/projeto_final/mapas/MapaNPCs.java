@@ -13,7 +13,7 @@ public class MapaNPCs {
         put("Team Aqua", new String[]
                 {"Se vestem como piratas, com uma camiseta listrada e um pano azul na cabeça, onde se encontra o emblema da Equipe Aqua.", "Água"});
         put("Team Galactic", new String[]
-                {"Os membros vestem roupas similares às de um astronauta e, em função disso, algumas pessoas que não conhecem a organização ou seus integrantes os chamam de \"homens espaciais\".", "Elétrico"});
+                {"Os membros vestem roupas similares às de um astronauta e, em função disso,\n                   algumas pessoas que não conhecem a organização ou seus integrantes os chamam de \"homens espaciais\".", "Elétrico"});
         put("Team Magma", new String[]
                 {"Os membros vestem roupas vermelhas e pretas e usam o emblema da equipe Magma em suas blusas.", "Terra"});
         put("Team Plasma", new String[]
