@@ -97,11 +97,9 @@ public class Pokemon{
         textoAtaques.append("[");
         for (int i = 0; i < ataques.length; i++){
             if (i != (ataques.length-1)){
-                textoAtaques.append(ataques[i] + " - " +
-                        MapaPokemons.buscarValorAtaque(ataques[i]) + ", ");
+                textoAtaques.append(ataques[i] + ", ");
             } else {
-                textoAtaques.append(ataques[i] + " - " +
-                        MapaPokemons.buscarValorAtaque(ataques[i]) + "]");
+                textoAtaques.append(ataques[i] + "]");
             }
         }
         return textoAtaques.toString();

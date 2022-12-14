@@ -17,6 +17,9 @@ public class MainPartida {
 
         while (jogador.aptoJogar()) {
 
+            // Se for a primeira iteração -> jogadorEscolhidoNPC será null
+            // Se jogadorEscolhidoNPC não posuir Pokémons com vida
+            // Nesse caso será necessário selecionar um NPC que esteja apto
             if(jogadorEscolhidoNPC == null || !jogadorEscolhidoNPC.aptoJogar()){
                 jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
                 jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
