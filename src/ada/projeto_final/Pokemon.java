@@ -2,7 +2,7 @@ package ada.projeto_final;
 
 import ada.projeto_final.mapas.MapaPokemons;
 
-public class Pokemon extends Evolucoes{
+public class Pokemon{
     private String nome;
     private float vida;
     private final String[] ataques;
@@ -57,7 +57,7 @@ public class Pokemon extends Evolucoes{
 
     public boolean evoluirPokemon(){
         try{
-            this.nome = getEvolucao(this.nome);
+            this.nome = MapaPokemons.getEvolucao(this.nome);
             return true;
         }catch (Exception e){
             System.out.println("Este pokemon atingiu a evolução máxima!");

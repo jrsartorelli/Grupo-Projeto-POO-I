@@ -69,6 +69,62 @@ public class MapaPokemons {
         put("Dragonite", new String[]{"Dragon Rush", "Dragon Rage", "Dragonite Dragon Claw"});
     }};
 
+    private static final HashMap<String, String> evolucoes =new HashMap<>()
+    {
+        {
+            put("Charmander","Charmeleon");
+            put("Charmeleon","Charizard");
+
+            put("Bulbasaur","Ivysaur");
+            put("Ivysaur","Venusaur");
+
+            put("Squirtle","Wartortle");
+            put("Wartortle","Blastoise");
+
+            put("Caterpie", "Metapod");
+            put("Metapod", "Butterfree");
+
+            put("Weedle", "Kakuna");
+            put("Kakuna", "Beedrill");
+
+            put("Pidgey", "Pidgeotto");
+            put("Pidgeotto", "Pidgeot");
+
+            put("Nidoran", "Nidorina");
+            put("Nidorina", "Nidoking");
+
+            put("Zubat", "Golbat");
+            put("Golbat", "Bellossom");
+
+            put("Oddish", "Gloom");
+            put("Gloom", "Leaf Stone");
+
+            put("Poliwag", "Poliwhirl");
+            put("Poliwhirl", "Poliwrath");
+
+            put("Abra", "Kadabra");
+            put("Kadabra", "Alakazam");
+
+            put("Machop", "Machoke");
+            put("Machoke", "Machamp");
+
+            put("Bellsprout", "Weepinbell");
+            put("Weepinbell", "Victreebel");
+
+            put("Geodude", "Graveler");
+            put("Graveler", "Golem");
+
+            put("Gastly", "Haunter");
+            put("Haunter", "Gengar");
+
+            put("Eevee", "Water Stone");
+            put("Water Stone", "Vaporeon");
+
+            put("Dratini", "Dragonair");
+            put("Dragonair", "Dragonite");
+        }
+    };
+
     //Mapa com o valor para cada tipo de ataque
     private static final Map<String, Integer> mapaValorAtaque = new HashMap<>();
 
@@ -143,5 +199,9 @@ public class MapaPokemons {
             }
         }
         return pokemons;
+    }
+
+    public static String getEvolucao(String nome) {
+        return evolucoes.get(nome);
     }
 }
