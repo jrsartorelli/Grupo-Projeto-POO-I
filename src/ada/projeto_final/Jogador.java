@@ -90,7 +90,7 @@ public class Jogador {
         while (true) {
             opcaoPokemonJogador = Utilidades.lerIntUsuario("\nEstes são seus Pokémons:\n" +
                     imprimirPokemons() + "\n" + nome +
-                    ", escolha seu Pokémon (1, 2 ou 3): ");
+                    ", escolha seu Pokémon para a Batalha (1, 2 ou 3): ");
             if (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3) {
                 indicePokemonEscolhido = (opcaoPokemonJogador - 1);
                 return;

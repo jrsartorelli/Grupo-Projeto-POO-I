@@ -20,7 +20,7 @@ public class MainPartida {
             if(jogadorEscolhidoNPC == null || !jogadorEscolhidoNPC.aptoJogar()){
                 jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
                 pokemonEscolhidoNPC = jogadorEscolhidoNPC.buscarPokemonNPCRandomico();
-                System.out.println("\n" + jogadorEscolhidoNPC.getNome() + " escolheu " +
+                System.out.println("\n" + jogadorEscolhidoNPC.getNome() + " escolheu o Pokémon " +
                         pokemonEscolhidoNPC.getNome() + " para iniciar no campo de batalha!");
                 System.out.println(jogadorEscolhidoNPC.getNome() + ": \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("inicio") + "\"");
             }
@@ -68,7 +68,8 @@ public class MainPartida {
                             pokemonEscolhidoNPC.aplicarDano(valorAtaque);
                             System.out.println("\n" + jogador.getPokemonEscolhido().getNome() + " atacando " +
                                     pokemonEscolhidoNPC.getNome() + "\nCom seu Ataque " + ataqueRodada + " de Poder " + valorAtaque + "\n");
-                            System.out.println("Vida de " + pokemonEscolhidoNPC.getNome() + " = " + pokemonEscolhidoNPC.getVida());
+                            System.out.println("Vida do Pokémon " + pokemonEscolhidoNPC.getNome() + " de " + jogadorEscolhidoNPC.getNome() +
+                                    " = " + pokemonEscolhidoNPC.getVida());
                         }
                     }else {
                         String ataqueNPC = jogadorEscolhidoNPC.getPokemonEscolhido().buscarAtaqueRandomico();
@@ -77,8 +78,8 @@ public class MainPartida {
                         jogador.getPokemonEscolhido().aplicarDano(valorAtaque);
                         System.out.println("\n" + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " atacando " +
                                 jogador.getPokemonEscolhido().getNome() + "\nCom seu Ataque " + ataqueNPC + " de Poder " + valorAtaque + "\n");
-                        System.out.println("Vida de " + jogador.getPokemonEscolhido().getNome() + " = " +
-                                jogador.getPokemonEscolhido().getVida() + "\n");
+                        System.out.println("Vida do seu Pokémon " + jogador.getPokemonEscolhido().getNome() +
+                                " = " + jogador.getPokemonEscolhido().getVida() + "\n");
                     }
                     //Realiza a troca de quem vai atacar na próxima rodada
                     if (proximoAtacante.equals("Jogador")){
