@@ -16,6 +16,7 @@ public class Pokemon extends Evolucoes{
         this.ataques = MapaPokemons.buscarAtaques(nome);
         this.vida = VIDA_PADRAO; // Valor padrão de vida para todos os pokémons
         this.level = 1;
+        this.indiceAtaqueEscolhido = null;
     }
 
     public String getNome() {
@@ -79,6 +80,7 @@ public class Pokemon extends Evolucoes{
 
     public String buscarAtaqueRandomico(){
         int indice = Utilidades.random.nextInt(2);
+        indiceAtaqueEscolhido = indice;
         return ataques[indice];
     }
 
