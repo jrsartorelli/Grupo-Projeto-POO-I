@@ -12,6 +12,7 @@ public class JogadorNPC {
     private String descricao;
     private Map<String, String> frasesDeEfeito = new HashMap<>();
     private Pokemon[] arrayPokemon;
+    private Integer indicePokemonEscolhido;
     private String especialidade;
 
     public JogadorNPC(String nome) {
@@ -19,6 +20,7 @@ public class JogadorNPC {
         this.descricao = MapaNPCs.buscarDescricao(nome);
         this.especialidade = MapaNPCs.buscarEspecialidade(nome);
         this.arrayPokemon = MapaPokemons.buscarPokemonsRandomicos();
+        this.indicePokemonEscolhido = null;
     }
 
     public String getNome() {
@@ -35,6 +37,33 @@ public class JogadorNPC {
 
     public Pokemon[] getArrayPokemon() {
         return arrayPokemon;
+    }
+
+    public Pokemon getPokemonEscolhido(){
+        if (indicePokemonEscolhido != null){
+            return arrayPokemon[indicePokemonEscolhido];
+        } else{
+            System.err.println("Erro! O Pokémon do NPC não foi escolhido");
+        }
+        return null;
+    }
+
+    public void setIndicePokemonEscolhido(Integer indicePokemonEscolhido) {
+        this.indicePokemonEscolhido = indicePokemonEscolhido;
+    }
+
+    public Pokemon buscarPokemonNPCRandomico(){
+        int indice = Utilidades.random.nextInt(2);
+        while(getArrayPokemon()[indice].getVida()<1){
+            indice++;
+            indice%=3;
+        }
+        setIndicePokemonEscolhido(indice);
+        return getArrayPokemon()[indice];
+    }
+
+    public String buscarAtaqueNPCRandomico(){
+        return getPokemonEscolhido().buscarAtaqueRandomico();
     }
 
     public String getEspecialidade() {

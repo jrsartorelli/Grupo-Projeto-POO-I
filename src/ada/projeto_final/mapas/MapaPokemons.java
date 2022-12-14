@@ -1,13 +1,13 @@
 package ada.projeto_final.mapas;
 
 import ada.projeto_final.Pokemon;
+import ada.projeto_final.Utilidades;
 
 import java.util.*;
 
 public class MapaPokemons {
     private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 400, 500};
     private static final Integer[] RANGE_RANDOMICO = new Integer[]{200, 300, 400};
-    private static final Random random = new Random();
 
     private static final Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
         put("Charmander", new String[]{"Fire Ball", "Flame Thrower", "Fire Blast"});
@@ -79,7 +79,7 @@ public class MapaPokemons {
         int valorAtaqueGerado;
         for (String[] ataques : mapaAtaquesNivel1.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE[0] + random.nextInt(0, RANGE_RANDOMICO[0]));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[0] + Utilidades.random.nextInt(0, RANGE_RANDOMICO[0]));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
@@ -89,7 +89,7 @@ public class MapaPokemons {
         }
         for (String[] ataques : mapaAtaquesNivel2.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE[1] + random.nextInt(0, RANGE_RANDOMICO[1]));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[1] + Utilidades.random.nextInt(0, RANGE_RANDOMICO[1]));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
@@ -99,7 +99,7 @@ public class MapaPokemons {
         }
         for (String[] ataques : mapaAtaquesNivel3.values()) {
             for (String ataque : ataques) {
-                valorAtaqueGerado = (VALOR_ATAQUE_BASE[2] + random.nextInt(0, RANGE_RANDOMICO[2]));
+                valorAtaqueGerado = (VALOR_ATAQUE_BASE[2] + Utilidades.random.nextInt(0, RANGE_RANDOMICO[2]));
                 if(!mapaValorAtaque.containsKey(ataque)){
                     mapaValorAtaque.put(ataque, valorAtaqueGerado);
                 } else {
@@ -134,7 +134,7 @@ public class MapaPokemons {
         List<String> chaves = new ArrayList<>(mapaPokemonsJaUtilizados.keySet());
 
         while (numeroPokemonsEncontrados < 3){
-            posicaoMapa = random.nextInt(chaves.size());
+            posicaoMapa = Utilidades.random.nextInt(chaves.size());
             String chaveRandomica = chaves.get(posicaoMapa);
             if (!mapaPokemonsJaUtilizados.get(chaveRandomica)){
                 pokemons[numeroPokemonsEncontrados] = new Pokemon(chaveRandomica);

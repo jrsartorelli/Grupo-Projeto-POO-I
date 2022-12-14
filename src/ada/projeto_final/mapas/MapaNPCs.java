@@ -1,12 +1,11 @@
 package ada.projeto_final.mapas;
 
 import ada.projeto_final.JogadorNPC;
+import ada.projeto_final.Utilidades;
 
 import java.util.*;
 
 public class MapaNPCs {
-
-    private static final Random random = new Random();
 
     private static final Map<String, String[]> mapaNPCs = new HashMap<>() {{
         put("Team Rocket", new String[]
@@ -90,7 +89,7 @@ public class MapaNPCs {
         List<String> chaves = new ArrayList<>(mapaNPCs.keySet());
 
         while (numeroNPCsEncontrados < 3){
-            posicaoMapa = random.nextInt(chaves.size());
+            posicaoMapa = Utilidades.random.nextInt(chaves.size());
             String chaveRandomica = chaves.get(posicaoMapa);
             if (!mapaNPCsJaUtilizados.get(chaveRandomica)){
                 jogadoresNPCs[numeroNPCsEncontrados] = new JogadorNPC(chaveRandomica);

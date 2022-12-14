@@ -77,6 +77,11 @@ public class Pokemon extends Evolucoes{
         return null;
     }
 
+    public String buscarAtaqueRandomico(){
+        int indice = Utilidades.random.nextInt(2);
+        return ataques[indice];
+    }
+
     @Override
     public String toString() {
         return "Pokemon " + nome + ": \n" +

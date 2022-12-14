@@ -52,15 +52,6 @@ public class Jogador {
         return null;
     }
 
-    public String getNomePokemonEscolhido(){
-        if (indicePokemonEscolhido != null){
-            return arrayPokemon[indicePokemonEscolhido].getNome();
-        } else{
-            System.err.println("Erro! O Pokémon não foi selecionado");
-        }
-        return null;
-    }
-
     public String imprimirPokemons(){
         StringBuilder textoPokemons = new StringBuilder();
         for (int i = 0; i < arrayPokemon.length; i++){
@@ -99,7 +90,7 @@ public class Jogador {
         while (true) {
             opcaoPokemonJogador = Utilidades.lerIntUsuario("\nEstes são seus Pokémons:\n" +
                     imprimirPokemons() + "\n" + nome +
-                    ", escolha seu Pokémon para ataque (1, 2 ou 3): ");
+                    ", escolha seu Pokémon (1, 2 ou 3): ");
             if (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3) {
                 indicePokemonEscolhido = (opcaoPokemonJogador - 1);
                 return;
