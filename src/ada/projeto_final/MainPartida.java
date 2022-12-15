@@ -28,15 +28,11 @@ public class MainPartida {
             }
 
             // Se for a primeira iteração -> jogadorEscolhidoNPC será null
-            // Se jogadorEscolhidoNPC não posuir Pokémons com vida
-            // Nesse caso será necessário selecionar um NPC que esteja apto
+            // Se jogadorEscolhidoNPC não posuir Pokémons com vida -> será necessário selecionar um NPC que esteja apto
             if(jogadorEscolhidoNPC == null || !jogadorEscolhidoNPC.aptoJogar()){
                 jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
-                jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
-                System.out.println("\n" + jogadorEscolhidoNPC.getNome() + " escolheu o Pokémon " +
-                        jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " para iniciar no campo de batalha!");
-                System.out.println(jogadorEscolhidoNPC.getNome() + ": \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("inicio") + "\"");
             }
+
             if (rodada == 1) {
                 jogador.escolherPokemon();
                 System.out.println("\nVocê escolheu: " + jogador.getPokemonEscolhido().getNome() +
@@ -197,8 +193,13 @@ public class MainPartida {
         while (true) {
             opcaoNPCJogador = Utilidades.lerIntUsuario(mensagem);
             if (opcaoNPCJogador <= contadorOpcoes && opcaoNPCJogador > 0) {
-                System.out.println("\nVocê enfrentará o Time: " + jogadores[arrayMapaNPCs[opcaoNPCJogador-1]].getNome());
-                return jogadores[arrayMapaNPCs[opcaoNPCJogador-1]];
+                JogadorNPC jogadorEscolhidoNPC = jogadores[arrayMapaNPCs[opcaoNPCJogador-1]];
+                System.out.println("\nVocê enfrentará o Time: " + jogadorEscolhidoNPC.getNome());
+                jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
+                System.out.println("\n" + jogadorEscolhidoNPC.getNome() + " escolheu o Pokémon " +
+                        jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " para iniciar no campo de batalha!");
+                System.out.println(jogadorEscolhidoNPC.getNome() + ": \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("inicio") + "\"");
+                return jogadorEscolhidoNPC;
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
