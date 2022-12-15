@@ -125,7 +125,7 @@ public class Jogador {
                     mensagem2 += i + ", ";
                 }
             }
-            mensagem += "\nEscolha com qual pokemon você quer batalhar " + mensagem2;
+            mensagem += "\nEscolha com qual Pokémon você quer entrar na Batalha " + mensagem2;
         }
 
         while (true) {
