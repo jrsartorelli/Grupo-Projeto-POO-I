@@ -19,6 +19,14 @@ public class MainPartida {
 
         while (jogador.aptoJogar()) {
 
+            // Se todos os NPCs estão mortos, o Jogador venceu e o programa finaliza
+            if(!existeNPCVivo(jogadoresNPCs)){
+                System.out.println("Parabéns " + jogador.getNome() +
+                        " !!!\nA Batalha foi árdua, mas não haviam dúvidas da sua Vitória !!!\n" +
+                        "Nos vemos na próxima Batalha !!!\n");
+                break;
+            }
+
             // Se for a primeira iteração -> jogadorEscolhidoNPC será null
             // Se jogadorEscolhidoNPC não posuir Pokémons com vida
             // Nesse caso será necessário selecionar um NPC que esteja apto
@@ -211,9 +219,6 @@ public class MainPartida {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
         }
-    }
-    public static int estabeleceVez(){
-        return Utilidades.random.nextInt(1);
     }
 
     public static int escolherAcao(Jogador jog){
