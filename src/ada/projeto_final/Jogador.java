@@ -54,8 +54,12 @@ public class Jogador {
 
     public String imprimirPokemons(){
         StringBuilder textoPokemons = new StringBuilder();
-        for (int i = 0; i < arrayPokemon.length; i++){
-            textoPokemons.append((i + 1) + " - " + arrayPokemon[i]);
+        int aux = 1;
+        for (Pokemon pokemon : arrayPokemon) {
+            if (pokemon.estaVivo()) {
+                textoPokemons.append(aux + " - " + pokemon);
+                aux++;
+            }
         }
         return textoPokemons.toString();
     }
@@ -87,11 +91,65 @@ public class Jogador {
 
     public void escolherPokemon() {
         int opcaoPokemonJogador;
+        Pokemon[] arrayMapaPokemons = new Pokemon[getArrayPokemon().length];
+        int contadorOpcoes = 0;
+        String mensagem = "\nEstes são seus Pokémons:\n";
+
+        for (int i = 0; i < getArrayPokemon().length; i++){
+            if (getArrayPokemon()[i].estaVivo()){
+                arrayMapaPokemons[i] = getArrayPokemon()[i];
+                mensagem += ++contadorOpcoes + " - " + getArrayPokemon()[i] + "\n";
+            } else {
+                arrayMapaPokemons[i] = null;
+            }
+        }
+
+        if (contadorOpcoes == 1){
+            int i = 0;
+            for (Pokemon pokemon : arrayMapaPokemons) {
+                if (pokemon != null) {
+                    indicePokemonEscolhido = i;
+                    break;
+                }
+                i++;
+            }
+            return;
+        } else {
+            String mensagem2 = "(";
+            for (int i = 1; i <= contadorOpcoes; i++){
+                if(i == (contadorOpcoes - 1)){
+                    mensagem2 += i + " ou ";
+                } else if(i == contadorOpcoes){
+                    mensagem2 += i + "): ";
+                } else{
+                    mensagem2 += i + ", ";
+                }
+            }
+            mensagem += "\nEscolha com qual pokemon você quer batalhar " + mensagem2;
+        }
+
         while (true) {
-            opcaoPokemonJogador = Utilidades.lerIntUsuario("\nEstes são seus Pokémons:\n" +
-                    imprimirPokemons() + "\n" + nome +
-                    ", escolha seu Pokémon para a Batalha (1, 2 ou 3): ");
-            if (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3) {
+            opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem);
+            int i = 0;
+            if ((contadorOpcoes == 2) && (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2)) {
+                int aux = 1;
+                for (Pokemon pokemon : arrayMapaPokemons) {
+                    if (pokemon != null) {
+                        if (opcaoPokemonJogador == 1) {
+                            indicePokemonEscolhido = i;
+                            break;
+                        } else if (opcaoPokemonJogador == 2) {
+                            if (aux == 2) {
+                                indicePokemonEscolhido = i;
+                                break;
+                            }
+                        }
+                        aux++;
+                    }
+                    i++;
+                }
+                return;
+            } else if (contadorOpcoes == 3 && (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3)) {
                 indicePokemonEscolhido = (opcaoPokemonJogador - 1);
                 return;
             } else {
