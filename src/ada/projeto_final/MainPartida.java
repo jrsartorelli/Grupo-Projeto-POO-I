@@ -188,7 +188,7 @@ public class MainPartida {
 
         while (true) {
             opcaoNPCJogador = Utilidades.lerIntUsuario(mensagem);
-            if (opcaoNPCJogador <= jogadores.length && opcaoNPCJogador > 0) {
+            if (opcaoNPCJogador <= contadorOpcoes && opcaoNPCJogador > 0) {
                 System.out.println("\nVocê enfrentará o Time: " + jogadores[arrayMapaNPCs[opcaoNPCJogador-1]].getNome());
                 return jogadores[arrayMapaNPCs[opcaoNPCJogador-1]];
             } else {
