@@ -39,12 +39,16 @@ public class Jogador {
         return arrayPokemon;
     }
 
-    public Pokemon getPokemon(int indexArrayPokemon){
+    public Pokemon getPokemon(int indexArrayPokemon) {
         return arrayPokemon[indexArrayPokemon];
     }
 
-    public Pokemon getPokemonEscolhido(){
-        if (indicePokemonEscolhido != null){
+    public void setPokemon(int indexArrayPokemon,Pokemon pokemon) {
+        this.arrayPokemon[indexArrayPokemon - 1] = pokemon;
+    }
+
+    public Pokemon getPokemonEscolhido() {
+        if (indicePokemonEscolhido != null) {
             return arrayPokemon[indicePokemonEscolhido];
         } else{
             System.err.println("Erro! O Pokémon não foi selecionado");
@@ -158,4 +162,35 @@ public class Jogador {
         }
     }
 
+    public void escolherEvolucao() {
+        int opcaoPokemonJogador;
+        while (true) {
+            opcaoPokemonJogador = Utilidades.lerIntUsuario("\nEstes são seus Pokémons:\n" +
+                    imprimirPokemons() + "\n" + nome +
+                    ", escolha seu Pokémon para a evolução (1, 2 ou 3): ");
+            if (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3) {
+                evoluirPokemon(opcaoPokemonJogador);
+                return;
+            } else {
+                System.err.println("Erro: número escolhido inválido.\n");
+            }
+        }
+    }
+
+    public void evoluirPokemon(int pokeIndex) {
+        this.arrayPokemon[pokeIndex-1].aumentarLevel();
+        setPokemon(pokeIndex,new Pokemon(MapaPokemons.getEvolucao(this.arrayPokemon[pokeIndex-1].getNome())));
+    }
+
+    @Override
+    public String toString() {
+        return "Jogador{" +
+                "nome='" + nome + '\'' +
+                ", level=" + level +
+                ", arrayPokemon=" + Arrays.toString(arrayPokemon) +
+                ", indicePokemonEscolhido=" + indicePokemonEscolhido +
+                ", numRevives=" + numRevives +
+                ", pedrasEvolução=" + pedrasEvolução +
+                '}';
+    }
 }
