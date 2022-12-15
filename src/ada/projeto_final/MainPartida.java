@@ -6,6 +6,8 @@ import ada.projeto_final.mapas.MapaPokemons;
 public class MainPartida {
     public static void main(String[] args) {
         String nomeJogador;
+        boolean jogadorPerdeuPokemon = false;
+        boolean NPCperdeuPokemon = false;
         String proximoAtacante = "Jogador"; //Armazena de quem é a vez de atacar, Jogador sempre inicia atacando
         nomeJogador = Utilidades.lerStringUsuario("Bem vindo ao jogo PokeRPG!\n" +
                 "Para iniciarmos digite o seu nome: ");
@@ -56,11 +58,12 @@ public class MainPartida {
                             if (jogador.getNumRevives() > 0) {
                                 System.out.println();
                                 if(!jogador.usarRevive(jogador.getPokemonEscolhido())) {
+                                    System.out.println("Não é possível reviver o pokemon.");
                                     System.out.println("Você deve atacar agora.");
                                     acaoEscolhida = 1;
                                 }
                             } else {
-                                System.out.println("Você já usou o revive nessa roodada. Não é possível mais reviver nenhum pokemon.");
+                                System.out.println("Você já usou o revive nessa rodada. Não é possível mais reviver nenhum pokemon.");
                                 System.out.println("Você deve atacar agora.");
                                 acaoEscolhida = 1;
                             }
@@ -76,7 +79,7 @@ public class MainPartida {
                                     jogadorEscolhidoNPC.getNome() +
                                     " = " + jogadorEscolhidoNPC.getPokemonEscolhido().getVida());
                         }
-                    }else {
+                    } else {
                         String ataqueNPC = jogadorEscolhidoNPC.getPokemonEscolhido().buscarAtaqueRandomico();
                         int valorAtaque = MapaPokemons.buscarValorAtaque(ataqueNPC);
                         System.out.println("\nÉ a vez do seu adversário: " + jogadorEscolhidoNPC.getNome() + " ! ");
@@ -85,6 +88,22 @@ public class MainPartida {
                                 jogador.getPokemonEscolhido().getNome() + "\nCom seu Ataque " + ataqueNPC + " de Poder " + valorAtaque + "\n");
                         System.out.println("Vida do seu Pokémon " + jogador.getPokemonEscolhido().getNome() +
                                 " = " + jogador.getPokemonEscolhido().getVida() + "\n");
+                        if (jogador.getPokemonEscolhido().getVida() <= 0) {
+                            System.out.println("Oh não! Você perdeu o pokemon " + jogador.getPokemonEscolhido().getNome() + "!");
+                            System.out.println(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("mataPokemon") + "\"");
+                            if (!jogador.aptoJogar()) {
+                                System.out.println("Game over: você perdeu a batalha.");
+                                System.out.println(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("vitoria") + "\"");
+                                break;
+                            }
+                            jogadorPerdeuPokemon = true;
+                        }
+                        if (jogadorPerdeuPokemon) {
+                            jogador.escolherPokemon();
+                            System.out.println("\nVocê escolheu: " + jogador.getPokemonEscolhido().getNome() +
+                                    " para continuar no campo de batalha!\n");
+                            // implementar continuação após jogador perder pokemon
+                        }
                     }
                     //Realiza a troca de quem vai atacar na próxima rodada
                     if (proximoAtacante.equals("Jogador")){
@@ -200,8 +219,8 @@ public class MainPartida {
     public static int escolherAcao(Jogador jog){
         while (true) {
             int entrada = Utilidades.lerIntUsuario("\nQual ação deseja realizar? (1 ou 2)\n" +
-                    "1 - Atacar\n" + ((jog.getNumRevives()>0 && jog.getNumRevives() > 0)?"2 - Reviver: ":": ") +
-                    "");
+                    "1 - Atacar\n" + ((jog.getNumRevives()>0 && jog.getNumRevives() > 0)?"2 - Reviver":"") +
+                    "\nEscolha uma opção: ");
             if (entrada == 1) {
                 return entrada;
             }
