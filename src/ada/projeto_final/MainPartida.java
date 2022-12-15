@@ -22,8 +22,8 @@ public class MainPartida {
             // Se todos os NPCs estão mortos, o Jogador venceu e o programa finaliza
             if(!existeNPCVivo(jogadoresNPCs)){
                 System.out.println("Parabéns " + jogador.getNome() +
-                        " !!!\nA Batalha foi árdua, mas não haviam dúvidas da sua Vitória !!!\n" +
-                        "Nos vemos na próxima Batalha !!!\n");
+                        " !!!\nA Batalha foi árdua, mas não haviam dúvidas sobre sua Vitória !!!\n" +
+                        "Nos vemos na próxima Batalha PokeRPG !!!\n");
                 break;
             }
 
@@ -168,7 +168,9 @@ public class MainPartida {
         for (int i = 0; i < jogadores.length; i++){
             if (jogadores[i].aptoJogar()){
                 arrayMapaNPCs[contadorOpcoes] = i;
-                mensagem += ++contadorOpcoes + " - " + jogadores[i].getNome() + ": " + jogadores[i].getDescricao() + "\n";
+                mensagem += ++contadorOpcoes + " - " + jogadores[i].getNome() + ": " +
+                        jogadores[i].getDescricao() + "\n" + "    Especialidade: " +
+                        jogadores[i].getEspecialidade() + "\n";
             }
         }
 
