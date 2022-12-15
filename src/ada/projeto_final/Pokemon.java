@@ -2,10 +2,12 @@ package ada.projeto_final;
 
 import ada.projeto_final.mapas.MapaPokemons;
 
+import java.util.Arrays;
+
 public class Pokemon{
     private String nome;
     private float vida;
-    private final String[] ataques;
+    private String[] ataques;
     private Integer indiceAtaqueEscolhido;
     private int level;
     private final int VIDA_PADRAO = 1000;
@@ -55,7 +57,7 @@ public class Pokemon{
         return textoAtaques.toString();
     }
 
-    public boolean evoluirPokemon(){
+    public boolean verificaEvoluirPokemon(){
         try{
             this.nome = MapaPokemons.getEvolucao(this.nome);
             return true;
@@ -84,14 +86,6 @@ public class Pokemon{
         return ataques[indice];
     }
 
-    @Override
-    public String toString() {
-        return "Pokemon " + nome + ": \n" +
-                "  - Vida Atual = " + vida + "\n" +
-                "  - Ataques = " + buscarAtaquesResumo() + "\n" +
-                "  - Nivel Atual = " + level + "\n";
-    }
-
     public String buscarAtaquesResumo(){
         StringBuilder textoAtaques = new StringBuilder();
         textoAtaques.append("[");
@@ -109,6 +103,18 @@ public class Pokemon{
 
     public void revive() {
         vida = ((3/4)*VIDA_PADRAO);
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "nome='" + nome + '\'' +
+                ", vida=" + vida +
+                ", ataques=" + Arrays.toString(ataques) +
+                ", indiceAtaqueEscolhido=" + indiceAtaqueEscolhido +
+                ", level=" + level +
+                ", VIDA_PADRAO=" + VIDA_PADRAO +
+                '}';
     }
 }
 

@@ -16,8 +16,7 @@ public class MainPartida {
         int rodada = 1;
 
         while (jogador.aptoJogar()) {
-
-            if(jogadorEscolhidoNPC == null || !jogadorEscolhidoNPC.aptoJogar()){
+            if (jogadorEscolhidoNPC == null || !jogadorEscolhidoNPC.aptoJogar()) {
                 jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
                 jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
                 System.out.println("\n" + jogadorEscolhidoNPC.getNome() + " escolheu o Pokémon " +
@@ -25,12 +24,13 @@ public class MainPartida {
                 System.out.println(jogadorEscolhidoNPC.getNome() + ": \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("inicio") + "\"");
             }
             if (rodada == 1) {
+                jogador.escolherEvolucao();
                 jogador.escolherPokemon();
                 System.out.println("\nVocê escolheu: " + jogador.getPokemonEscolhido().getNome() +
                         " para iniciar no campo de batalha!\n");
                 System.out.println("Vai começar a batalha de número \"" + rodada + "\" !!!\n");
                 String atacante;
-                if(proximoAtacante.equals("Jogador")){
+                if (proximoAtacante.equals("Jogador")) {
                     atacante = "Você";
                 } else {
                     atacante = jogadorEscolhidoNPC.getNome();
@@ -38,7 +38,7 @@ public class MainPartida {
                 System.out.println("Nessa rodada, " + atacante + " começa atacando...");
                 System.out.println();
 
-                while(jogador.aptoJogar() && jogadorEscolhidoNPC.aptoJogar()) {
+                while (jogador.aptoJogar() && jogadorEscolhidoNPC.aptoJogar()) {
                     if (proximoAtacante.equals("Jogador")) {
                         //para fazer=> escolher a ação: atacar ou reviver.
                         System.out.println("É a sua vez, " + jogador.getNome() + " ! ");
@@ -52,7 +52,7 @@ public class MainPartida {
                             System.out.println("Revive solicitado!");
                             if (jogador.getNumRevives() > 0) {
                                 System.out.println();
-                                if(!jogador.usarRevive(jogador.getPokemonEscolhido())) {
+                                if (!jogador.usarRevive(jogador.getPokemonEscolhido())) {
                                     System.out.println("Você deve atacar agora.");
                                     acaoEscolhida = 1;
                                 }
@@ -73,7 +73,7 @@ public class MainPartida {
                                     jogadorEscolhidoNPC.getNome() +
                                     " = " + jogadorEscolhidoNPC.getPokemonEscolhido().getVida());
                         }
-                    }else {
+                    } else {
                         String ataqueNPC = jogadorEscolhidoNPC.getPokemonEscolhido().buscarAtaqueRandomico();
                         int valorAtaque = MapaPokemons.buscarValorAtaque(ataqueNPC);
                         System.out.println("\nÉ a vez do seu adversário: " + jogadorEscolhidoNPC.getNome() + " ! ");
@@ -84,7 +84,7 @@ public class MainPartida {
                                 " = " + jogador.getPokemonEscolhido().getVida() + "\n");
                     }
                     //Realiza a troca de quem vai atacar na próxima rodada
-                    if (proximoAtacante.equals("Jogador")){
+                    if (proximoAtacante.equals("Jogador")) {
                         proximoAtacante = "NPC";
                     } else {
                         proximoAtacante = "Jogador";
@@ -102,6 +102,7 @@ public class MainPartida {
                 }
                 break;
             } else if (rodada == 3) {
+                jogador.escolherEvolucao();
                 JogadorNPC jogadorNPC;
                 if (jogadoresNPCs[0].aptoJogar() && jogadoresNPCs[1].aptoJogar()) {   // segue a lógica da segunda rodada, com a diferença que morreram dois
                     jogadorNPC = escolherNPC(jogadoresNPCs[2]);
@@ -116,7 +117,7 @@ public class MainPartida {
         Utilidades.fecharScanner();
     }
 
-    private static void inicializarValoresMapas(){
+    private static void inicializarValoresMapas() {
         MapaPokemons.inicializarValoresAtaque();
         MapaPokemons.inicializarValoresPokemonsJaUtilizados();
         MapaNPCs.inicializarValoresNPCsJaUtilizados();
@@ -139,24 +140,24 @@ public class MainPartida {
         int contadorOpcoes = 0;
         String mensagem = "\nEstes são os Times Adversários:\n";
 
-        for (int i = 0; i < jogadores.length; i++){
-            if (jogadores[i].aptoJogar()){
+        for (int i = 0; i < jogadores.length; i++) {
+            if (jogadores[i].aptoJogar()) {
                 arrayMapaNPCs[contadorOpcoes] = i;
                 mensagem += ++contadorOpcoes + " - " + jogadores[i].getNome() + ": " + jogadores[i].getDescricao() + "\n";
             }
         }
 
-        if (contadorOpcoes == 1){
+        if (contadorOpcoes == 1) {
             System.out.println("Você enfrentará: " + jogadores[arrayMapaNPCs[0]].getNome());
             return jogadores[arrayMapaNPCs[0]];
         } else {
             String mensagem2 = "(";
-            for (int i = 1; i <= contadorOpcoes; i++){
-                if(i == (contadorOpcoes - 1)){
+            for (int i = 1; i <= contadorOpcoes; i++) {
+                if (i == (contadorOpcoes - 1)) {
                     mensagem2 += i + " ou ";
-                } else if(i == contadorOpcoes){
+                } else if (i == contadorOpcoes) {
                     mensagem2 += i + "): ";
-                } else{
+                } else {
                     mensagem2 += i + ", ";
                 }
             }
@@ -167,8 +168,8 @@ public class MainPartida {
         while (true) {
             opcaoNPCJogador = Utilidades.lerIntUsuario(mensagem);
             if (opcaoNPCJogador <= jogadores.length && opcaoNPCJogador > 0) {
-                System.out.println("\nVocê enfrentará o Time: " + jogadores[arrayMapaNPCs[opcaoNPCJogador-1]].getNome());
-                return jogadores[arrayMapaNPCs[opcaoNPCJogador-1]];
+                System.out.println("\nVocê enfrentará o Time: " + jogadores[arrayMapaNPCs[opcaoNPCJogador - 1]].getNome());
+                return jogadores[arrayMapaNPCs[opcaoNPCJogador - 1]];
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
@@ -183,27 +184,28 @@ public class MainPartida {
                     jogador.getPokemonEscolhido().getNome() + " são:\n" + jogador.getPokemonEscolhido().buscarAtaques() +
                     "\nEscolha uma opção de ataque (1, 2 ou 3): ");
             if (opcaoAtaqueJogador == 1 || opcaoAtaqueJogador == 2 || opcaoAtaqueJogador == 3) {
-                jogador.getPokemonEscolhido().setIndiceAtaqueEscolhido(opcaoAtaqueJogador-1);
+                jogador.getPokemonEscolhido().setIndiceAtaqueEscolhido(opcaoAtaqueJogador - 1);
                 return jogador.getPokemonEscolhido().getAtaqueEscolhido();
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
         }
     }
-    public static int estabeleceVez(){
+
+    public static int estabeleceVez() {
         return Utilidades.random.nextInt(1);
     }
 
-    public static int escolherAcao(Jogador jog){
+    public static int escolherAcao(Jogador jog) {
         while (true) {
             int entrada = Utilidades.lerIntUsuario("\nQual ação deseja realizar? (1 ou 2)\n" +
-                    "1 - Atacar\n" + ((jog.getNumRevives()>0 && jog.getNumRevives() > 0)?"2 - Reviver: ":": ") +
+                    "1 - Atacar\n" + ((jog.getNumRevives() > 0 && jog.getNumRevives() > 0) ? "2 - Reviver: " : ": ") +
                     "");
             if (entrada == 1) {
                 return entrada;
             }
 
-            if (entrada == 2 && jog.getNumRevives()>0) {
+            if (entrada == 2 && jog.getNumRevives() > 0) {
                 return entrada;
             }
 
@@ -211,9 +213,9 @@ public class MainPartida {
         }
     }
 
-    public static boolean existeNPCVivo(JogadorNPC[] jogadoresNPCs){
+    public static boolean existeNPCVivo(JogadorNPC[] jogadoresNPCs) {
         for (JogadorNPC jogadorNPC : jogadoresNPCs) {
-            if(jogadorNPC.aptoJogar()){
+            if (jogadorNPC.aptoJogar()) {
                 return true;
             }
         }

@@ -180,7 +180,15 @@ public class MapaPokemons {
     }
 
     public static String[] buscarAtaques(String nomePokemon){
-        return mapaAtaquesNivel1.get(nomePokemon);
+        String[] ataques = new String[3];
+        if(mapaAtaquesNivel1.get(nomePokemon) !=null){
+            ataques = mapaAtaquesNivel1.get(nomePokemon);
+        }else if(mapaAtaquesNivel2.get(nomePokemon) != null){
+            ataques = mapaAtaquesNivel2.get(nomePokemon);
+        }else if(mapaAtaquesNivel3.get(nomePokemon) != null){
+            ataques = mapaAtaquesNivel3.get(nomePokemon);
+        }
+        return ataques;
     }
 
     public static Pokemon[] buscarPokemonsRandomicos(){
@@ -204,4 +212,7 @@ public class MapaPokemons {
     public static String getEvolucao(String nome) {
         return evolucoes.get(nome);
     }
+
+
+
 }
