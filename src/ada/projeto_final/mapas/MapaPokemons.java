@@ -165,6 +165,9 @@ public class MapaPokemons {
         }
     }
 
+    // Este método armazena informação sobre quais Pokémons já foram atribuídos
+    // Desta forma podemos garantir que na atribuição randômica dos Pokémons, tanto para o Jogador, quanto para os NPC´s
+    // Não haverá Pokémons repetidos. Devemos garantir que mapaAtaquesNivel1 possua pelo menos 12 Pokémons
     public static void inicializarValoresPokemonsJaUtilizados(){
         // Obtém os nomes de todos os Pokémons de nível 1
         Set<String> listaPokemons = mapaAtaquesNivel1.keySet();
@@ -175,6 +178,8 @@ public class MapaPokemons {
         }
     }
 
+    // mapaValorAtaque contém todos os ataques de todos os Pokémons
+    // key -> texto que define o ataque, valeu -> valor dos ataques
     public static Integer buscarValorAtaque(String ataque) {
         return mapaValorAtaque.get(ataque);
     }
