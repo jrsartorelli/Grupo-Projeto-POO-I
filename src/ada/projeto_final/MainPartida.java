@@ -52,19 +52,16 @@ public class MainPartida {
             // Enquanto Pokémon do Jogador não estiver vivo
             while (!jogador.getPokemonEscolhido().estaVivo()){
 
-                // Se tem Revive para usar — Pergunta ou aplica Revive
-                // Senão apenas escolhe o Pokémon para o Jogador e o NPC
+                // Se tem Revive para usar — Pergunta ou aplica Revive e escolhe o Pokémon para o Jogador e NPC
+                // Senão apenas escolhe o Pokémon para o Jogador e NPC
                 if (jogador.getNumRevives() > 0){
                     // Se todos os Pokémons estiverem mortos, não é perguntado se deseja utilizar o revive,
                     // é exibida a lista para selecionar qual Pokémon ele deseja reviver
-                    if (!jogador.existePokemonVivo()) {
+                    if (!jogador.existePokemonVivo() || jogador.querReviverPokemon()) {
                         jogador.escolherPokemonParaReviver();
-                    } else if (jogador.querReviverPokemon()){
-                        jogador.escolherPokemonParaReviver();
-                    } else {
-                        jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
-                        jogador.escolherPokemon();
                     }
+                    jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
+                    jogador.escolherPokemon();
                 } else {
                     jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
                     jogador.escolherPokemon();

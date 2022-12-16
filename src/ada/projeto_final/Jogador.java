@@ -146,7 +146,7 @@ public class Jogador {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
         }
-        System.out.println(getPokemonEscolhido() + "\nEste é o seu último Pokémon, cuide bem dele !!!\n");
+        System.out.println("\n" + getPokemonEscolhido() + "\nEste é o seu último Pokémon, cuide bem dele !!!\n");
     }
 
     public boolean existePokemonMorto(){
