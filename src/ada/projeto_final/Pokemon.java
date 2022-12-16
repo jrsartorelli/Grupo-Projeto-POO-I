@@ -23,10 +23,6 @@ public class Pokemon{
         return nome;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
     public float getVida() {
         return vida;
     }

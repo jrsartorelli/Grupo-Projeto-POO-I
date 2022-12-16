@@ -5,41 +5,29 @@ import ada.projeto_final.mapas.MapaPokemons;
 
 public class Jogador {
     private final String nome;
-    private Integer level;
-    private Pokemon[] arrayPokemon;
+    private final Pokemon[] arrayPokemon;
     private Integer indicePokemonEscolhido;
     private Integer numRevives;
-    private Integer pedrasEvolução;
+    private Integer pedrasEvolucao;
 
     public Jogador(String nome) {
         this.nome = nome;
-        this.level = 1;
         this.arrayPokemon = MapaPokemons.buscarPokemonsRandomicos();
         this.indicePokemonEscolhido = null;
         this.numRevives = 1;
-        this.pedrasEvolução = 0;
+        this.pedrasEvolucao = 0;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public Integer getLevel() {
-        return level;
-    }
-
     public Integer getNumRevives() {
         return numRevives;
     }
 
-    public void setLevel(Integer level) { this.level = level; }
-
     public Pokemon[] getArrayPokemon() {
         return arrayPokemon;
-    }
-
-    public Pokemon getPokemon(int indexArrayPokemon){
-        return arrayPokemon[indexArrayPokemon];
     }
 
     public Pokemon getPokemonEscolhido(){
@@ -52,13 +40,8 @@ public class Jogador {
     }
 
     public boolean isPokemonEscolhido(){
-        if (indicePokemonEscolhido != null){
-            return true;
-        }
-        return false;
+        return indicePokemonEscolhido != null;
     }
-
-    public void setNumRevives(Integer numRevives) { this.numRevives = numRevives; }
 
    //a função retorna true caso seja possível usar Reviver
     public boolean usarRevive(){
@@ -76,10 +59,7 @@ public class Jogador {
                 return true;
             }
         }
-        if(this.numRevives>0){
-            return true;
-        }
-        return false;
+        return this.numRevives > 0;
     }
 
     public boolean existePokemonVivo(){
@@ -96,34 +76,34 @@ public class Jogador {
         int opcaoPokemonJogador;
         int[] arrayMapaPokemonsVivos = new int[getArrayPokemon().length];
         int contadorOpcoes = 0;
-        String mensagem = "\nEstes são seus Pokémons:\n";
+        StringBuilder mensagem = new StringBuilder("\nEstes são seus Pokémons:\n");
 
         for (int i = 0; i < getArrayPokemon().length; i++){
             if (getArrayPokemon()[i].estaVivo()){
                 arrayMapaPokemonsVivos[contadorOpcoes] = i;
-                mensagem += ++contadorOpcoes + " - " + getArrayPokemon()[i] + "\n";
+                mensagem.append(++contadorOpcoes).append(" - ").append(getArrayPokemon()[i]).append("\n");
             }
         }
 
         if (contadorOpcoes == 1){
             indicePokemonEscolhido = arrayMapaPokemonsVivos[0];
         } else {
-            String mensagem2 = "(";
+            StringBuilder mensagem2 = new StringBuilder("(");
             for (int i = 1; i <= contadorOpcoes; i++){
                 if(i == (contadorOpcoes - 1)){
-                    mensagem2 += i + " ou ";
+                    mensagem2.append(i).append(" ou ");
                 } else if(i == contadorOpcoes){
-                    mensagem2 += i + "): ";
+                    mensagem2.append(i).append("): ");
                 } else{
-                    mensagem2 += i + ", ";
+                    mensagem2.append(i).append(", ");
                 }
             }
-            mensagem += "Escolha com qual Pokémon você quer entrar na Batalha " + mensagem2;
+            mensagem.append("Escolha com qual Pokémon você quer entrar na Batalha ").append(mensagem2);
         }
 
         while (contadorOpcoes > 1) {
 
-            opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem);
+            opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem.toString());
             if (opcaoPokemonJogador <= contadorOpcoes && opcaoPokemonJogador > 0) {
                 indicePokemonEscolhido = arrayMapaPokemonsVivos[opcaoPokemonJogador-1];
                 System.out.println("\nVocê escolheu: " + getPokemonEscolhido().getNome() +
@@ -139,41 +119,41 @@ public class Jogador {
 
     public boolean escolherPokemonParaEvoluir() {
 
-        if (pedrasEvolução <= 0){
+        if (pedrasEvolucao <= 0){
             return false;
         }
 
         int opcaoPokemonJogador;
         int[] arrayMapaPokemonsVivos = new int[getArrayPokemon().length];
         int contadorOpcoes = 0;
-        String mensagem = "\nEstes são seus Pokémons:\n";
+        StringBuilder mensagem = new StringBuilder("\nEstes são seus Pokémons:\n");
 
         for (int i = 0; i < getArrayPokemon().length; i++){
             if (getArrayPokemon()[i].estaVivo()){
                 arrayMapaPokemonsVivos[contadorOpcoes] = i;
-                mensagem += ++contadorOpcoes + " - " + getArrayPokemon()[i] + "\n";
+                mensagem.append(++contadorOpcoes).append(" - ").append(getArrayPokemon()[i]).append("\n");
             }
         }
 
         if (contadorOpcoes == 1){
             indicePokemonEscolhido = arrayMapaPokemonsVivos[0];
         } else {
-            String mensagem2 = "(";
+            StringBuilder mensagem2 = new StringBuilder("(");
             for (int i = 1; i <= contadorOpcoes; i++){
                 if(i == (contadorOpcoes - 1)){
-                    mensagem2 += i + " ou ";
+                    mensagem2.append(i).append(" ou ");
                 } else if(i == contadorOpcoes){
-                    mensagem2 += i + "): ";
+                    mensagem2.append(i).append("): ");
                 } else{
-                    mensagem2 += i + ", ";
+                    mensagem2.append(i).append(", ");
                 }
             }
-            mensagem += "Escolha qual Pokémon você quer Evoluir " + mensagem2;
+            mensagem.append("Escolha qual Pokémon você quer Evoluir ").append(mensagem2);
         }
 
         while (contadorOpcoes > 1) {
 
-            opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem);
+            opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem.toString());
             if (opcaoPokemonJogador <= contadorOpcoes && opcaoPokemonJogador > 0) {
                 indicePokemonEscolhido = arrayMapaPokemonsVivos[opcaoPokemonJogador-1];
                 System.out.println("\nVocê escolheu: " + getPokemonEscolhido().getNome() +
@@ -213,34 +193,34 @@ public class Jogador {
         int indicePokemonMortoEscolhido = -1;
         int[] arrayMapaPokemonsMortos = new int[getArrayPokemon().length];
         int contadorOpcoes = 0;
-        String mensagem = "\nEstes são seus Pokémons Mortos em Batalha:\n";
+        StringBuilder mensagem = new StringBuilder("\nEstes são seus Pokémons Mortos em Batalha:\n");
 
         for (int i = 0; i < getArrayPokemon().length; i++){
             if (!getArrayPokemon()[i].estaVivo()){
                 arrayMapaPokemonsMortos[contadorOpcoes] = i;
-                mensagem += ++contadorOpcoes + " - " + getArrayPokemon()[i] + "\n";
+                mensagem.append(++contadorOpcoes).append(" - ").append(getArrayPokemon()[i]).append("\n");
             }
         }
 
         if (contadorOpcoes == 1){
             indicePokemonMortoEscolhido = arrayMapaPokemonsMortos[0];
         } else {
-            String mensagem2 = "(";
+            StringBuilder mensagem2 = new StringBuilder("(");
             for (int i = 1; i <= contadorOpcoes; i++){
                 if(i == (contadorOpcoes - 1)){
-                    mensagem2 += i + " ou ";
+                    mensagem2.append(i).append(" ou ");
                 } else if(i == contadorOpcoes){
-                    mensagem2 += i + "): ";
+                    mensagem2.append(i).append("): ");
                 } else{
-                    mensagem2 += i + ", ";
+                    mensagem2.append(i).append(", ");
                 }
             }
-            mensagem += "Escolha qual Pokémon você quer Reviver " + mensagem2;
+            mensagem.append("Escolha qual Pokémon você quer Reviver ").append(mensagem2);
         }
 
         while (contadorOpcoes > 1) {
 
-            opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem);
+            opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem.toString());
             if (opcaoPokemonJogador <= contadorOpcoes && opcaoPokemonJogador > 0) {
                 indicePokemonMortoEscolhido = arrayMapaPokemonsMortos[opcaoPokemonJogador-1];
 
@@ -261,6 +241,6 @@ public class Jogador {
     }
 
     public void ganharPedraEvolucao(){
-        pedrasEvolução++;
+        pedrasEvolucao++;
     }
 }
