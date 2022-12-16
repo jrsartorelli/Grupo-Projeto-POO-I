@@ -102,16 +102,5 @@ public class Pokemon{
         vida = ((3/4)*VIDA_PADRAO);
     }
 
-    @Override
-    public String toString() {
-        return "Pokemon{" +
-                "nome='" + nome + '\'' +
-                ", vida=" + vida +
-                ", ataques=" + Arrays.toString(ataques) +
-                ", indiceAtaqueEscolhido=" + indiceAtaqueEscolhido +
-                ", level=" + level +
-                ", VIDA_PADRAO=" + VIDA_PADRAO +
-                '}';
-    }
 }
 

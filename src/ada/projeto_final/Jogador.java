@@ -61,7 +61,7 @@ public class Jogador {
         int aux = 1;
         for (Pokemon pokemon : arrayPokemon) {
             if (pokemon.estaVivo()) {
-                textoPokemons.append(aux + " - " + pokemon);
+                textoPokemons.append(aux + " - " + pokemon.getNome());
                 aux++;
             }
         }
@@ -102,7 +102,7 @@ public class Jogador {
         for (int i = 0; i < getArrayPokemon().length; i++){
             if (getArrayPokemon()[i].estaVivo()){
                 arrayMapaPokemons[i] = getArrayPokemon()[i];
-                mensagem += ++contadorOpcoes + " - " + getArrayPokemon()[i] + "\n";
+                mensagem += ++contadorOpcoes + " - " + getArrayPokemon()[i].getNome() + "\n";
             } else {
                 arrayMapaPokemons[i] = null;
             }
@@ -163,11 +163,44 @@ public class Jogador {
     }
 
     public void escolherEvolucao() {
-        int opcaoPokemonJogador;
+        Pokemon[] arrayMapaPokemons = new Pokemon[getArrayPokemon().length];
+        int contadorOpcoes = 0;
+        String mensagem = "\nEstes são seus Pokémons:\n";
+
+        for (int i = 0; i < getArrayPokemon().length; i++){
+            if (getArrayPokemon()[i].estaVivo()){
+                arrayMapaPokemons[i] = getArrayPokemon()[i];
+                mensagem += ++contadorOpcoes + " - " + getArrayPokemon()[i].getNome() + "\n";
+            } else {
+                arrayMapaPokemons[i] = null;
+            }
+        }
+        if (contadorOpcoes == 1){
+            int i = 0;
+            for (Pokemon pokemon : arrayMapaPokemons) {
+                if (pokemon != null) {
+                    indicePokemonEscolhido = i;
+                    break;
+                }
+                i++;
+            }
+            return;
+        } else {
+            String mensagem2 = "(";
+            for (int i = 1; i <= contadorOpcoes; i++){
+                if(i == (contadorOpcoes - 1)){
+                    mensagem2 += i + " ou ";
+                } else if(i == contadorOpcoes){
+                    mensagem2 += i + "): ";
+                } else{
+                    mensagem2 += i + ", ";
+                }
+            }
+            mensagem += "\nEscolha com qual Pokémon você quer evoluir " + mensagem2;
+        }
+
         while (true) {
-            opcaoPokemonJogador = Utilidades.lerIntUsuario("\nEstes são seus Pokémons:\n" +
-                    imprimirPokemons() + "\n" + nome +
-                    ", escolha seu Pokémon para a evolução (1, 2 ou 3): ");
+            int opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem);
             if (opcaoPokemonJogador == 1 || opcaoPokemonJogador == 2 || opcaoPokemonJogador == 3) {
                 evoluirPokemon(opcaoPokemonJogador);
                 return;
@@ -182,15 +215,4 @@ public class Jogador {
         setPokemon(pokeIndex,new Pokemon(MapaPokemons.getEvolucao(this.arrayPokemon[pokeIndex-1].getNome())));
     }
 
-    @Override
-    public String toString() {
-        return "Jogador{" +
-                "nome='" + nome + '\'' +
-                ", level=" + level +
-                ", arrayPokemon=" + Arrays.toString(arrayPokemon) +
-                ", indicePokemonEscolhido=" + indicePokemonEscolhido +
-                ", numRevives=" + numRevives +
-                ", pedrasEvolução=" + pedrasEvolução +
-                '}';
-    }
 }

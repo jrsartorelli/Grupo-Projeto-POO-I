@@ -118,6 +118,7 @@ public class MainPartida {
                 }
                 rodada++;
             } else if (rodada == 2) {
+                jogador.escolherEvolucao();
                 JogadorNPC jogadorNPC;
                 if (jogadoresNPCs[0].aptoJogar()) {     //se morreu o primeiro npc, passa o segundo e o terceiro como escolha
                     jogadorNPC = escolherNPC(jogadoresNPCs[1], jogadoresNPCs[2]);
@@ -128,6 +129,7 @@ public class MainPartida {
                 }
                 break;
             } else if (rodada == 3) {
+                jogador.escolherEvolucao();
                 JogadorNPC jogadorNPC;
                 if (jogadoresNPCs[0].aptoJogar() && jogadoresNPCs[1].aptoJogar()) {   // segue a lógica da segunda rodada, com a diferença que morreram dois
                     jogadorNPC = escolherNPC(jogadoresNPCs[2]);
