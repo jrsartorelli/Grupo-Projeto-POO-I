@@ -36,7 +36,12 @@ public class MainPartida {
                 System.out.println("\nSaudações " +jogador.getNome() + ", você desintegrou todo o time: " + jogadorEscolhidoNPC.getNome());
                 System.out.println("Por sua bravura, você vai ganhar a Pedra da Evolução !!!");
                 jogador.ganharPedraEvolucao();
-                // aqui será realizada a chamada do método onde o Jogador escolhe um dos Pokémons Vivos para receber a Evolução
+                if (jogador.escolherPokemonParaEvoluir()){
+                    System.out.println("Processo de Evolução Concluído !");
+                }
+                else {
+                    System.err.println("Falha no processo de Evolução, ligar no Suporte");
+                }
                 jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
                 jogador.escolherPokemon();
             }
@@ -55,7 +60,6 @@ public class MainPartida {
 
             // Enquanto Pokémon do Jogador não estiver vivo
             while (!jogador.getPokemonEscolhido().estaVivo()){
-
                 // Se tem Revive para usar — Pergunta ou aplica Revive e escolhe o Pokémon para o Jogador e NPC
                 // Senão apenas escolhe o Pokémon para o Jogador e NPC
                 if (jogador.getNumRevives() > 0){
