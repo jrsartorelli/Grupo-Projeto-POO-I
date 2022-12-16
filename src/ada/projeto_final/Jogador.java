@@ -150,6 +150,12 @@ public class Jogador {
     }
 
     public boolean querReviverPokemon(){
+
+        // Se todos os Pokémons estiverem mortos -> não perguntamos se deseja utilizar o revive
+        // Irá obrigatoriamente utilizar o Revive
+        if (!aptoJogar()){
+            return true;
+        }
         while (true) {
             int opcao = Utilidades.lerIntUsuario("\n" + nome + ", você possui um ou mais Pokémons com possibilidade de Reviver!\n" +
                     "Deseja utilizar essa opção?\n1 - Sim\n2 - Não\nEscolha sua opção (1 ou 2): ");
@@ -206,8 +212,12 @@ public class Jogador {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
         }
-        arrayPokemon[indicePokemonMortoEscolhido].revive();
-        usarRevive();
-        System.out.println(arrayPokemon[indicePokemonMortoEscolhido].getNome() + " está Vivo !!!\n");
+        if (usarRevive()){
+            arrayPokemon[indicePokemonMortoEscolhido].revive();
+            System.out.println(arrayPokemon[indicePokemonMortoEscolhido].getNome() + " está Vivo !!!");
+        } else {
+            System.err.println(nome + ", você já utilizou o Revive, portanto não é possível reviver o " +
+                    arrayPokemon[indicePokemonMortoEscolhido].getNome());
+        }
     }
 }
