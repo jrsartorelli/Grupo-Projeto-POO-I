@@ -33,6 +33,10 @@ public class MainPartida {
             // Se jogadorEscolhidoNPC não posuir Pokémons com vida — será necessário selecionar um NPC que esteja apto e
             // será necessário que o Jogador escolha um novo Pokémon para jogar após selecionado outro NPC
             if (!jogadorEscolhidoNPC.aptoJogar()){
+                System.out.println("\nSaudações " +jogador.getNome() + ", você desintegrou todo o time: " + jogadorEscolhidoNPC.getNome());
+                System.out.println("Por sua bravura, você vai ganhar a Pedra da Evolução !!!");
+                jogador.ganharPedraEvolucao();
+                // aqui será realizada a chamada do método onde o Jogador escolhe um dos Pokémons Vivos para receber a Evolução
                 jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
                 jogador.escolherPokemon();
             }

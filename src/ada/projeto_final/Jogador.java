@@ -149,15 +149,6 @@ public class Jogador {
         System.out.println("\n" + getPokemonEscolhido() + "\nEste é o seu último Pokémon, cuide bem dele !!!\n");
     }
 
-    public boolean existePokemonMorto(){
-        for (Pokemon pokemon : arrayPokemon) {
-            if(!pokemon.estaVivo()){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean querReviverPokemon(){
 
         // Se todos os Pokémons estiverem mortos -> não perguntamos se deseja utilizar o revive
@@ -229,5 +220,9 @@ public class Jogador {
             System.err.println(nome + ", você já utilizou o Revive, portanto não é possível reviver o " +
                     arrayPokemon[indicePokemonMortoEscolhido].getNome());
         }
+    }
+
+    public void ganharPedraEvolucao(){
+        pedrasEvolução++;
     }
 }
