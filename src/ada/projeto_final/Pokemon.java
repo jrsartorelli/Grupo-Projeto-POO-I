@@ -66,8 +66,8 @@ public class Pokemon{
 
     public void aumentarVida(){
         int aumento = Utilidades.random.nextInt(100,this.level * 300);
-        this.vida += aumento;
-        System.out.println("Seu Pokémon agora se chama " + this.nome + " e recebeu um Upgrade de sua Vida em " + aumento);
+        this.vida += VIDA_PADRAO + aumento;
+        System.out.println("Seu Pokémon agora se chama " + this.nome+ ", seus status atuais são:" );
     }
 
     public void setIndiceAtaqueEscolhido(Integer indiceAtaqueEscolhido) {

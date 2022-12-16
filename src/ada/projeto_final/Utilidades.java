@@ -24,7 +24,7 @@ public class Utilidades {
     }
 
     public static void imprimirComPausa(String mensagem){
-        int tempoMiliSegundos = random.nextInt(35, 90);
+        int tempoMiliSegundos = random.nextInt(0, 10);
         for (int i = 0; i < mensagem.length(); i++) {  // Itera pelos caracteres da string
             System.out.print(mensagem.charAt(i));  // Exibe o caractere atual no console
             try {
