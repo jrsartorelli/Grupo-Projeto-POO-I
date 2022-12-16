@@ -71,6 +71,15 @@ public class Jogador {
         return false;
     }
 
+    public boolean existePokemonVivo(){
+        for(Pokemon pokemon:this.arrayPokemon){
+            if(pokemon.estaVivo()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void escolherPokemon() {
 
         int opcaoPokemonJogador;
