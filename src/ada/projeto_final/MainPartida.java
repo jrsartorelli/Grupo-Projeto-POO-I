@@ -21,7 +21,7 @@ public class MainPartida {
 
             // Se todos os NPCs estão mortos, o Jogador venceu e o programa finaliza
             if (!existeNPCVivo(jogadoresNPCs)){
-                System.out.println("Parabéns " + jogador.getNome() +
+                System.out.println("\nParabéns " + jogador.getNome() +
                         " !!!\nA Batalha foi árdua, mas não haviam dúvidas sobre sua Vitória !!!\n" +
                         "Nos vemos na próxima Batalha PokeRPG !!!\n");
                 break;
@@ -32,6 +32,11 @@ public class MainPartida {
             // será necessário que o Jogador escolha um novo Pokémon para jogar depois de selecionado um outro NPC
             if (jogadorEscolhidoNPC == null || !jogadorEscolhidoNPC.aptoJogar()){
                 boolean precisaJogadorEscolherPokemon = false;
+                // Esta sequencia de condicionais foi criada para garantir a ordem na exibição
+                // Primeiro escolhe outro NPC e depois o jogador escolhe seu Pokémon para a próxima rodada
+
+                // Se não for a primeira iteração -> quer dizer que foi trocado o NPC, portanto o jogador deverá escolher
+                // outro Pokémon para a próxima rodada
                 if (jogadorEscolhidoNPC != null){
                     precisaJogadorEscolherPokemon = true;
                 }
