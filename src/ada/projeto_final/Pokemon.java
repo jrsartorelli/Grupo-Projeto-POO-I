@@ -4,11 +4,11 @@ import ada.projeto_final.mapas.MapaPokemons;
 
 public class Pokemon{
     private String nome;
-    private float vida;
+    private int vida;
     private String[] ataques;
     private Integer indiceAtaqueEscolhido;
     private int level;
-    private final float VIDA_PADRAO = 1000;
+    private final int VIDA_PADRAO = 1000;
 
     // Cria um pokémon com o nome e os ataques especificados
     public Pokemon(String nome) {
@@ -23,7 +23,7 @@ public class Pokemon{
         return nome;
     }
 
-    public float getVida() {
+    public int getVida() {
         return vida;
     }
 
@@ -111,7 +111,7 @@ public class Pokemon{
     }
 
     public void revive() {
-        vida = (0.75f * VIDA_PADRAO);
+        vida = (int) (0.75f * VIDA_PADRAO);
     }
 }
 
