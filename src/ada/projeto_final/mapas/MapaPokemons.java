@@ -6,8 +6,8 @@ import ada.projeto_final.Utilidades;
 import java.util.*;
 
 public class MapaPokemons {
-    private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 400, 500};
-    private static final Integer[] RANGE_RANDOMICO = new Integer[]{200, 300, 400};
+    private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 500, 700};
+    private static final Integer[] RANGE_RANDOMICO = new Integer[]{300, 500, 700};
 
     private static final Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
         put("Charmander", new String[]{"Fire Ball", "Flame Thrower", "Fire Blast"});
