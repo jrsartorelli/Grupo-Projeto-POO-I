@@ -8,7 +8,7 @@ public class Pokemon{
     private final String[] ataques;
     private Integer indiceAtaqueEscolhido;
     private int level;
-    private final int VIDA_PADRAO = 1000;
+    private final float VIDA_PADRAO = 1000;
 
     // Cria um pokémon com o nome e os ataques especificados
     public Pokemon(String nome) {
@@ -105,7 +105,7 @@ public class Pokemon{
     }
 
     public void revive() {
-        vida = ((3/4)*VIDA_PADRAO);
+        vida = (0.75f * VIDA_PADRAO);
     }
 }
 

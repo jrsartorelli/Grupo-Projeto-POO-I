@@ -59,6 +59,9 @@ public class JogadorNPC {
             indice%=3;
         }
         setIndicePokemonEscolhido(indice);
+        System.out.println("\n" + getNome() + " escolheu o Pokémon " +
+                getPokemonEscolhido().getNome() + " para iniciar no campo de batalha!");
+        System.out.println(getNome() + ": \"" + getFrasesDeEfeito().get("inicio") + "\"");
     }
 
     public String buscarAtaqueNPCRandomico(){
