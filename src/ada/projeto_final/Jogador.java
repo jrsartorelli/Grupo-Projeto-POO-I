@@ -58,18 +58,6 @@ public class Jogador {
         return false;
     }
 
-    public String imprimirPokemons(){
-        StringBuilder textoPokemons = new StringBuilder();
-        int aux = 1;
-        for (Pokemon pokemon : arrayPokemon) {
-            if (pokemon.estaVivo()) {
-                textoPokemons.append(aux + " - " + pokemon);
-                aux++;
-            }
-        }
-        return textoPokemons.toString();
-    }
-
     public void setNumRevives(Integer numRevives) { this.numRevives = numRevives; }
 
    //a função retorna true caso seja possível usar Reviver
@@ -147,6 +135,56 @@ public class Jogador {
             }
         }
         System.out.println("\n" + getPokemonEscolhido() + "\nEste é o seu último Pokémon, cuide bem dele !!!\n");
+    }
+
+    public boolean escolherPokemonParaEvoluir() {
+
+        if (pedrasEvolução <= 0){
+            return false;
+        }
+
+        int opcaoPokemonJogador;
+        int[] arrayMapaPokemonsVivos = new int[getArrayPokemon().length];
+        int contadorOpcoes = 0;
+        String mensagem = "\nEstes são seus Pokémons:\n";
+
+        for (int i = 0; i < getArrayPokemon().length; i++){
+            if (getArrayPokemon()[i].estaVivo()){
+                arrayMapaPokemonsVivos[contadorOpcoes] = i;
+                mensagem += ++contadorOpcoes + " - " + getArrayPokemon()[i] + "\n";
+            }
+        }
+
+        if (contadorOpcoes == 1){
+            indicePokemonEscolhido = arrayMapaPokemonsVivos[0];
+        } else {
+            String mensagem2 = "(";
+            for (int i = 1; i <= contadorOpcoes; i++){
+                if(i == (contadorOpcoes - 1)){
+                    mensagem2 += i + " ou ";
+                } else if(i == contadorOpcoes){
+                    mensagem2 += i + "): ";
+                } else{
+                    mensagem2 += i + ", ";
+                }
+            }
+            mensagem += "Escolha qual Pokémon você quer Evoluir " + mensagem2;
+        }
+
+        while (contadorOpcoes > 1) {
+
+            opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem);
+            if (opcaoPokemonJogador <= contadorOpcoes && opcaoPokemonJogador > 0) {
+                indicePokemonEscolhido = arrayMapaPokemonsVivos[opcaoPokemonJogador-1];
+                System.out.println("\nVocê escolheu: " + getPokemonEscolhido().getNome() +
+                        " para iniciar o Processo da Evolução !\n");
+                break;
+            } else {
+                System.err.println("Erro: número escolhido inválido.\n");
+            }
+        }
+        System.out.println("Se prepare para ver seu Pokémon Evoluído !!!\n");
+        return arrayPokemon[indicePokemonEscolhido].evoluirPokemon();
     }
 
     public boolean querReviverPokemon(){

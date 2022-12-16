@@ -185,7 +185,12 @@ public class MapaPokemons {
     }
 
     public static String[] buscarAtaques(String nomePokemon){
-        return mapaAtaquesNivel1.get(nomePokemon);
+        if(mapaAtaquesNivel1.containsKey(nomePokemon)){
+            return mapaAtaquesNivel1.get(nomePokemon);
+        } else if (mapaAtaquesNivel2.containsKey(nomePokemon)) {
+            return mapaAtaquesNivel2.get(nomePokemon);
+        }
+        return mapaAtaquesNivel3.get(nomePokemon);
     }
 
     public static Pokemon[] buscarPokemonsRandomicos(){

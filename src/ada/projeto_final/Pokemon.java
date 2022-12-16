@@ -5,7 +5,7 @@ import ada.projeto_final.mapas.MapaPokemons;
 public class Pokemon{
     private String nome;
     private float vida;
-    private final String[] ataques;
+    private String[] ataques;
     private Integer indiceAtaqueEscolhido;
     private int level;
     private final float VIDA_PADRAO = 1000;
@@ -49,19 +49,29 @@ public class Pokemon{
     public String buscarAtaques() {
         StringBuilder textoAtaques = new StringBuilder();
         for (int i = 0; i < ataques.length; i++){
-            textoAtaques.append((i + 1) + " - " + ataques[i] + "\n");
+            textoAtaques.append(i + 1).append(" - ").append(ataques[i]).append("\n");
         }
         return textoAtaques.toString();
     }
 
     public boolean evoluirPokemon(){
         try{
+            aumentarLevel();
+            aumentarVida();
             this.nome = MapaPokemons.getEvolucao(this.nome);
+            this.ataques = MapaPokemons.buscarAtaques(nome);
+            System.out.println(this);
             return true;
-        }catch (Exception e){
+        } catch (Exception e){
             System.out.println("Este pokemon atingiu a evolução máxima!");
             return false;
         }
+    }
+
+    public void aumentarVida(){
+        int aumento = Utilidades.random.nextInt(100,this.level * 300);
+        this.vida += aumento;
+        System.out.println("Seu Pokémon agora se chama " + this.nome + " e recebeu um Upgrade de sua Vida em " + aumento);
     }
 
     public void setIndiceAtaqueEscolhido(Integer indiceAtaqueEscolhido) {
@@ -96,9 +106,9 @@ public class Pokemon{
         textoAtaques.append("[");
         for (int i = 0; i < ataques.length; i++){
             if (i != (ataques.length-1)){
-                textoAtaques.append(ataques[i] + ", ");
+                textoAtaques.append(ataques[i]).append(", ");
             } else {
-                textoAtaques.append(ataques[i] + "]");
+                textoAtaques.append(ataques[i]).append("]");
             }
         }
         return textoAtaques.toString();
