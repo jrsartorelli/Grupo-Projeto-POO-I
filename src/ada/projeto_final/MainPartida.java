@@ -33,11 +33,11 @@ public class MainPartida {
             // Se jogadorEscolhidoNPC não posuir Pokémons com vida — será necessário selecionar um NPC que esteja apto e
             // será necessário que o Jogador escolha um novo Pokémon para jogar após selecionado outro NPC
             if (!jogadorEscolhidoNPC.aptoJogar()){
-                System.out.println("\nSaudações " +jogador.getNome() + ", você desintegrou todo o time: " + jogadorEscolhidoNPC.getNome());
-                System.out.println("Por sua bravura, você vai ganhar a Pedra da Evolução !!!");
+                Utilidades.imprimirComPausa("\nSaudações " +jogador.getNome() + ", você desintegrou todo o time: " + jogadorEscolhidoNPC.getNome() + "\n");
+                Utilidades.imprimirComPausa("Por sua bravura, você vai ganhar a Pedra da Evolução !!!\n");
                 jogador.ganharPedraEvolucao();
                 if (jogador.escolherPokemonParaEvoluir()){
-                    System.out.println("Processo de Evolução Concluído !");
+                    Utilidades.imprimirComPausa("Processo de Evolução Concluído !\n");
                 }
                 else {
                     System.err.println("Falha no processo de Evolução, ligar no Suporte");
@@ -76,44 +76,44 @@ public class MainPartida {
                 }
             }
 
-            System.out.println("Estamos iniciando a Rodada: " + rodada);
+            Utilidades.imprimirComPausa("Estamos iniciando a Rodada: " + rodada + "\n");
             rodada++;
 
             while (jogador.getPokemonEscolhido().estaVivo() && jogadorEscolhidoNPC.getPokemonEscolhido().estaVivo()) {
 
                 if (proximoAtacante.equals("Jogador")) {
-                    System.out.println("\nÉ a sua vez, " + jogador.getNome() + " ! ");
-                    System.out.println("O Pokémon do adversário é: " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome());
-                    System.out.println("E possui o seguinte HP: " + jogadorEscolhidoNPC.getPokemonEscolhido().getVida());
+                    Utilidades.imprimirComPausa("\nÉ a sua vez, " + jogador.getNome() + " ! \n");
+                    Utilidades.imprimirComPausa("O Pokémon do adversário é: " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + "\n");
+                    Utilidades.imprimirComPausa("E possui o seguinte HP: " + jogadorEscolhidoNPC.getPokemonEscolhido().getVida() + "\n");
 
                     String ataqueRodada = solicitaAtaque(jogador);
                     int valorAtaque = MapaPokemons.buscarValorAtaque(ataqueRodada);
                     jogadorEscolhidoNPC.getPokemonEscolhido().aplicarDano(valorAtaque);
-                    System.out.println("\n" + jogador.getPokemonEscolhido().getNome() + " atacando " +
+                    Utilidades.imprimirComPausa("\n" + jogador.getPokemonEscolhido().getNome() + " atacando " +
                             jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + "\nCom seu Ataque " + ataqueRodada +
-                            " de Poder " + valorAtaque + "\n");
-                    System.out.println("Vida do Pokémon " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " de " +
+                            " de Poder " + valorAtaque + "\n\n");
+                    Utilidades.imprimirComPausa("Vida do Pokémon " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " de " +
                             jogadorEscolhidoNPC.getNome() +
-                            " = " + jogadorEscolhidoNPC.getPokemonEscolhido().getVida());
+                            " = " + jogadorEscolhidoNPC.getPokemonEscolhido().getVida() + "\n");
 
                     if (jogadorEscolhidoNPC.getPokemonEscolhido().getVida() <= 0) {
-                        System.out.println("\nParabéns " + jogador.getNome() + " !!!\nSeu Pokémon " + jogador.getPokemonEscolhido().getNome() +
+                        Utilidades.imprimirComPausa("\nParabéns " + jogador.getNome() + " !!!\nSeu Pokémon " + jogador.getPokemonEscolhido().getNome() +
                                 " detonou o Pokémon " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " do Time: " +
-                                jogadorEscolhidoNPC.getNome() + "\n");
-                        System.out.println(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("perdePokemon") + "\"");
+                                jogadorEscolhidoNPC.getNome() + "\n\n");
+                        Utilidades.imprimirComPausa(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("perdePokemon") + "\"\n");
                     }
                 } else {
-                    System.out.println("\nAgora é a vez de " + jogadorEscolhidoNPC.getNome() + " atacar, se prepare !!!");
+                    Utilidades.imprimirComPausa("\nAgora é a vez de " + jogadorEscolhidoNPC.getNome() + " atacar, se prepare !!!\n");
                     String ataqueNPC = jogadorEscolhidoNPC.getPokemonEscolhido().buscarAtaqueRandomico();
                     int valorAtaque = MapaPokemons.buscarValorAtaque(ataqueNPC);
                     jogador.getPokemonEscolhido().aplicarDano(valorAtaque);
-                    System.out.println("\n" + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " atacando " +
-                            jogador.getPokemonEscolhido().getNome() + "\nCom seu Ataque " + ataqueNPC + " de Poder " + valorAtaque + "\n");
-                    System.out.println("Vida do seu Pokémon " + jogador.getPokemonEscolhido().getNome() +
-                            " = " + jogador.getPokemonEscolhido().getVida());
+                    Utilidades.imprimirComPausa("\n" + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " atacando " +
+                            jogador.getPokemonEscolhido().getNome() + "\nCom seu Ataque " + ataqueNPC + " de Poder " + valorAtaque + "\n\n");
+                    Utilidades.imprimirComPausa("Vida do seu Pokémon " + jogador.getPokemonEscolhido().getNome() +
+                            " = " + jogador.getPokemonEscolhido().getVida() + "\n");
                     if (jogador.getPokemonEscolhido().getVida() <= 0) {
-                        System.out.println("Oh não! Você perdeu o pokemon " + jogador.getPokemonEscolhido().getNome() + "!");
-                        System.out.println(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("mataPokemon") + "\"");
+                        Utilidades.imprimirComPausa("Oh não! Você perdeu o pokemon " + jogador.getPokemonEscolhido().getNome() + "!\n");
+                        Utilidades.imprimirComPausa(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("mataPokemon") + "\"\n");
                     }
                 }
 
@@ -124,8 +124,8 @@ public class MainPartida {
                 }
             }
             if (!jogador.aptoJogar()){
-                System.out.println("\n" + jogador.getNome() + ", Infelizmente você perdeu todos os seus Pokémons !!!\nO time: " +
-                        jogadorEscolhidoNPC.getNome() + " é o Grande Vencedor !!!\nDesejo mais sorte em sua próxima Batalha !!!\n");
+                Utilidades.imprimirComPausa("\n" + jogador.getNome() + ", Infelizmente você perdeu todos os seus Pokémons !!!\nO time: " +
+                        jogadorEscolhidoNPC.getNome() + " é o Grande Vencedor !!!\nDesejo mais sorte em sua próxima Batalha !!!\n\n");
             }
         }
         Utilidades.fecharScanner();
