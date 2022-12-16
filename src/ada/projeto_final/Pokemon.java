@@ -14,8 +14,8 @@ public class Pokemon{
     public Pokemon(String nome) {
         this.nome = nome;
         this.ataques = MapaPokemons.buscarAtaques(nome);
-        this.vida = VIDA_PADRAO; // Valor padrão de vida para todos os pokémons
         this.level = 1;
+        this.vida = VIDA_PADRAO + Utilidades.random.nextInt(100, this.level * 300);
         this.indiceAtaqueEscolhido = null;
     }
 
@@ -56,10 +56,10 @@ public class Pokemon{
 
     public boolean evoluirPokemon(){
         try{
-            aumentarLevel();
-            aumentarVida();
             this.nome = MapaPokemons.getEvolucao(this.nome);
             this.ataques = MapaPokemons.buscarAtaques(nome);
+            aumentarLevel();
+            aumentarVida();
             System.out.println(this);
             return true;
         } catch (Exception e){
