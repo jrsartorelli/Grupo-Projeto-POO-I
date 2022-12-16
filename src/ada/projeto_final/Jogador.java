@@ -83,13 +83,22 @@ public class Jogador {
     }
 
     public boolean aptoJogar(){
-        for(Pokemon poke:this.arrayPokemon){
-            if(poke.estaVivo()){
+        for(Pokemon pokemon:this.arrayPokemon){
+            if(pokemon.estaVivo()){
                 return true;
             }
         }
         if(this.numRevives>0){
             return true;
+        }
+        return false;
+    }
+
+    public boolean existePokemonVivo(){
+        for(Pokemon pokemon:this.arrayPokemon){
+            if(pokemon.estaVivo()){
+                return true;
+            }
         }
         return false;
     }
@@ -208,6 +217,7 @@ public class Jogador {
 
                 System.out.println("\nVocê escolheu: " + arrayPokemon[indicePokemonMortoEscolhido].getNome() +
                         " para reviver!\n");
+                break;
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");
             }

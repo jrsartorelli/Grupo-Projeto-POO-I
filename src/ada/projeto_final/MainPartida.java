@@ -50,17 +50,23 @@ public class MainPartida {
             }
 
             // Se Pokémon do Jogador não estiver vivo, será necessário escolher outro
-            if (!jogador.getPokemonEscolhido().estaVivo()){
-                // Perguntamos ao Jogador se deseja reviver um dos Pokémons mortos
+            while (!jogador.getPokemonEscolhido().estaVivo()){
                 // Se todos os Pokémons estiverem mortos, não é perguntado se deseja utilizar o revive,
                 // mostramos a lista para selecionar qual Pokémon ele deseja reviver
+                // Senão, perguntamos ao Jogador se deseja reviver um dos Pokémons mortos
                 if (jogador.getNumRevives() > 0){
-                    if (jogador.querReviverPokemon()) {
+                    if (!jogador.existePokemonVivo()) {
                         jogador.escolherPokemonParaReviver();
+                    } else if (jogador.querReviverPokemon()){
+                        jogador.escolherPokemonParaReviver();
+                    } else {
+                        jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
+                        jogador.escolherPokemon();
                     }
+                } else {
+                    jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
+                    jogador.escolherPokemon();
                 }
-                jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
-                jogador.escolherPokemon();
             }
 
             System.out.println("Estamos iniciando a Rodada: " + rodada);
