@@ -89,14 +89,6 @@ public class Pokemon{
         return ataques[indice];
     }
 
-    @Override
-    public String toString() {
-        return "Pokemon " + nome + ": \n" +
-                "  - Vida Atual = " + vida + "\n" +
-                "  - Ataques = " + buscarAtaquesResumo() + "\n" +
-                "  - Nivel Atual = " + level + "\n";
-    }
-
     public String buscarAtaquesResumo(){
         StringBuilder textoAtaques = new StringBuilder();
         textoAtaques.append("[");
@@ -112,6 +104,14 @@ public class Pokemon{
 
     public void revive() {
         vida = (int) (0.75f * VIDA_PADRAO);
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon " + nome + ": \n" +
+                "  - Vida Atual = " + vida + "\n" +
+                "  - Ataques = " + buscarAtaquesResumo() + "\n" +
+                "  - Nivel Atual = " + level + "\n";
     }
 }
 
