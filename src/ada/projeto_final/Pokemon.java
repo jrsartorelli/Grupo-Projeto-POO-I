@@ -56,7 +56,7 @@ public class Pokemon{
             this.ataques = MapaPokemons.buscarAtaques(nome);
             aumentarLevel();
             aumentarVida();
-            Utilidades.imprimirComPausa("\n" + this.toString() + "\n");
+            Utilidades.imprimirComPausa("\n" + this + "\n");
             return true;
         } catch (Exception e){
             Utilidades.imprimirComPausa("Este pokemon atingiu a evolução máxima!");
