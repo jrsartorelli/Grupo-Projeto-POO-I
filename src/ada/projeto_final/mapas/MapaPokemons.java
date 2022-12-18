@@ -6,8 +6,8 @@ import ada.projeto_final.Utilidades;
 import java.util.*;
 
 public class MapaPokemons {
-    private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 500, 700};
-    private static final Integer[] RANGE_RANDOMICO = new Integer[]{300, 500, 700};
+    private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 350, 400};
+    private static final Integer[] RANGE_RANDOMICO = new Integer[]{300, 350, 400};
 
     private static final Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
         put("Charmander", new String[]{"Fire Ball", "Flame Thrower", "Fire Blast"});
@@ -45,7 +45,7 @@ public class MapaPokemons {
         put("Weepinbell", new String[]{"Weep Razor Leaf", "Weep Poison Powder", "Weep Vine Whip"});
         put("Graveler", new String[]{"Grav Stone Edge", "Grav Rock Blast", "Grav Rock Slide"});
         put("Haunter", new String[]{"Hau Shadow Ball", "Hau Hypnoses", "Hau Confuse Ray"});
-        put("Water Stone", new String[]{"WS Water Pulse", "WS Stone Edge", "WS Muddy Water"});
+        put("Vaporeon", new String[]{"Acid Armor", "Vaporeon Hydro Pump", "Aurora Beam"});
         put("Dragonair", new String[]{"Drag Rain Dance", "Drag Hyper Beam", "Drag Dragon Rage"});
     }};
 
@@ -65,7 +65,7 @@ public class MapaPokemons {
         put("Victreebel", new String[]{"Swallow", "Sword Dance", "Vict Vine Whip"});
         put("Golem", new String[]{"Rock Blast", "Sandstorm", "Magnitude"});
         put("Gengar", new String[]{"Dream Eater", "Dark Pulse", "Atonish"});
-        put("Vaporeon", new String[]{"Acid Armor", "Vaporeon Hydro Pump", "Aurora Beam"});
+        put("Jolteon", new String[]{"Thunderbolt", "Shadow Ball", "Thunder Wave"});
         put("Dragonite", new String[]{"Dragon Rush", "Dragon Rage", "Dragonite Dragon Claw"});
     }};
 
@@ -97,7 +97,7 @@ public class MapaPokemons {
             put("Golbat", "Bellossom");
 
             put("Oddish", "Gloom");
-            put("Gloom", "Leaf Stone");
+            put("Gloom", "Bellossom");
 
             put("Poliwag", "Poliwhirl");
             put("Poliwhirl", "Poliwrath");
@@ -117,8 +117,8 @@ public class MapaPokemons {
             put("Gastly", "Haunter");
             put("Haunter", "Gengar");
 
-            put("Eevee", "Water Stone");
-            put("Water Stone", "Vaporeon");
+            put("Eevee", "Vaporeon");
+            put("Vaporeon", "Jolteon");
 
             put("Dratini", "Dragonair");
             put("Dragonair", "Dragonite");
@@ -213,5 +213,10 @@ public class MapaPokemons {
 
     public static String getEvolucao(String nome) {
         return evolucoes.get(nome);
+    }
+
+    public static void limparMapas(){
+        mapaPokemonsJaUtilizados.clear();
+        mapaValorAtaque.clear();
     }
 }

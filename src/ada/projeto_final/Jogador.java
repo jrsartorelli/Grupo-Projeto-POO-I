@@ -106,15 +106,15 @@ public class Jogador {
             opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem.toString());
             if (opcaoPokemonJogador <= contadorOpcoes && opcaoPokemonJogador > 0) {
                 indicePokemonEscolhido = arrayMapaPokemonsVivos[opcaoPokemonJogador-1];
-                System.out.println("\nVocê escolheu: " + getPokemonEscolhido().getNome() +
-                        " para iniciar no campo de Batalha!\n");
-                System.out.println("Se prepare! Vai começar a Batalha !!!");
+                Utilidades.imprimirComPausa("\nVocê escolheu: " + getPokemonEscolhido().getNome() +
+                        " para iniciar no campo de Batalha!\n\n");
+                Utilidades.imprimirComPausa("Se prepare! Vai começar a Batalha !!!\n");
                 return;
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
         }
-        System.out.println("\n" + getPokemonEscolhido() + "\nEste é o seu último Pokémon, cuide bem dele !!!\n");
+        Utilidades.imprimirComPausa("\n" + getPokemonEscolhido() + "\nEste é o seu último Pokémon, cuide bem dele !!!\n\n");
     }
 
     public boolean escolherPokemonParaEvoluir() {
@@ -156,14 +156,14 @@ public class Jogador {
             opcaoPokemonJogador = Utilidades.lerIntUsuario(mensagem.toString());
             if (opcaoPokemonJogador <= contadorOpcoes && opcaoPokemonJogador > 0) {
                 indicePokemonEscolhido = arrayMapaPokemonsVivos[opcaoPokemonJogador-1];
-                System.out.println("\nVocê escolheu: " + getPokemonEscolhido().getNome() +
-                        " para iniciar o Processo da Evolução !\n");
+                Utilidades.imprimirComPausa("\nVocê escolheu: " + getPokemonEscolhido().getNome() +
+                        " para iniciar o Processo da Evolução !\n\n");
                 break;
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
         }
-        System.out.println("Se prepare para ver seu Pokémon Evoluído !!!\n");
+        Utilidades.imprimirComPausa("Se prepare para ver seu Pokémon Evoluído !!!\n\n");
         return arrayPokemon[indicePokemonEscolhido].evoluirPokemon();
     }
 
@@ -224,8 +224,8 @@ public class Jogador {
             if (opcaoPokemonJogador <= contadorOpcoes && opcaoPokemonJogador > 0) {
                 indicePokemonMortoEscolhido = arrayMapaPokemonsMortos[opcaoPokemonJogador-1];
 
-                System.out.println("\nVocê escolheu: " + arrayPokemon[indicePokemonMortoEscolhido].getNome() +
-                        " para reviver!\n");
+                Utilidades.imprimirComPausa("\nVocê escolheu: " + arrayPokemon[indicePokemonMortoEscolhido].getNome() +
+                        " para reviver!\n\n");
                 break;
             } else {
                 System.err.println("Erro: número escolhido inválido.\n");
@@ -233,7 +233,7 @@ public class Jogador {
         }
         if (usarRevive()){
             arrayPokemon[indicePokemonMortoEscolhido].revive();
-            System.out.println(arrayPokemon[indicePokemonMortoEscolhido].getNome() + " está Vivo !!!");
+            Utilidades.imprimirComPausa(arrayPokemon[indicePokemonMortoEscolhido].getNome() + " está Vivo !!!\n");
         } else {
             System.err.println(nome + ", você já utilizou o Revive, portanto não é possível reviver o " +
                     arrayPokemon[indicePokemonMortoEscolhido].getNome());

@@ -58,9 +58,9 @@ public class JogadorNPC {
             indice%=3;
         }
         setIndicePokemonEscolhido(indice);
-        System.out.println("\n" + getNome() + " escolheu o Pokémon " +
-                getPokemonEscolhido().getNome() + " com Vida = " + getPokemonEscolhido().getVida() + " para iniciar no campo de batalha!");
-        System.out.println(getNome() + ": \"" + getFrasesDeEfeito().get("inicio") + "\"");
+        Utilidades.imprimirComPausa("\n" + getNome() + " escolheu o Pokémon " +
+                getPokemonEscolhido().getNome() + " com Vida = " + getPokemonEscolhido().getVida() + " para iniciar no campo de batalha!\n");
+        Utilidades.imprimirComPausa(getNome() + ": \"" + getFrasesDeEfeito().get("inicio") + "\"\n");
     }
 
     public String getEspecialidade() {

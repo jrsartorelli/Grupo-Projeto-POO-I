@@ -4,7 +4,24 @@ import ada.projeto_final.mapas.MapaNPCs;
 import ada.projeto_final.mapas.MapaPokemons;
 
 public class MainPartida {
+
     public static void main(String[] args) {
+        int vitoriaJogador = 0;
+        int vitoriaNPC = 0;
+        for (int i = 0; i < 100; i++){
+            if (testeMain()==0){
+                vitoriaJogador++;
+            } else {
+                vitoriaNPC++;
+            }
+        }
+        System.out.println("Número de Vitórias Jogador: " + vitoriaJogador);
+        System.out.println("Número de Vitórias NPC: " + vitoriaNPC);
+        Utilidades.fecharScanner();
+    }
+
+    public static int testeMain(){
+        int vitoria = -1;
         String nomeJogador;
         String proximoAtacante = "Jogador"; //Armazena de quem é a vez de atacar, Jogador sempre inicia atacando
         nomeJogador = Utilidades.lerStringUsuario("Bem vindo ao jogo PokeRPG!\n" +
@@ -19,8 +36,9 @@ public class MainPartida {
 
             // Se todos os NPCs estão mortos, o Jogador venceu e o programa finaliza
             if(verificaZerarJogo(jogadoresNPCs,jogador)){
+                vitoria = 0;
                 break;
-            };
+            }
 
             // Se for a primeira iteração — jogadorEscolhidoNPC será null
             if (jogadorEscolhidoNPC == null){
@@ -53,13 +71,16 @@ public class MainPartida {
 
             batalhaPokemons(jogador,jogadorEscolhidoNPC,proximoAtacante);
 
-            verificaGameOver(jogador,jogadorEscolhidoNPC);
-
+            if (verificaGameOver(jogador,jogadorEscolhidoNPC)){
+                vitoria = 1;
+            }
         }
-        Utilidades.fecharScanner();
+
+        MapaPokemons.limparMapas();
+        MapaNPCs.limparMapas();
+
+        return vitoria;
     }
-
-
 
     private static void inicializarValoresMapas(){
         MapaPokemons.inicializarValoresAtaque();
@@ -77,12 +98,9 @@ public class MainPartida {
                 if (!jogador.existePokemonVivo() || jogador.querReviverPokemon()) {
                     jogador.escolherPokemonParaReviver();
                 }
-                jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
-                jogador.escolherPokemon();
-            } else {
-                jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
-                jogador.escolherPokemon();
             }
+            jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
+            jogador.escolherPokemon();
         }
     }
 
@@ -177,7 +195,7 @@ public class MainPartida {
             }
         }
 
-        System.out.println("\nVocê enfrentará o Time: " + jogadorEscolhidoNPC.getNome());
+        Utilidades.imprimirComPausa("\nVocê enfrentará o Time: " + jogadorEscolhidoNPC.getNome() + "\n");
         jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
 
         return jogadorEscolhidoNPC;
@@ -210,35 +228,39 @@ public class MainPartida {
 
     private static boolean verificaZerarJogo(JogadorNPC[] jogadoresNPCs, Jogador jogador) {
         if (!existeNPCVivo(jogadoresNPCs)){
-            System.out.println("\nParabéns " + jogador.getNome() +
+            Utilidades.imprimirComPausa("\nParabéns " + jogador.getNome() +
                     " !!!\nA Batalha foi árdua, mas não haviam dúvidas sobre sua Vitória !!!\n" +
-                    "Nos vemos na próxima Batalha PokeRPG !!!\n");
+                    "Nos vemos na próxima Batalha PokeRPG !!!\n\n");
             return true;
         }
         return false;
     }
 
-    private static void verificaGameOver(Jogador jogador, JogadorNPC jogadorEscolhidoNPC) {
+    private static boolean verificaGameOver(Jogador jogador, JogadorNPC jogadorEscolhidoNPC) {
         if (!jogador.aptoJogar()){
+            Utilidades.imprimirComPausa(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("vitoria") + "\"\n");
             Utilidades.imprimirComPausa("\n" + jogador.getNome() + ", Infelizmente você perdeu todos os seus Pokémons !!!\nO time: " +
                     jogadorEscolhidoNPC.getNome() + " é o Grande Vencedor !!!\nDesejo mais sorte em sua próxima Batalha !!!\n\n");
+            return true;
         }
+        return false;
     }
 
     private static JogadorNPC trocarNPC(Jogador jogador, JogadorNPC jogadorEscolhidoNPC, JogadorNPC[] jogadoresNPCs) {
-            Utilidades.imprimirComPausa("\nSaudações " +jogador.getNome() + ", você desintegrou todo o time: " + jogadorEscolhidoNPC.getNome() + "\n");
-            Utilidades.imprimirComPausa("Por sua bravura, você vai ganhar a Pedra da Evolução !!!\n");
-            jogador.ganharPedraEvolucao();
-            if (jogador.escolherPokemonParaEvoluir()){
-                Utilidades.imprimirComPausa("Processo de Evolução Concluído !\n");
-            }
-            else {
-                System.err.println("Falha no processo de Evolução, ligar no Suporte");
-            }
-            jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
-            jogador.escolherPokemon();
+        Utilidades.imprimirComPausa(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("derrota") + "\"\n\n");
+        Utilidades.imprimirComPausa("Saudações " +jogador.getNome() + ", você desintegrou todo o time: " + jogadorEscolhidoNPC.getNome() + "\n");
+        Utilidades.imprimirComPausa("Por sua bravura, você vai ganhar a Pedra da Evolução !!!\n");
+        jogador.ganharPedraEvolucao();
+        if (jogador.escolherPokemonParaEvoluir()){
+            Utilidades.imprimirComPausa("Processo de Evolução Concluído !\n");
+        }
+        else {
+            System.err.println("Falha no processo de Evolução, ligar no Suporte");
+        }
+        jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
+        jogador.escolherPokemon();
 
-            return jogadorEscolhidoNPC;
+        return jogadorEscolhidoNPC;
     }
 
 }

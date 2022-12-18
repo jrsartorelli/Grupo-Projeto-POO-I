@@ -106,4 +106,8 @@ public class MapaNPCs {
         }
         return jogadoresNPCs;
     }
+
+    public static void limparMapas(){
+        mapaNPCsJaUtilizados.clear();
+    }
 }

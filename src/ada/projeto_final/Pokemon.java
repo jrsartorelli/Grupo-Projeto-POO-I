@@ -56,18 +56,18 @@ public class Pokemon{
             this.ataques = MapaPokemons.buscarAtaques(nome);
             aumentarLevel();
             aumentarVida();
-            System.out.println(this);
+            Utilidades.imprimirComPausa("\n" + this.toString() + "\n");
             return true;
         } catch (Exception e){
-            System.out.println("Este pokemon atingiu a evolução máxima!");
+            Utilidades.imprimirComPausa("Este pokemon atingiu a evolução máxima!");
             return false;
         }
     }
 
     public void aumentarVida(){
-        int aumento = Utilidades.random.nextInt(100,this.level * 300);
+        int aumento = Utilidades.random.nextInt(0,this.level * 200);
         this.vida += VIDA_PADRAO + aumento;
-        System.out.println("Seu Pokémon agora se chama " + this.nome+ ", seus status atuais são:" );
+        Utilidades.imprimirComPausa("Seu Pokémon agora se chama " + this.nome+ ", seus status atuais são:" );
     }
 
     public void setIndiceAtaqueEscolhido(Integer indiceAtaqueEscolhido) {
