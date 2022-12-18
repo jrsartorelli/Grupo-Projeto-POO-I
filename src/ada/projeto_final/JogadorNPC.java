@@ -39,6 +39,7 @@ public class JogadorNPC {
     }
 
     public Pokemon getPokemonEscolhido(){
+
         if (indicePokemonEscolhido != null){
             return arrayPokemon[indicePokemonEscolhido];
         } else{
