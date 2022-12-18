@@ -7,7 +7,7 @@ import java.util.*;
 
 public class MapaNPCs {
 
-    private static final Map<String, String[]> mapaNPCs = new HashMap<>() {{
+    private static final Map<String, String[]> MAPA_NPCs = new HashMap<>() {{
         put("Team Rocket", new String[]
                 {"Usam roupas brancas com um chamativo R na frente das blusas, em tons de roxo, mas nas quartas feira é rosa.", "Fogo"});
         put("Team Aqua", new String[]
@@ -36,7 +36,7 @@ public class MapaNPCs {
                 {"Os membros vestem roupas em tons de verde e azul e usam o emblema da equipe Elemental em suas blusas.", "Voador"});
     }};
 
-    private static final Map<String, String> frasesDeEfeitoIndice0 = new HashMap<>(){{
+    private static final Map<String, String> FRASES_DE_EFEITO_INDICE_0 = new HashMap<>(){{
         put("inicio", "Prepare-se para encrenca e possivelmente em dobro!"); // Início da luta
         put("derrota", "Droga! Eu ainda te pego!"); // quando o NPC perde
         put("vitoria", "Para estender nosso poder às estrelas!"); // quando o NPC ganha
@@ -44,7 +44,7 @@ public class MapaNPCs {
         put("mataPokemon", "Equipe decolando na velocidade da luz!"); // quando mata o pokemon do jogador
     }};
 
-    private static final Map<String, String> frasesDeEfeitoIndice1 = new HashMap<>(){{
+    private static final Map<String, String> FRASES_DE_EFEITO_INDICE_1 = new HashMap<>(){{
         put("inicio", "Renda-se agora ou prepare-se para lutar!"); // Início da luta
         put("derrota", "Bem que disseram que você não é iniciante."); // quando o NPC perde
         put("vitoria", "A destruição mundial é nosso trabalho imundo!"); // quando o NPC ganha
@@ -52,7 +52,7 @@ public class MapaNPCs {
         put("mataPokemon", "Encrenca em dobro!"); // quando mata o pokemon do jogador
     }};
 
-    private static final Map<String, String> frasesDeEfeitoIndice2 = new HashMap<>(){{
+    private static final Map<String, String> FRASES_DE_EFEITO_INDICE_2 = new HashMap<>(){{
         put("inicio", "Outra vez é a questão? É o pirralho que temos então!"); // Início da luta
         put("derrota", "Não tem jeito! Vou ter que ficar mais forte para a próxima!"); // quando o NPC perde
         put("vitoria", "Levando o caos para toda parte"); // quando o NPC ganha
@@ -60,25 +60,25 @@ public class MapaNPCs {
         put("mataPokemon", "Tirando de todas as pessoas a fé"); // quando mata o pokemon do jogador
     }};
 
-    private static final Map<String, Boolean> mapaNPCsJaUtilizados = new HashMap<>();
+    private static final Map<String, Boolean> MAPA_NPCS_JA_UTILIZADOS = new HashMap<>();
 
     public static void inicializarValoresNPCsJaUtilizados(){
         // Obtém os nomes de todos os NPC´s
-        Set<String> listaNPCs = mapaNPCs.keySet();
+        Set<String> listaNPCs = MAPA_NPCs.keySet();
 
         // Insere todos os NPCs no Mapa mapaNPCsJaUtilizados, inicialmente todos não utilizados
         for (String nomeNPC : listaNPCs) {
-            mapaNPCsJaUtilizados.put(nomeNPC, false);
+            MAPA_NPCS_JA_UTILIZADOS.put(nomeNPC, false);
         }
     }
 
     public static String buscarDescricao(String nomeNPC){
-        String[] valores = mapaNPCs.get(nomeNPC);
+        String[] valores = MAPA_NPCs.get(nomeNPC);
         return valores[0];
     }
 
     public static String buscarEspecialidade(String nomeNPC){
-        String[] valores = mapaNPCs.get(nomeNPC);
+        String[] valores = MAPA_NPCs.get(nomeNPC);
         return valores[1];
     }
 
@@ -86,21 +86,21 @@ public class MapaNPCs {
         int numeroNPCsEncontrados = 0;
         int posicaoMapa;
         JogadorNPC[] jogadoresNPCs = new JogadorNPC[3];
-        List<String> chaves = new ArrayList<>(mapaNPCs.keySet());
+        List<String> chaves = new ArrayList<>(MAPA_NPCs.keySet());
 
         while (numeroNPCsEncontrados < 3){
             posicaoMapa = Utilidades.random.nextInt(chaves.size());
             String chaveRandomica = chaves.get(posicaoMapa);
-            if (!mapaNPCsJaUtilizados.get(chaveRandomica)){
+            if (!MAPA_NPCS_JA_UTILIZADOS.get(chaveRandomica)){
                 jogadoresNPCs[numeroNPCsEncontrados] = new JogadorNPC(chaveRandomica);
                 if (numeroNPCsEncontrados == 0){
-                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(frasesDeEfeitoIndice0);
+                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(FRASES_DE_EFEITO_INDICE_0);
                 } else if (numeroNPCsEncontrados == 1) {
-                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(frasesDeEfeitoIndice1);
+                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(FRASES_DE_EFEITO_INDICE_1);
                 } else {
-                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(frasesDeEfeitoIndice2);
+                    jogadoresNPCs[numeroNPCsEncontrados].setFrasesDeEfeito(FRASES_DE_EFEITO_INDICE_2);
                 }
-                mapaNPCsJaUtilizados.put(chaveRandomica, true);
+                MAPA_NPCS_JA_UTILIZADOS.put(chaveRandomica, true);
                 numeroNPCsEncontrados++;
             }
         }
@@ -110,6 +110,6 @@ public class MapaNPCs {
     //Método para limpar a atribuição dos Pokémons já utilizados,
     //chamado quando reiniciar Batalha
     public static void limparMapas(){
-        mapaNPCsJaUtilizados.clear();
+        MAPA_NPCS_JA_UTILIZADOS.clear();
     }
 }

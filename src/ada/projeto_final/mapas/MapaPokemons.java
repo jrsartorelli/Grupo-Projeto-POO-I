@@ -9,7 +9,7 @@ public class MapaPokemons {
     private static final Integer[] VALOR_ATAQUE_BASE = new Integer[]{300, 350, 400};
     private static final Integer[] RANGE_RANDOMICO = new Integer[]{300, 350, 400};
 
-    private static final Map<String, String[]> mapaAtaquesNivel1 = new HashMap<>() {{
+    private static final Map<String, String[]> MAPA_ATAQUES_NIVEL_1 = new HashMap<>() {{
         put("Charmander", new String[]{"Fire Ball", "Flame Thrower", "Fire Blast"});
         put("Bulbasaur", new String[]{"Take Down", "Petal Dance", "Solar Beam"});
         put("Squirtle", new String[]{"Bubble Beam", "Water Gun", "Aqua Tail"});
@@ -29,7 +29,7 @@ public class MapaPokemons {
         put("Dratini", new String[]{"Tail Swipe", "Wrap", "Dart Aqua Tail"});
     }};
 
-    private static final Map<String, String[]> mapaAtaquesNivel2 = new HashMap<>() {{
+    private static final Map<String, String[]> MAPA_ATAQUES_NIVEL_2 = new HashMap<>() {{
         put("Charmeleon", new String[]{"Fire Spin", "Dragon Claw", "Headbutt"});
         put("Ivysaur", new String[]{"Vine Whip", "Ivysaur Razor Leaf", "Ivysaur Tackle"});
         put("Wartortle", new String[]{"Hydro Pump", "Rapid Spin", "Bite"});
@@ -49,7 +49,7 @@ public class MapaPokemons {
         put("Dragonair", new String[]{"Drag Rain Dance", "Drag Hyper Beam", "Drag Dragon Rage"});
     }};
 
-    private static final Map<String, String[]> mapaAtaquesNivel3 = new HashMap<>() {{
+    private static final Map<String, String[]> MAPA_ATAQUES_NIVEL_3 = new HashMap<>() {{
         put("Charizard", new String[]{"Slash", "Charizard Steel Wing", "Seismic Toss"});
         put("Venusaur", new String[]{"Venusaur Sweet Scent", "Venusaur Sleep Powder", "Frenzy Plant"});
         put("Blastoise", new String[]{"Withdraw", "Rain Dance", "Skull Bash"});
@@ -69,7 +69,7 @@ public class MapaPokemons {
         put("Dragonite", new String[]{"Dragon Rush", "Dragon Rage", "Dragonite Dragon Claw"});
     }};
 
-    private static final HashMap<String, String> evolucoes =new HashMap<>()
+    private static final HashMap<String, String> EVOLUCOES =new HashMap<>()
     {
         {
             put("Charmander","Charmeleon");
@@ -126,39 +126,39 @@ public class MapaPokemons {
     };
 
     //Mapa com o valor para cada tipo de ataque
-    private static final Map<String, Integer> mapaValorAtaque = new HashMap<>();
+    private static final Map<String, Integer> MAPA_VALOR_ATAQUE = new HashMap<>();
 
     //Mapa para aramazenar os Pokémons que já foram atribuídos ao Jogador e aos NPC´s
-    private static final Map<String, Boolean> mapaPokemonsJaUtilizados = new HashMap<>();
+    private static final Map<String, Boolean> MAPA_POKEMONS_JA_UTILIZADOS = new HashMap<>();
 
     //Insere de forma randômica os valores para todos os ataques listados
     public static void inicializarValoresAtaque(){
         int valorAtaqueGerado;
-        for (String[] ataques : mapaAtaquesNivel1.values()) {
+        for (String[] ataques : MAPA_ATAQUES_NIVEL_1.values()) {
             for (String ataque : ataques) {
                 valorAtaqueGerado = (VALOR_ATAQUE_BASE[0] + Utilidades.random.nextInt(0, RANGE_RANDOMICO[0]));
-                if(!mapaValorAtaque.containsKey(ataque)){
-                    mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                if(!MAPA_VALOR_ATAQUE.containsKey(ataque)){
+                    MAPA_VALOR_ATAQUE.put(ataque, valorAtaqueGerado);
                 } else {
                     System.err.println("Já contem o valor chave para o Ataque: " + ataque);
                 }
             }
         }
-        for (String[] ataques : mapaAtaquesNivel2.values()) {
+        for (String[] ataques : MAPA_ATAQUES_NIVEL_2.values()) {
             for (String ataque : ataques) {
                 valorAtaqueGerado = (VALOR_ATAQUE_BASE[1] + Utilidades.random.nextInt(0, RANGE_RANDOMICO[1]));
-                if(!mapaValorAtaque.containsKey(ataque)){
-                    mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                if(!MAPA_VALOR_ATAQUE.containsKey(ataque)){
+                    MAPA_VALOR_ATAQUE.put(ataque, valorAtaqueGerado);
                 } else {
                     System.err.println("Já contem o valor chave para o Ataque: " + ataque);
                 }
             }
         }
-        for (String[] ataques : mapaAtaquesNivel3.values()) {
+        for (String[] ataques : MAPA_ATAQUES_NIVEL_3.values()) {
             for (String ataque : ataques) {
                 valorAtaqueGerado = (VALOR_ATAQUE_BASE[2] + Utilidades.random.nextInt(0, RANGE_RANDOMICO[2]));
-                if(!mapaValorAtaque.containsKey(ataque)){
-                    mapaValorAtaque.put(ataque, valorAtaqueGerado);
+                if(!MAPA_VALOR_ATAQUE.containsKey(ataque)){
+                    MAPA_VALOR_ATAQUE.put(ataque, valorAtaqueGerado);
                 } else {
                     System.err.println("Já contem o valor chave para o Ataque: " + ataque);
                 }
@@ -171,42 +171,42 @@ public class MapaPokemons {
     // Não haverá Pokémons repetidos. Devemos garantir que mapaAtaquesNivel1 possua pelo menos 12 Pokémons
     public static void inicializarValoresPokemonsJaUtilizados(){
         // Obtém os nomes de todos os Pokémons de nível 1
-        Set<String> listaPokemons = mapaAtaquesNivel1.keySet();
+        Set<String> listaPokemons = MAPA_ATAQUES_NIVEL_1.keySet();
 
         // Insere todos os Pokémons de nível 1 no Mapa mapaPokemonsUtilizados
         for (String nomePokemon : listaPokemons) {
-            mapaPokemonsJaUtilizados.put(nomePokemon, false);
+            MAPA_POKEMONS_JA_UTILIZADOS.put(nomePokemon, false);
         }
     }
 
     // mapaValorAtaque contém todos os ataques de todos os Pokémons
     // key -> texto que define o ataque, valeu -> valor dos ataques
     public static Integer buscarValorAtaque(String ataque) {
-        return mapaValorAtaque.get(ataque);
+        return MAPA_VALOR_ATAQUE.get(ataque);
     }
 
     //Retorna os 3 ataques do Pokémon
     public static String[] buscarAtaques(String nomePokemon){
-        if(mapaAtaquesNivel1.containsKey(nomePokemon)){
-            return mapaAtaquesNivel1.get(nomePokemon);
-        } else if (mapaAtaquesNivel2.containsKey(nomePokemon)) {
-            return mapaAtaquesNivel2.get(nomePokemon);
+        if(MAPA_ATAQUES_NIVEL_1.containsKey(nomePokemon)){
+            return MAPA_ATAQUES_NIVEL_1.get(nomePokemon);
+        } else if (MAPA_ATAQUES_NIVEL_2.containsKey(nomePokemon)) {
+            return MAPA_ATAQUES_NIVEL_2.get(nomePokemon);
         }
-        return mapaAtaquesNivel3.get(nomePokemon);
+        return MAPA_ATAQUES_NIVEL_3.get(nomePokemon);
     }
 
     public static Pokemon[] buscarPokemonsRandomicos(){
         int numeroPokemonsEncontrados = 0;
         int posicaoMapa;
         Pokemon[] pokemons = new Pokemon[3];
-        List<String> chaves = new ArrayList<>(mapaPokemonsJaUtilizados.keySet());
+        List<String> chaves = new ArrayList<>(MAPA_POKEMONS_JA_UTILIZADOS.keySet());
 
         while (numeroPokemonsEncontrados < 3){
             posicaoMapa = Utilidades.random.nextInt(chaves.size());
             String chaveRandomica = chaves.get(posicaoMapa);
-            if (!mapaPokemonsJaUtilizados.get(chaveRandomica)){
+            if (!MAPA_POKEMONS_JA_UTILIZADOS.get(chaveRandomica)){
                 pokemons[numeroPokemonsEncontrados] = new Pokemon(chaveRandomica);
-                mapaPokemonsJaUtilizados.put(chaveRandomica, true);
+                MAPA_POKEMONS_JA_UTILIZADOS.put(chaveRandomica, true);
                 numeroPokemonsEncontrados++;
             }
         }
@@ -215,11 +215,11 @@ public class MapaPokemons {
 
     //Retorna o nome do próximo Pokémon na Evolução
     public static String getEvolucao(String nome) {
-        return evolucoes.get(nome);
+        return EVOLUCOES.get(nome);
     }
 
     public static void limparMapas(){
-        mapaPokemonsJaUtilizados.clear();
-        mapaValorAtaque.clear();
+        MAPA_POKEMONS_JA_UTILIZADOS.clear();
+        MAPA_VALOR_ATAQUE.clear();
     }
 }

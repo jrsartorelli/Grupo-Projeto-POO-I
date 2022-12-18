@@ -7,41 +7,41 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JogadorNPC {
-    private final String nome;
-    private final String descricao;
+    private final String NOME;
+    private final String DESCRICAO;
     private Map<String, String> frasesDeEfeito = new HashMap<>();
-    private final Pokemon[] arrayPokemon;
+    private final Pokemon[] ARRAY_POKEMON;
     private Integer indicePokemonEscolhido;
-    private final String especialidade;
+    private final String ESPECIALIDADE;
 
     public JogadorNPC(String nome) {
-        this.nome = nome;
-        this.descricao = MapaNPCs.buscarDescricao(nome);
-        this.especialidade = MapaNPCs.buscarEspecialidade(nome);
-        this.arrayPokemon = MapaPokemons.buscarPokemonsRandomicos();
+        this.NOME = nome;
+        this.DESCRICAO = MapaNPCs.buscarDescricao(nome);
+        this.ESPECIALIDADE = MapaNPCs.buscarEspecialidade(nome);
+        this.ARRAY_POKEMON = MapaPokemons.buscarPokemonsRandomicos();
         this.indicePokemonEscolhido = null;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNOME() {
+        return NOME;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDESCRICAO() {
+        return DESCRICAO;
     }
 
     public Map<String, String> getFrasesDeEfeito() {
         return frasesDeEfeito;
     }
 
-    public Pokemon[] getArrayPokemon() {
-        return arrayPokemon;
+    public Pokemon[] getARRAY_POKEMON() {
+        return ARRAY_POKEMON;
     }
 
     public Pokemon getPokemonEscolhido(){
 
         if (indicePokemonEscolhido != null){
-            return arrayPokemon[indicePokemonEscolhido];
+            return ARRAY_POKEMON[indicePokemonEscolhido];
         } else{
             System.err.println("Erro! O Pokémon do NPC não foi escolhido");
         }
@@ -54,18 +54,18 @@ public class JogadorNPC {
 
     public void escolherPokemonNPCRandomico(){
         int indice = Utilidades.random.nextInt(2);
-        while(getArrayPokemon()[indice].getVida()<1){
+        while(getARRAY_POKEMON()[indice].getVida()<1){
             indice++;
             indice%=3;
         }
         setIndicePokemonEscolhido(indice);
-        Utilidades.imprimirComPausa("\n" + getNome() + " escolheu o Pokémon " +
+        Utilidades.imprimirComPausa("\n" + getNOME() + " escolheu o Pokémon " +
                 getPokemonEscolhido().getNome() + " com Vida = " + getPokemonEscolhido().getVida() + " para iniciar no campo de batalha!\n");
-        Utilidades.imprimirComPausa(getNome() + ": \"" + getFrasesDeEfeito().get("inicio") + "\"\n");
+        Utilidades.imprimirComPausa(getNOME() + ": \"" + getFrasesDeEfeito().get("inicio") + "\"\n");
     }
 
-    public String getEspecialidade() {
-        return especialidade;
+    public String getESPECIALIDADE() {
+        return ESPECIALIDADE;
     }
 
     public void setFrasesDeEfeito(Map<String, String> frasesDeEfeito) {
@@ -73,7 +73,7 @@ public class JogadorNPC {
     }
 
     public boolean aptoJogar(){
-        for(Pokemon poke: this.arrayPokemon) {
+        for(Pokemon poke: this.ARRAY_POKEMON) {
             if (poke.estaVivo()) {
                 return true;
             }
