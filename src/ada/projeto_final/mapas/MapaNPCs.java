@@ -107,6 +107,8 @@ public class MapaNPCs {
         return jogadoresNPCs;
     }
 
+    //Método para limpar a atribuição dos Pokémons já utilizados,
+    //chamado quando reiniciar Batalha
     public static void limparMapas(){
         mapaNPCsJaUtilizados.clear();
     }

@@ -128,6 +128,7 @@ public class MapaPokemons {
     //Mapa com o valor para cada tipo de ataque
     private static final Map<String, Integer> mapaValorAtaque = new HashMap<>();
 
+    //Mapa para aramazenar os Pokémons que já foram atribuídos ao Jogador e aos NPC´s
     private static final Map<String, Boolean> mapaPokemonsJaUtilizados = new HashMap<>();
 
     //Insere de forma randômica os valores para todos os ataques listados
@@ -184,6 +185,7 @@ public class MapaPokemons {
         return mapaValorAtaque.get(ataque);
     }
 
+    //Retorna os 3 ataques do Pokémon
     public static String[] buscarAtaques(String nomePokemon){
         if(mapaAtaquesNivel1.containsKey(nomePokemon)){
             return mapaAtaquesNivel1.get(nomePokemon);
@@ -211,6 +213,7 @@ public class MapaPokemons {
         return pokemons;
     }
 
+    //Retorna o nome do próximo Pokémon na Evolução
     public static String getEvolucao(String nome) {
         return evolucoes.get(nome);
     }
