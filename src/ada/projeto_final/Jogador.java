@@ -114,7 +114,8 @@ public class Jogador {
                 System.err.println("Erro: número escolhido inválido.\n");
             }
         }
-        Utilidades.imprimirComPausa("\n" + getPokemonEscolhido() + "\nEste é o seu último Pokémon, cuide bem dele !!!\n\n");
+        System.out.println("\n" + getPokemonEscolhido());
+        Utilidades.imprimirComPausa("\nEste é o seu último Pokémon, cuide bem dele !!!\n\n");
     }
 
     public boolean escolherPokemonParaEvoluir() {

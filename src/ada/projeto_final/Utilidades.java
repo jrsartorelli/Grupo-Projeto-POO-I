@@ -12,19 +12,19 @@ public class Utilidades {
     public static String lerStringUsuario(String mensagem) {
         String valorRecebido;
         System.out.println(mensagem);
-        valorRecebido = "Ricardo";//input.nextLine();
+        valorRecebido = input.nextLine();
         return valorRecebido;
     }
 
     public static int lerIntUsuario(String mensagem) {
         int valorRecebido;
         System.out.println(mensagem);
-        valorRecebido = random.nextInt(1,2);//input.nextInt();
+        valorRecebido = input.nextInt();
         return valorRecebido;
     }
 
     public static void imprimirComPausa(String mensagem){
-        int tempoMiliSegundos = 0;//random.nextInt(30, 90);
+        int tempoMiliSegundos = random.nextInt(30, 90);
         for (int i = 0; i < mensagem.length(); i++) {  // Itera pelos caracteres da string
             System.out.print(mensagem.charAt(i));  // Exibe o caractere atual no console
             try {

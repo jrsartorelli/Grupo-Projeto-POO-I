@@ -6,80 +6,75 @@ import ada.projeto_final.mapas.MapaPokemons;
 public class MainPartida {
 
     public static void main(String[] args) {
-        int vitoriaJogador = 0;
-        int vitoriaNPC = 0;
-        for (int i = 0; i < 100; i++){
-            if (testeMain()==0){
-                vitoriaJogador++;
-            } else {
-                vitoriaNPC++;
-            }
-        }
-        System.out.println("Número de Vitórias Jogador: " + vitoriaJogador);
-        System.out.println("Número de Vitórias NPC: " + vitoriaNPC);
-        Utilidades.fecharScanner();
-    }
 
-    public static int testeMain(){
-        int vitoria = -1;
-        String nomeJogador;
+        int opcaoReiniciarBatalha = 1;
+        boolean primeiraExecucao = true;
+        String nomeJogador = "";
         String proximoAtacante = "Jogador"; //Armazena de quem é a vez de atacar, Jogador sempre inicia atacando
-        nomeJogador = Utilidades.lerStringUsuario("Bem vindo ao jogo PokeRPG!\n" +
-                "Para iniciarmos digite o seu nome: ");
-        inicializarValoresMapas();
-        Jogador jogador = new Jogador(nomeJogador);
-        JogadorNPC[] jogadoresNPCs = MapaNPCs.buscarNPCsRandomicos();
-        JogadorNPC jogadorEscolhidoNPC = null;
-        int rodada = 1;
 
-        while (jogador.aptoJogar()) {
+        while (opcaoReiniciarBatalha == 1) {
 
-            // Se todos os NPCs estão mortos, o Jogador venceu e o programa finaliza
-            if(verificaZerarJogo(jogadoresNPCs,jogador)){
-                vitoria = 0;
-                break;
+            if (primeiraExecucao){
+                nomeJogador = Utilidades.lerStringUsuario("Bem vindo ao jogo PokeRPG!\n" +
+                        "Para iniciarmos digite o seu nome: ");
             }
+            inicializarValoresMapas();
+            Jogador jogador = new Jogador(nomeJogador);
+            JogadorNPC[] jogadoresNPCs = MapaNPCs.buscarNPCsRandomicos();
+            JogadorNPC jogadorEscolhidoNPC = null;
+            int rodada = 1;
 
-            // Se for a primeira iteração — jogadorEscolhidoNPC será null
-            if (jogadorEscolhidoNPC == null){
-                jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
+            while (jogador.aptoJogar()) {
+
+                // Se todos os NPCs estão mortos, o Jogador venceu e o programa finaliza
+                if (verificaZerarJogo(jogadoresNPCs, jogador)) {
+                    break;
+                }
+
+                // Se for a primeira iteração — jogadorEscolhidoNPC será null
+                if (jogadorEscolhidoNPC == null) {
+                    jogadorEscolhidoNPC = escolherNPC(jogadoresNPCs);
+                }
+
+                // Se jogadorEscolhidoNPC não posuir Pokémons com vida — será necessário selecionar um NPC que esteja apto e
+                // será necessário que o Jogador escolha um novo Pokémon para jogar após selecionado outro NPC
+                if (!jogadorEscolhidoNPC.aptoJogar()) {
+                    jogadorEscolhidoNPC = trocarNPC(jogador, jogadorEscolhidoNPC, jogadoresNPCs);
+                }
+
+                // Se o Pokémon do NPC não estiver vivo — será escolhido um novo Pokémon Vivo da sua lista
+                // Toda a vez que o NPC substituir o seu Pokémon o Jogador também poderá escolher outro Pokémon
+                if (!jogadorEscolhidoNPC.getPokemonEscolhido().estaVivo()) {
+                    jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
+                    jogador.escolherPokemon();
+                }
+
+                // Se for a primeira iteração — Jogador ainda não terá escolhido o seu Pokémon para a Batalha
+                if (!jogador.isPokemonEscolhido()) {
+                    jogador.escolherPokemon();
+                }
+                // Enquanto Pokémon do Jogador não estiver vivo
+                reviverOuTrocarPokemon(jogador, jogadorEscolhidoNPC);
+
+                Utilidades.imprimirComPausa("Estamos iniciando a Rodada: " + rodada + "\n");
+                rodada++;
+
+                batalhaPokemons(jogador, jogadorEscolhidoNPC, proximoAtacante);
+
+                verificaGameOver(jogador, jogadorEscolhidoNPC);
+
             }
+            MapaPokemons.limparMapas();
+            MapaNPCs.limparMapas();
 
-            // Se jogadorEscolhidoNPC não posuir Pokémons com vida — será necessário selecionar um NPC que esteja apto e
-            // será necessário que o Jogador escolha um novo Pokémon para jogar após selecionado outro NPC
-            if (!jogadorEscolhidoNPC.aptoJogar()) {
-                jogadorEscolhidoNPC = trocarNPC(jogador, jogadorEscolhidoNPC, jogadoresNPCs);
+            opcaoReiniciarBatalha = Utilidades.lerIntUsuario(jogador.getNome() + ", deseja reiniciar a Batalha:\n1 - Sim\n2 - Não" +
+                    "\nEscolha sua opção (1 ou 2): ");
+            if (opcaoReiniciarBatalha != 1){
+                Utilidades.imprimirComPausa("\nTudo bem " + jogador.getNome() + ", nos vemos por aí !!!\n");
             }
-
-
-            // Se o Pokémon do NPC não estiver vivo — será escolhido um novo Pokémon Vivo da sua lista
-            // Toda a vez que o NPC substituir o seu Pokémon o Jogador também poderá escolher outro Pokémon
-            if (!jogadorEscolhidoNPC.getPokemonEscolhido().estaVivo()){
-                jogadorEscolhidoNPC.escolherPokemonNPCRandomico();
-                jogador.escolherPokemon();
-            }
-
-            // Se for a primeira iteração — Jogador ainda não terá escolhido o seu Pokémon para a Batalha
-            if (!jogador.isPokemonEscolhido()){
-                jogador.escolherPokemon();
-            }
-            // Enquanto Pokémon do Jogador não estiver vivo
-            reviverOuTrocarPokemon(jogador,jogadorEscolhidoNPC);
-
-            Utilidades.imprimirComPausa("Estamos iniciando a Rodada: " + rodada + "\n");
-            rodada++;
-
-            batalhaPokemons(jogador,jogadorEscolhidoNPC,proximoAtacante);
-
-            if (verificaGameOver(jogador,jogadorEscolhidoNPC)){
-                vitoria = 1;
-            }
+            primeiraExecucao = false;
         }
-
-        MapaPokemons.limparMapas();
-        MapaNPCs.limparMapas();
-
-        return vitoria;
+        Utilidades.fecharScanner();
     }
 
     private static void inicializarValoresMapas(){
@@ -236,14 +231,12 @@ public class MainPartida {
         return false;
     }
 
-    private static boolean verificaGameOver(Jogador jogador, JogadorNPC jogadorEscolhidoNPC) {
+    private static void verificaGameOver(Jogador jogador, JogadorNPC jogadorEscolhidoNPC) {
         if (!jogador.aptoJogar()){
             Utilidades.imprimirComPausa(jogadorEscolhidoNPC.getNome() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("vitoria") + "\"\n");
             Utilidades.imprimirComPausa("\n" + jogador.getNome() + ", Infelizmente você perdeu todos os seus Pokémons !!!\nO time: " +
                     jogadorEscolhidoNPC.getNome() + " é o Grande Vencedor !!!\nDesejo mais sorte em sua próxima Batalha !!!\n\n");
-            return true;
         }
-        return false;
     }
 
     private static JogadorNPC trocarNPC(Jogador jogador, JogadorNPC jogadorEscolhidoNPC, JogadorNPC[] jogadoresNPCs) {
