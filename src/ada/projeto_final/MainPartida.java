@@ -119,7 +119,7 @@ public class MainPartida {
 
                 if (jogadorEscolhidoNPC.getPokemonEscolhido().getVida() <= 0) {
                     Utilidades.imprimirComPausa("\nParabéns " + jogador.getNOME() + " !!!\nSeu Pokémon " + jogador.getPokemonEscolhido().getNome() +
-                            " detonou o Pokémon " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " do Time: " +
+                            " detonou o Pokémon " + jogadorEscolhidoNPC.getPokemonEscolhido().getNome() + " de " +
                             jogadorEscolhidoNPC.getNOME() + "\n\n");
                     Utilidades.imprimirComPausa(jogadorEscolhidoNPC.getNOME() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("perdePokemon") + "\"\n");
                 }

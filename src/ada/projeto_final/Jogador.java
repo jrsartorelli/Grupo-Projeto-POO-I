@@ -116,7 +116,7 @@ public class Jogador {
         }
         if (contadorOpcoes == 1){
             System.out.println("\n" + getPokemonEscolhido());
-            Utilidades.imprimirComPausa("\nEste é o seu último Pokémon, cuide bem dele !!!\n\n");
+            Utilidades.imprimirComPausa("Este é o seu último Pokémon, cuide bem dele !!!\n\n");
         }
     }
 

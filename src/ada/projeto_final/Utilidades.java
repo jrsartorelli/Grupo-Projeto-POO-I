@@ -19,7 +19,7 @@ public class Utilidades {
     public static int lerIntUsuario(String mensagem) {
         int valorRecebido;
         System.out.println(mensagem);
-        valorRecebido = input.nextInt();
+        valorRecebido = 2;//input.nextInt();
         return valorRecebido;
     }
 
