@@ -17,6 +17,9 @@ public class MainPartida {
             if (primeiraExecucao){
                 nomeJogador = Utilidades.lerStringUsuario("Bem vindo ao jogo PokeRPG!\n" +
                         "Para iniciarmos digite o seu nome: ");
+                Utilidades.escreverLog(nomeJogador + " iniciou a Batalha");
+            } else {
+                Utilidades.escreverLog(nomeJogador + " reiniciou a Batalha");
             }
             inicializarValoresMapas();
             Jogador jogador = new Jogador(nomeJogador);
@@ -28,6 +31,7 @@ public class MainPartida {
 
                 // Se todos os NPCs estão mortos, o Jogador venceu e o programa finaliza
                 if (verificaZerarJogo(jogadoresNPCs, jogador)) {
+                    Utilidades.escreverLog(jogador.getNOME() + " venceu a Batalha");
                     break;
                 }
 
@@ -39,6 +43,7 @@ public class MainPartida {
                 // Se jogadorEscolhidoNPC não posuir Pokémons com vida — será necessário selecionar um NPC que esteja apto e
                 // será necessário que o Jogador escolha um novo Pokémon para jogar após selecionado outro NPC
                 if (!jogadorEscolhidoNPC.aptoJogar()) {
+                    Utilidades.escreverLog(jogador.getNOME() + " venceu time NPC " + jogadorEscolhidoNPC.getNOME());
                     jogadorEscolhidoNPC = trocarNPC(jogador, jogadorEscolhidoNPC, jogadoresNPCs);
                 }
 
@@ -237,6 +242,7 @@ public class MainPartida {
             Utilidades.imprimirComPausa(jogadorEscolhidoNPC.getNOME() + " diz: \"" + jogadorEscolhidoNPC.getFrasesDeEfeito().get("vitoria") + "\"\n");
             Utilidades.imprimirComPausa("\n" + jogador.getNOME() + ", Infelizmente você perdeu todos os seus Pokémons !!!\nO time: " +
                     jogadorEscolhidoNPC.getNOME() + " é o Grande Vencedor !!!\nDesejo mais sorte em sua próxima Batalha !!!\n\n");
+            Utilidades.escreverLog(jogador.getNOME() + " perdeu a Batalha para " + jogadorEscolhidoNPC.getNOME());
         }
     }
 

@@ -167,7 +167,13 @@ public class Jogador {
             }
         }
         Utilidades.imprimirComPausa("Se prepare para ver seu Pokémon Evoluído !!!\n\n");
-        return ARRAY_POKEMON[indicePokemonEscolhido].evoluirPokemon();
+        Utilidades.escreverLog(getNOME() + " escolheu o Pokémon " + ARRAY_POKEMON[indicePokemonEscolhido].getNome() +
+                " para evoluir");
+        boolean isPokemonEvoluido = ARRAY_POKEMON[indicePokemonEscolhido].evoluirPokemon();
+        if (isPokemonEvoluido){
+            Utilidades.escreverLog("O Pokémon evoluído é " + ARRAY_POKEMON[indicePokemonEscolhido].getNome());
+        }
+        return isPokemonEvoluido;
     }
 
     public boolean querReviverPokemon(){
@@ -237,6 +243,7 @@ public class Jogador {
         if (usarRevive()){
             ARRAY_POKEMON[indicePokemonMortoEscolhido].revive();
             Utilidades.imprimirComPausa(ARRAY_POKEMON[indicePokemonMortoEscolhido].getNome() + " está Vivo !!!\n");
+            Utilidades.escreverLog(getNOME() + " reviveu o Pokémon " + ARRAY_POKEMON[indicePokemonMortoEscolhido].getNome());
         } else {
             System.err.println(NOME + ", você já utilizou o Revive, portanto não é possível reviver o " +
                     ARRAY_POKEMON[indicePokemonMortoEscolhido].getNome());

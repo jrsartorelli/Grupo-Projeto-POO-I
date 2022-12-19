@@ -1,8 +1,12 @@
 package ada.projeto_final;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.io.FileWriter;
 
 public class Utilidades {
 
@@ -32,6 +36,20 @@ public class Utilidades {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    public static void escreverLog(String log){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+
+        System.out.println(formatter.format(date));
+        try {
+            FileWriter writer = new FileWriter("log.txt", true); // true para adicionar o conteúdo ao final do arquivo em vez de sobrescrever o arquivo existente
+            writer.write(formatter.format(date) + ": " + log + "\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
