@@ -1,35 +1,26 @@
 package ada.exercise.heranca.faculdade;
 
-import java.util.Date;
 import java.util.List;
 
 public class Artigo {
     private String titulo;
-    private String descrição;
+    private String descricao;
     private List<String> palavrasChave;
     private String data;
 
-    public Artigo(String titulo, String descrição, List<String> palavrasChave, String data) {
+    public Artigo(String titulo, String descricao, List<String> palavrasChave, String data) {
         this.titulo = titulo;
-        this.descrição = descrição;
+        this.descricao = descricao;
         this.palavrasChave = palavrasChave;
         this.data = data;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescrição() {
-        return descrição;
-    }
-
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public List<String> getPalavrasChave() {
@@ -52,7 +43,7 @@ public class Artigo {
     public String toString() {
         return "Artigo{" +
                 "titulo='" + titulo + '\'' +
-                ", descrição='" + descrição + '\'' +
+                ", descrição='" + descricao + '\'' +
                 ", palavrasChave=" + palavrasChave +
                 ", data=" + data +
                 '}';
