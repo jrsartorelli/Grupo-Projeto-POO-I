@@ -43,7 +43,6 @@ public class Utilidades {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
 
-        System.out.println(formatter.format(date));
         try {
             FileWriter writer = new FileWriter("log.txt", true); // true para adicionar o conteúdo ao final do arquivo em vez de sobrescrever o arquivo existente
             writer.write(formatter.format(date) + ": " + log + "\n");
